@@ -1,0 +1,65 @@
+body {
+  font-family: 'Roboto', Arial, sans-serif; /* Fonte moderna e séria */
+  padding: 18px;
+  background-color: #84b6f4; /* Azul claro */
+  text-align: center; /* Centraliza o conteúdo */
+}
+
+h1 {
+  font-size: 16px; /* Tamanho maior para título */
+  color: #333; /* Cor do texto mais escura */
+  margin-bottom: 20px; /* Espaço abaixo do título */
+}
+
+section {
+  margin-bottom: 30px; /* Espaço entre seções */
+}
+
+input, button {
+  margin-top: 15px; /* Espaçamento entre elementos */
+  padding: 10px;
+  border: none; /* Removi a borda para um visual mais limpo */
+  border-radius: 6px; /* Bordas arredondadas */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+input {
+  background-color: #f0faff; /* Azul pastel para input */
+}
+
+button {
+  background-color: #4CAF50; /* Verde pastel para botão */
+  color: white; /* Texto do botão em branco */
+  cursor: pointer; /* Cursor de mão ao passar por cima */
+  transition: background-color 0.3s ease; /* Transição suave de cor */
+}
+
+button:hover {
+  background-color: #45a049; /* Tom mais escuro no hover */
+}
+
+#status {
+  margin-top: 20px;
+  color: #ffffff; /* Branco para a mensagem de status */
+  font-family: 'Roboto', Arial, sans-serif; /* Fonte para mensagem de status */
+}
+
+.result-container {
+  background-color: #ffffff; /* Fundo branco para destacar resultados */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra mais pronunciada */
+  text-align: left; /* Alinhar texto à esquerda dentro do container */
+  margin-top: 30px; /* Espaço acima do container de resultados */
+}
+
+.result-container h2 {
+  font-size: 20px; /* Tamanho do título dos resultados */
+  color: #333; /* Cor do título mais escura */
+  margin-bottom: 10px; /* Espaço abaixo do título dos resultados */
+}
+
+.result-container p {
+  color: #666; /* Cor do texto dos resultados */
+}
+
