@@ -1,71 +1,91 @@
 body {
-  font-family: 'Roboto', Arial, sans-serif; /* Fonte moderna e séria */
-  padding: 18px;
-  background-color: #84b6f4; /* Azul claro */
-  text-align: center; /* Centraliza o conteúdo */
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 10px; /* Reduced padding */
 }
 
-h1 {
-  font-size: 16px; /* Tamanho maior para título */
-  color: #333; /* Cor do texto mais escura */
-  margin-bottom: 10px; /* Espaço abaixo do título */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #007bff;
+  padding: 5px; /* Reduced padding */
+  border-radius: 8px;
+  margin-bottom: 10px; /* Reduced margin */
+}
+
+.header h1 {
+  color: #fff;
+  margin-left: 10px;
+  font-size: 1.5em; /* Reduced font size */
+}
+
+.icon {
+  width: 30px; /* Reduced width */
+  height: 30px; /* Reduced height */
 }
 
 h2 {
-  font-size: 12px; /* Tamanho maior para título */
-  color: #333; /* Cor do texto mais escura */
-  margin-bottom: 10px; /* Espaço abaixo do título */
+  color: #333;
+  margin-bottom: 10px; /* Reduced margin */
+  font-size: 1.2em; /* Reduced font size */
 }
 
-section {
-  margin-bottom: 10px; /* Espaço entre seções */
+input[type="file"] {
+  display: block;
+  margin-bottom: 10px; /* Reduced margin */
 }
 
-input, button {
-  margin-top: 15px; /* Espaçamento entre elementos */
-  padding: 10px;
-  border: none; /* Removi a borda para um visual mais limpo */
-  border-radius: 6px; /* Bordas arredondadas */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+#fileName {
+  margin-bottom: 10px; /* Reduced margin */
+  color: #555;
 }
 
-input {
-  background-color: #f0faff; /* Azul pastel para input */
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"] {
+  width: calc(100% - 20px);
+  padding: 8px; /* Reduced padding */
+  margin-bottom: 10px; /* Reduced margin */
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 button {
-  background-color: #4CAF50; /* Verde pastel para botão */
-  color: white; /* Texto do botão em branco */
-  cursor: pointer; /* Cursor de mão ao passar por cima */
-  transition: background-color 0.3s ease; /* Transição suave de cor */
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 10px; /* Added margin */
 }
 
-button:hover {
-  background-color: #45a049; /* Tom mais escuro no hover */
+button:disabled {
+  background-color: #ccc;
 }
 
 #status {
-  margin-top: 20px;
-  color: #ffffff; /* Branco para a mensagem de status */
-  font-family: 'Roboto', Arial, sans-serif; /* Fonte para mensagem de status */
+  margin-top: 10px; /* Reduced margin */
+  color: #d9534f;
 }
 
-.result-container {
-  background-color: #ffffff; /* Fundo branco para destacar resultados */
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra mais pronunciada */
-  text-align: left; /* Alinhar texto à esquerda dentro do container */
-  margin-top: 30px; /* Espaço acima do container de resultados */
+.result-box {
+  margin-top: 10px; /* Reduced margin */
+  padding: 10px; /* Reduced padding */
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  white-space: pre-wrap;
 }
 
-.result-container h2 {
-  font-size: 20px; /* Tamanho do título dos resultados */
-  color: #333; /* Cor do título mais escura */
-  margin-bottom: 10px; /* Espaço abaixo do título dos resultados */
-}
 
-.result-container p {
-  color: #666; /* Cor do texto dos resultados */
-}
 

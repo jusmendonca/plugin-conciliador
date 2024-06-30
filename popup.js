@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (result) {
             const text = formatResult(result, dib);
             copyToClipboard(text);
-            showMessage("Parâmetros copiados com sucesso! \n\ Use Ctrl+V ou 'colar' para inseri-los na minuta de petição.");
+            showMessage("Parâmetros copiados com sucesso! \n\ Use Ctrl+V ou 'colar' para inseri-los no documento.");
             displayResult(text);
         } else {
             showMessage("Nenhum resultado encontrado para a DIB especificada.");
@@ -104,11 +104,11 @@ document.addEventListener('DOMContentLoaded', function() {
 DIB (=DER): ${formatDate(dib)} 
 DIP: ${formatDate(new Date(dip))}
 
-VALOR TOTAL DOS ATRASADOS: R$ ${formatCurrency(soma)}
+VALOR DOS ATRASADOS: R$ ${formatCurrency(soma)}
 
 Composição:
-Número de parcelas de exercícios anteriores: ${p_ant}
-Número de parcelas do exercício atual: ${p_atual}
+Parcelas de exercícios anteriores: ${p_ant}
+Parcelas do exercício atual: ${p_atual}
 Valor de exercícios anteriores: R$ ${formatCurrency(v_ant)}
 Valor do exercício atual: R$ ${formatCurrency(v_atual)}
         `.trim();

@@ -6,21 +6,26 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Conciliador BETA</h1>
+    <div class="header">
+        <img src="images/icon32.png" alt="Icon" class="icon">
+        <h1>Conciliador BETA</h1>
+    </div>
     <h2>Assistente para cálculo de valores de acordo</h2>
     <input type="file" id="fileInput" accept=".xlsx">
     <p id="fileName">vazio</p>
-    <br><br>
     <label for="dibInput">DIB (DD/MM/AAAA):</label>
     <input type="text" id="dibInput">
-    <br><br>
-    <button id="processButton" disabled>CALCULAR</button>
+    <button id="processButton" disabled>CALCULAR E COPIAR</button>
     <p id="status"></p>
-    <div id="result"></div>
+    <div id="result" class="result-box"></div>
     <script src="libs/xlsx.full.min.js"></script>
     <script src="popup.js"></script>
 </body>
 </html>
+
+
+
+
 
 
 
