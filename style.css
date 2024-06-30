@@ -8,11 +8,17 @@ body {
 h1 {
   font-size: 16px; /* Tamanho maior para título */
   color: #333; /* Cor do texto mais escura */
-  margin-bottom: 20px; /* Espaço abaixo do título */
+  margin-bottom: 10px; /* Espaço abaixo do título */
+}
+
+h2 {
+  font-size: 12px; /* Tamanho maior para título */
+  color: #333; /* Cor do texto mais escura */
+  margin-bottom: 10px; /* Espaço abaixo do título */
 }
 
 section {
-  margin-bottom: 30px; /* Espaço entre seções */
+  margin-bottom: 10px; /* Espaço entre seções */
 }
 
 input, button {
