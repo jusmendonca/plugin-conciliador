@@ -170,7 +170,7 @@ Valor do exercício atual: R$ ${formatCurrency(v_atual)}
                     ia[i] = byteString.charCodeAt(i);
                 }
                 selectedFile = new Blob([ab], { type: mimeString });
-                fileNameDisplay.textContent = `Último arquivo usado: ${storedFileName}`;
+                fileNameDisplay.textContent = `Último arquivo selecionado: ${storedFileName}`;
             } catch (e) {
                 console.error('Erro ao carregar o arquivo do localStorage', e);
                 localStorage.removeItem('selectedFile');
@@ -184,6 +184,5 @@ Valor do exercício atual: R$ ${formatCurrency(v_atual)}
         updateButtonState();
     }
 });
-
 
 
