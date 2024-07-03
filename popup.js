@@ -184,5 +184,3 @@ Valor do exercício atual: R$ ${formatCurrency(v_atual)}
         updateButtonState();
     }
 });
-
-
