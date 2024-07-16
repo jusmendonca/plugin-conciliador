@@ -12,14 +12,12 @@ document.addEventListener('DOMContentLoaded', function() {
     dibInput.addEventListener('input', handleInput);
     processButton.addEventListener('click', processFile);
 
-    // Adicionando evento keydown para calcular ao pressionar ENTER
     document.addEventListener('keydown', function(event) {
         if (event.key === 'Enter' && !processButton.disabled) {
             processFile();
         }
     });
 
-    // Carregar dados do localStorage
     loadStoredData();
 
     function handleFileSelect(event) {
@@ -57,10 +55,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const result = findDataByDib(data, dib);
 
         if (result) {
-            const text = formatResult(result, dib);
-            copyToClipboard(text);
+            const fullText = formatResult(result, dib);
+            const conciseText = formatConciseResult(result, dib);
+            copyToClipboard(fullText);
             showMessage("Parâmetros copiados com sucesso! \n\ Use Ctrl+V ou 'colar' para inseri-los no documento.");
-            displayResult(text);
+            displayResult(conciseText);
         } else {
             showMessage("Nenhum resultado encontrado para a DIB especificada.");
             displayResult("");
@@ -101,12 +100,52 @@ document.addEventListener('DOMContentLoaded', function() {
     function formatResult(result, dib) {
         const { dip, p_ant, p_atual, v_ant, v_atual, soma } = result;
         return `
-DIB (=DER): ${formatDate(dib)} 
+
+
+
+DIB (=DER): ${formatDate(dib)}
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+
 DIP: ${formatDate(new Date(dip))}
 
-VALOR DOS ATRASADOS: R$ ${formatCurrency(soma)}
+-----------------------------------------------------------------------------------------------------------------------------------------------
 
-Composição:
+
+RMI: 01 (um) salário-mínimo
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+VALOR TOTAL DO ACORDO: R$ ${formatCurrency(soma)}
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+COMPOSIÇÃO:
+
+- Parcelas de exercícios anteriores: ${p_ant}
+
+- Parcelas do exercício atual: ${p_atual}
+
+- Valor de exercícios anteriores: R$ ${formatCurrency(v_ant)}
+
+- Valor do exercício atual: R$ ${formatCurrency(v_atual)}
+
+
+
+        `.trim();
+    }
+
+    function formatConciseResult(result, dib) {
+        const { dip, p_ant, p_atual, v_ant, v_atual, soma } = result;
+        return `
+    
+DIB: ${formatDate(dib)}
+DIP: ${formatDate(new Date(dip))}
+RMI: 01 (um) salário-mínimo
+VALOR TOTAL DO ACORDO: R$ ${formatCurrency(soma)}
 Parcelas de exercícios anteriores: ${p_ant}
 Parcelas do exercício atual: ${p_atual}
 Valor de exercícios anteriores: R$ ${formatCurrency(v_ant)}

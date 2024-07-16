@@ -87,5 +87,11 @@ button:disabled {
   white-space: pre-wrap;
 }
 
+.result-box p {
+  display: flex;
+  justify-content: space-between;
+}
 
-
+.result-box p span {
+  flex: 1;
+}
