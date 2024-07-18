@@ -34,7 +34,7 @@ Carregamento de Arquivo: Permite ao usuário carregar arquivos Excel (.xlsx) con
 
 ## Contribuições e Problemas
 
-Se encontrar algum problema ou tiver sugestões de melhorias, sinta-se à vontade para abrir uma issue no repositório da extensão.
+Se encontrar algum problema ou tiver sugestões de melhorias, sinta-se à vontade para abrir uma issue (https://github.com/jusmendonca/plugin-conciliador/issues) no repositório da extensão.
 
 Contribuições através de pull requests são bem-vindas. Certifique-se de discutir grandes mudanças antes de iniciar o trabalho.
 
