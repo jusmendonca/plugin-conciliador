@@ -143,13 +143,18 @@ COMPOSIÇÃO:
         return `
     
 DIB: ${formatDate(dib)}
+---------------------------------------------------------------
 DIP: ${formatDate(new Date(dip))}
+---------------------------------------------------------------
 RMI: 01 (um) salário-mínimo
+---------------------------------------------------------------
 VALOR TOTAL DO ACORDO: R$ ${formatCurrency(soma)}
-Parcelas de exercícios anteriores: ${p_ant}
-Parcelas do exercício atual: ${p_atual}
-Valor de exercícios anteriores: R$ ${formatCurrency(v_ant)}
-Valor do exercício atual: R$ ${formatCurrency(v_atual)}
+---------------------------------------------------------------
+COMPOSIÇÃO:
+- Parcelas de exercícios anteriores: ${p_ant}
+- Parcelas do exercício atual: ${p_atual}
+- Valor de exercícios anteriores: R$ ${formatCurrency(v_ant)}
+- Valor do exercício atual: R$ ${formatCurrency(v_atual)}
         `.trim();
     }
 
