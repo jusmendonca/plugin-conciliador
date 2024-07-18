@@ -8,11 +8,17 @@
 <body>
     <div class="header">
         <img src="images/icon32.png" alt="Icon" class="icon">
-        <h1>Conciliador BETA</h1>
+        <h1>Conciliador</h1>
     </div>
     <h2>Assistente para cálculo de valores de acordo</h2>
     <input type="file" id="fileInput" accept=".xlsx">
     <p id="fileName">vazio</p>
+    <label for="copyOption">Escolha a opção de cópia:</label>
+    <select id="copyOption">
+        <option value="full">Parâmetros formatados para SAPIENS</option>
+        <option value="concise">Parâmetros sem formatação</option>
+        <option value="totalValue">Apenas Valor Total do Acordo</option>
+    </select>
     <label for="dibInput">Insira a DIB (DD/MM/AAAA):</label>
     <input type="text" id="dibInput">
     <button id="processButton" disabled>CALCULAR E COPIAR</button>
@@ -20,6 +26,5 @@
     <div id="result" class="result-box"></div>
     <script src="libs/xlsx.full.min.js"></script>
     <script src="popup.js"></script>
-    <script src="script.js"></script> <!-- Adiciona a referência ao novo script -->
 </body>
 </html>
