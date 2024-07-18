@@ -29,12 +29,12 @@ body {
 h2 {
   color: #333;
   margin-bottom: 10px; /* Reduced margin */
-  font-size: 1.2em; /* Reduced font size */
+  font-size: 1.0em; /* Reduced font size */
 }
 
 input[type="file"] {
   display: block;
-  margin-bottom: 10px; /* Reduced margin */
+  margin-bottom: 5px; /* Reduced margin */
 }
 
 #fileName {
@@ -46,6 +46,11 @@ label {
   display: block;
   margin-bottom: 5px;
 }
+
+select {
+  margin-bottom: 10px; 
+}
+
 
 input[type="text"] {
   width: calc(100% - 20px);
@@ -74,7 +79,7 @@ button:disabled {
 
 #status {
   margin-top: 10px; /* Reduced margin */
-  color: #d9534f;
+  color: #007bff;
 }
 
 .result-box {
@@ -95,3 +100,5 @@ button:disabled {
 .result-box p span {
   flex: 1;
 }
+
+

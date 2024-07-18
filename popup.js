@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     break;
                 case 'full':
                     textToCopy = formatResult(result, dib);
-                    textToDisplay = formatConciseResult(result, dib);
+                    textToDisplay = textToCopy;
                     break;
                 default:
                     textToCopy = formatResult(result, dib);
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
             showMessage("Valor(es) copiado(s) com sucesso! \nUse Ctrl+V ou 'colar' para inseri-los no documento.");
             displayResult(textToDisplay);
         } else {
-            showMessage("Nenhum resultado encontrado para a DIB especificada.");
+            showMessage("Sem resultados encontrados para a DIB inserida.");
             displayResult("");
         }
     }
@@ -130,25 +130,27 @@ document.addEventListener('DOMContentLoaded', function() {
         return `
 DIB (=DER): ${formatDate(dib)}
 
------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------
 
 DIP: ${formatDate(new Date(dip))}
 
------------------------------------------------------------------------------------------------------------------------------------------------
-
-RMI: 01 (um) salário-mínimo
-
------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------
 
 VALOR TOTAL DO ACORDO: R$ ${formatCurrency(soma)}
 
------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------
 
 COMPOSIÇÃO:
 
 - Parcelas de exercícios anteriores: ${p_ant}
+
+
 - Parcelas do exercício atual: ${p_atual}
+
+
 - Valor de exercícios anteriores: R$ ${formatCurrency(v_ant)}
+
+
 - Valor do exercício atual: R$ ${formatCurrency(v_atual)}
         `.trim();
     }
@@ -157,13 +159,19 @@ COMPOSIÇÃO:
         const { dip, p_ant, p_atual, v_ant, v_atual, soma } = result;
         return `
 DIB: ${formatDate(dib)}
+
 DIP: ${formatDate(new Date(dip))}
-RMI: 01 (um) salário-mínimo
+
 VALOR TOTAL DO ACORDO: R$ ${formatCurrency(soma)}
+
 COMPOSIÇÃO:
+
 - Parcelas de exercícios anteriores: ${p_ant}
+
 - Parcelas do exercício atual: ${p_atual}
+
 - Valor de exercícios anteriores: R$ ${formatCurrency(v_ant)}
+
 - Valor do exercício atual: R$ ${formatCurrency(v_atual)}
         `.trim();
     }
