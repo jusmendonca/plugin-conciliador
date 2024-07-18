@@ -238,6 +238,7 @@ COMPOSIÇÃO:
                     ia[i] = byteString.charCodeAt(i);
                 }
                 selectedFile = new Blob([ab], { type: mimeString });
+                selectedFile.name = storedFileName; // Defina o nome do arquivo aqui
                 fileNameDisplay.textContent = `Último arquivo selecionado: ${storedFileName}`;
             } catch (e) {
                 console.error('Erro ao carregar o arquivo do localStorage', e);
@@ -252,3 +253,4 @@ COMPOSIÇÃO:
         updateButtonState();
     }
 });
+
