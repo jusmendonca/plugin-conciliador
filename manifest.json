@@ -3,8 +3,7 @@
   "name": "Conciliador Previdenciário",
   "version": "1.0",
   "permissions": [
-    "clipboardWrite",
-    "storage"
+    "clipboardWrite"
   ],
   "action": {
     "default_popup": "popup.html",
