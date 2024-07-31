@@ -2,29 +2,45 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Conciliador Previdenciário 1.0</title>
+    <title>Conciliador POWER</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="header">
         <img src="images/icon32.png" alt="Icon" class="icon">
-        <h1>Conciliador Previdenciário</h1>
+        <h1>Conciliador Previdenciário 1.1</h1>
     </div>
-    <h2>Assistente para cálculo de proposta de acordo</h2>
+    <h2>Assistente de cálculo para acordos</h2>
+    <div class="button-container">
+        <button id="downloadSpreadsheetButtonRural">&#11123; RURAL</button>
+        <button id="downloadSpreadsheetButtonBPCLOAS">&#11123; BPC-LOAS</button>
+    </div>
     <input type="file" id="fileInput" accept=".xlsx">
     <p id="fileName"></p>
-    <label for="copyOption">Escolha a opção de cópia:</label>
+    <label for="copyOption">Estilo de cópia:</label>
     <select id="copyOption">
         <option value="full">parâmetros pré-formatados</option>
         <option value="concise">parâmetros sem formatação</option>
         <option value="totalValue">apenas valor total da proposta (atrasados)</option>
     </select>
-    <label for="dibInput">Insira a DIB (DD/MM/AAAA):</label>
+    <label for="dipInput">DIP (Data de Início do Pagamento):</label>
+    <input type="text" id="dipInput">
+    <label for="dibInput">DIB (Data de Início do Benefício):</label>
     <input type="text" id="dibInput">
-    <button id="processButton" disabled>CALCULAR E COPIAR</button>
+    <label for="percentualInput">Percentual de acordo (%):</label>
+    <input type="number" id="percentualInput" min="0" max="100" step="0.01" value="0">
+  
+    <div class="button-container">
+        <button id="processButton" disabled>CALCULAR E COPIAR</button>
+        <button id="generateHtmlButton"> GERAR RESUMO HTML </button>
+    </div>
+    
     <p id="status"></p>
     <div id="result" class="result-box"></div>
     <script src="libs/xlsx.full.min.js"></script>
     <script src="popup.js"></script>
 </body>
 </html>
+
+
+

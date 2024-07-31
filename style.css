@@ -30,6 +30,7 @@ h2 {
   color: #333;
   margin-bottom: 10px; /* Reduced margin */
   font-size: 1.0em; /* Reduced font size */
+  text-align: center;
 }
 
 input[type="file"] {
@@ -37,7 +38,7 @@ input[type="file"] {
   margin-bottom: 5px; /* Reduced margin */
 }
 
-fileName {
+#fileName {
   margin-bottom: 10px; /* Reduced margin */
   color: #555;
 }
@@ -51,29 +52,76 @@ select {
   margin-bottom: 10px; 
 }
 
-input[type="text"] {
-  width: calc(100% - 20px);
-  padding: 8px; /* Reduced padding */
-  margin-bottom: 10px; /* Reduced margin */
-  border: 1px solid #ccc;
-  border-radius: 4px;
+input[type="text"], input[type="number"] {
+  width: calc(100% - 20px); /* Define a largura para se ajustar ao container */
+  padding: 8px; /* Ajusta o padding */
+  margin-bottom: 10px; /* Define o espaçamento inferior */
+  border: 1px solid #ccc; /* Define a borda */
+  border-radius: 4px; /* Adiciona borda arredondada */
+  text-align: center; /* Centraliza o texto */
 }
 
-button {
-  display: block;
-  width: 100%;
+/* Estilo para o container dos botões */
+.button-container {
+  display: flex;
+  gap: 10px; /* Espaço entre os botões */
+  margin-top: 10px; /* Espaço acima dos botões */
+  margin-bottom: 10px;
+}
+
+/* Estilo comum para os botões */
+.button-container button {
+  flex: 1; /* Faz com que os botões ocupem o mesmo espaço */
   padding: 10px;
-  background-color: #28a745;
-  color: #fff;
+  font-size: 12px;
   border: none;
   border-radius: 4px;
-  font-size: 14px;
   cursor: pointer;
-  margin-bottom: 10px; /* Added margin */
+  transition: background-color 0.3s ease;
 }
 
-button:disabled {
-  background-color: #ccc;
+/* Estilo para o botão "RURAL" */
+#downloadSpreadsheetButtonRural {
+  background-color: #007bff; /* Cor de fundo azul */
+  color: #fff;
+  padding: 5px;
+}
+
+#downloadSpreadsheetButtonRural:hover {
+  background-color: #0056b3; /* Cor de fundo ao passar o mouse */
+}
+
+/* Estilo para o botão "BPC-LOAS" */
+#downloadSpreadsheetButtonBPCLOAS {
+  background-color: #007bff; /* Cor de fundo verde */
+  color: #fff;
+  padding: 5px;
+}
+
+#downloadSpreadsheetButtonBPCLOAS:hover {
+  background-color: #0056b3; /* Cor de fundo ao passar o mouse */
+}
+
+/* Estilo para o botão "CALCULAR E COPIAR" */
+#processButton {
+  background-color: #28a745; /* Cor de fundo verde */
+  color: #fff;
+  font-size: 12px;
+}
+
+#processButton:hover {
+  background-color: #218838; /* Cor de fundo ao passar o mouse */
+}
+
+/* Estilo para o botão "GERAR ARQUIVO HTML" */
+#generateHtmlButton {
+  background-color: #28a745; /* Cor de fundo azul */
+  color: #fff;
+  font-size: 12px;
+}
+
+#generateHtmlButton:hover {
+  background-color: #218838; /* Cor de fundo ao passar o mouse */
 }
 
 #status {

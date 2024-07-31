@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Conciliador Previdenciário",
-  "version": "1.0",
+  "name": "Conciliador Previdenciario",
+  "version": "1.1",
   "permissions": [
     "clipboardWrite"
   ],
