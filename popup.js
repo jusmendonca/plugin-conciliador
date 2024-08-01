@@ -21,8 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
     percentualInput.addEventListener('input', handleInput);
     processButton.addEventListener('click', processFile);
     generateHtmlButton.addEventListener('click', generateHtmlFile);
-    downloadSpreadsheetButtonRural.addEventListener('click', () => downloadSpreadsheet('RURAL'));
-    downloadSpreadsheetButtonBPCLOAS.addEventListener('click', () => downloadSpreadsheet('BPC-LOAS'));
+    // downloadSpreadsheetButtonRural.addEventListener('click', () => downloadSpreadsheetButtonRural('RURAL'));
+    // downloadSpreadsheetButtonBPCLOAS.addEventListener('click', () => downloadSpreadsheetButtonBPCLOAS('BPC-LOAS'));
     copyOption.addEventListener('change', storeData);
 
     document.addEventListener('keydown', function(event) {
@@ -200,7 +200,6 @@ document.addEventListener('DOMContentLoaded', function() {
         result.v_ant *= percentual;
         result.v_atual *= percentual;
         result.soma = result.v_ant + result.v_atual;
-        result.soma_aplicada = result.soma * percentual;
     }
 
     function formatResult(result, dip, dib, percentual) {
@@ -296,6 +295,7 @@ COMPOSIÇÃO:
             const result = findDataByDipDib(data, parseDate(dipStr), parseDate(dibStr));
     
             if (result) {
+                applyPercentual(result, percentual); // Aplicar o percentual aos resultados
                 const htmlContent = generateHtmlContent(result, percentual, numeroProcesso, nomeBeneficio, dipStr, dibStr);
                 const blob = new Blob([htmlContent], { type: 'text/html' });
                 const link = document.createElement('a');
@@ -328,55 +328,55 @@ COMPOSIÇÃO:
     function generateHtmlContent(result, percentual, numeroProcesso, nomeBeneficio, dipStr, dibStr) {
         const formattedProcessNumber = numeroProcesso;
         const todayDate = new Date().toLocaleDateString('pt-BR');
-        const { rmi, p_ant, p_atual, v_ant, v_atual, soma } = result;
+        const { rmi, p_ant, p_atual, v_ant, v_atual, soma} = result;
         const percentualAplicado = (percentual * 100).toFixed(2);
     
         return `
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <title>Processo: ${formattedProcessNumber}</title>
-    <style>
-        body { font-family: Arial, font-size: 12px, sans-serif; margin: 20px; }
-        h1 { color: #333; }
-        .info { margin-bottom: 20px; }
-        table { width: 100%; border-collapse: collapse; }
-        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-        th { background-color: #f2f2f2; }
-        .bold { font-weight: bold; }
-    </style>
-</head>
-<body>
-    <h1>Resumo do cálculo</h1>
-
-    <p><strong>Processo:</strong> ${formattedProcessNumber}</p>
-    <p><strong>Nome do Benefício:</strong> ${nomeBeneficio}</p>
-    <p><strong>DIB:</strong> ${dibStr}</p>
-    <p><strong>DIP:</strong> ${dipStr}</p>
-
-    <p><strong>RMI:</strong> ${rmi}</p>
-    <p><strong>VALOR TOTAL DO ACORDO:</strong> <span class="bold"> ${formatCurrency(soma)}</span></p>
-    <p><strong>Percentual aplicado:</strong> ${percentualAplicado}%</p>
-
-    <p><strong>COMPOSIÇÃO:</strong></p>
-    <ul>
-        <li>Parcelas de exercícios anteriores: ${p_ant}</li>
-        <li>Parcelas do exercício atual: ${p_atual}</li>
-        <li>Valor de exercícios anteriores: R$ ${formatCurrency(v_ant)}</li>
-        <li>Valor do exercício atual: R$ ${formatCurrency(v_atual)}</li>
-    </ul>
-
-    <p><strong>Observações:</strong></p>
-    <ol>
-        <li>Índices aplicados: ORTN/OTN/BTN até 02/91 + INPC até 12/92 + IRSM até 02/94 + URV até 06/94 + IPCR até 06/95 + INPC até 04/96 + IGPDI até 09/2006 + IPCA-E + Selic após 12/021.</li>
-        <li>Cálculo limitado ao teto de alçada dos Juizados Especiais Federais.</li>
-        <li>Cálculos atualizados até ${todayDate}.</li>
-    </ol>
-</body>
-</html>
+    <!DOCTYPE html>
+    <html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <title>Processo: ${formattedProcessNumber}</title>
+        <style>
+            body { font-family: Arial, font-size: 12px, sans-serif; margin: 20px; }
+            h1 { color: #333; }
+            .info { margin-bottom: 20px; }
+            table { width: 100%; border-collapse: collapse; }
+            th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+            th { background-color: #f2f2f2; }
+            .bold { font-weight: bold; }
+        </style>
+    </head>
+    <body>
+        <h1>Resumo do cálculo</h1>
+    
+        <p><strong>Processo:</strong> ${formattedProcessNumber}</p>
+        <p><strong>Nome do Benefício:</strong> ${nomeBeneficio}</p>
+        <p><strong>DIB:</strong> ${dibStr}</p>
+        <p><strong>DIP:</strong> ${dipStr}</p>
+    
+        <p><strong>RMI:</strong> ${rmi}</p>
+        <p><strong>VALOR TOTAL DO ACORDO:</strong> <span class="bold"> ${formatCurrency(soma)}</span></p>
+        <p><strong>Percentual aplicado:</strong> ${percentualAplicado}%</p>
+    
+        <p><strong>COMPOSIÇÃO:</strong></p>
+        <ul>
+            <li>Parcelas de exercícios anteriores: ${p_ant}</li>
+            <li>Parcelas do exercício atual: ${p_atual}</li>
+            <li>Valor de exercícios anteriores: ${formatCurrency(v_ant)}</li>
+            <li>Valor do exercício atual: ${formatCurrency(v_atual)}</li>
+        </ul>
+    
+        <p><strong>Observações:</strong></p>
+        <ol>
+            <li>Índices aplicados: ORTN/OTN/BTN até 02/91 + INPC até 12/92 + IRSM até 02/94 + URV até 06/94 + IPCR até 06/95 + INPC até 04/96 + IGPDI até 09/2006 + IPCA-E + Selic após 12/021.</li>
+            <li>Cálculo limitado ao teto de alçada dos Juizados Especiais Federais.</li>
+            <li>Cálculos atualizados até ${todayDate}.</li>
+        </ol>
+    </body>
+    </html>
         `;
-    }    
+    }   
 
     function storeData() {
         localStorage.setItem('dipInput', dipInput.value);
