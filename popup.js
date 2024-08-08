@@ -1,72 +1,56 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const fileInput = document.getElementById('fileInput');
+    const benefitSelect = document.getElementById('benefitSelect');
     const fileNameDisplay = document.getElementById('fileName');
     const dipInput = document.getElementById('dipInput');
     const dibInput = document.getElementById('dibInput');
     const percentualInput = document.getElementById('percentualInput');
     const processButton = document.getElementById('processButton');
     const generateHtmlButton = document.getElementById('generateHtmlButton');
-    const downloadSpreadsheetButtonRural = document.getElementById('downloadSpreadsheetButtonRural');
-    const downloadSpreadsheetButtonBPCLOAS = document.getElementById('downloadSpreadsheetButtonBPCLOAS');
     const statusDiv = document.getElementById('status');
     const resultDiv = document.getElementById('result');
     const copyOption = document.getElementById('copyOption');
 
-    let selectedFile;
-    let inputBuffer = '';
+    let selectedBenefitData;
 
-    fileInput.addEventListener('change', handleFileSelect);
-    dipInput.addEventListener('input', handleInput);
-    dibInput.addEventListener('input', handleInput);
-    percentualInput.addEventListener('input', handleInput);
+    benefitSelect.addEventListener('change', handleBenefitSelect);
+    dipInput.addEventListener('input', handleInputChange);
+    dibInput.addEventListener('input', handleInputChange);
+    percentualInput.addEventListener('input', handleInputChange);
     processButton.addEventListener('click', processFile);
     generateHtmlButton.addEventListener('click', generateHtmlFile);
-    // downloadSpreadsheetButtonRural.addEventListener('click', () => downloadSpreadsheetButtonRural('RURAL'));
-    // downloadSpreadsheetButtonBPCLOAS.addEventListener('click', () => downloadSpreadsheetButtonBPCLOAS('BPC-LOAS'));
     copyOption.addEventListener('change', storeData);
 
     document.addEventListener('keydown', function(event) {
         if (event.key === 'Enter' && !processButton.disabled) {
             processFile();
-        } else {
-            handleKeyInput(event.key);
         }
     });
 
     loadStoredData();
 
-    function handleKeyInput(key) {
-        inputBuffer += key;
-        console.log(`Current input buffer: ${inputBuffer}`);
-
-        if (inputBuffer.length > 12) {
-            inputBuffer = inputBuffer.slice(-12);
-        }
-
-        const regex = />>\d{2}\/\d{2}\/\d{4}$/;
-        if (regex.test(inputBuffer)) {
-            const dateStr = inputBuffer.match(regex)[0].slice(2);
-            dibInput.value = dateStr;
-            inputBuffer = '';
-            handleInput();
-            processFile();
-        }
+    function handleBenefitSelect() {
+        const benefit = benefitSelect.value;
+        fetch(`json/${benefit}.json`)
+            .then(response => response.json())
+            .then(data => {
+                selectedBenefitData = data.dados;
+                fileNameDisplay.textContent = `Dados carregados na memória: ${benefit}`;
+                storeData();
+                updateButtonState();
+                resultDiv.classList.add('modified'); // Adiciona classe modificada
+            })
+            .catch(error => {
+                console.error('Erro ao carregar o arquivo JSON:', error);
+                fileNameDisplay.textContent = 'Erro ao carregar o arquivo JSON';
+            });
     }
 
-    function handleFileSelect(event) {
-        selectedFile = event.target.files[0];
-        if (selectedFile) {
-            fileNameDisplay.textContent = `Último arquivo selecionado: ${selectedFile.name}`;
-            storeData();
-            updateButtonState();
-        }
-    }
-
-    function handleInput() {
+    function handleInputChange() {
         formatDipInput();
         formatDibInput();
         storeData();
         updateButtonState();
+        resultDiv.classList.add('modified'); // Adiciona classe modificada
     }
 
     function formatDipInput() {
@@ -87,9 +71,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const dip = dipInput.value;
         const dib = dibInput.value;
         const isValidDate = validateDate(dip) && validateDate(dib);
-        const fileSelected = !!selectedFile;
+        const benefitSelected = !!selectedBenefitData;
 
-        processButton.disabled = !(fileSelected && isValidDate);
+        processButton.disabled = !(benefitSelected && isValidDate);
     }
 
     function validateDate(dateStr) {
@@ -105,11 +89,19 @@ document.addEventListener('DOMContentLoaded', function() {
         const percentual = parseFloat(percentualInput.value) / 100;
 
         try {
-            const data = await readExcelFile(selectedFile);
-            const result = findDataByDipDib(data, dip, dib);
+            const result = findDataByDipDib(selectedBenefitData, dip, dib);
 
             if (result) {
+                if (!result.originalValues) {
+                    result.originalValues = { ...result }; // Armazena os valores originais na primeira vez
+                }
+                // Restaura os valores originais antes de aplicar o percentual
+                result.v_ant = result.originalValues.v_ant;
+                result.v_atual = result.originalValues.v_atual;
+                result.soma = result.originalValues.soma;
+
                 applyPercentual(result, percentual);
+
                 const selectedOption = copyOption.value;
                 let textToCopy = '';
                 let textToDisplay = '';
@@ -131,48 +123,27 @@ document.addEventListener('DOMContentLoaded', function() {
                         textToDisplay = textToCopy;
                 }
                 copyToClipboard(textToCopy);
-                showMessage("Cálculo feito com sucesso! CONFIRA os parâmetros escolhidos e use Ctrl+V ou 'colar' para inserir os valores no documento.");
+                showMessage("Cálculo feito com sucesso! CONFIRA os parâmetros e use Ctrl+V ou 'colar'.");
                 displayResult(textToDisplay);
+                resultDiv.classList.remove('modified'); // Remove classe modificada
             } else {
                 showMessage("Sem resultados encontrados para a DIP e DIB inseridas.");
                 displayResult("");
             }
         } catch (error) {
-            showMessage(`Erro ao processar o arquivo: ${error}`);
+            showMessage(`Erro ao processar os dados: ${error}`);
         }
+    }
+
+    function applyPercentual(result, percentual) {
+        result.v_ant *= percentual;
+        result.v_atual *= percentual;
+        result.soma = result.v_ant + result.v_atual;
     }
 
     function parseDate(dateStr) {
         const [day, month, year] = dateStr.split('/');
         return new Date(year, month - 1, day);
-    }
-
-    function readExcelFile(file) {
-        return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-
-            reader.onload = (event) => {
-                try {
-                    const data = new Uint8Array(event.target.result);
-                    const workbook = XLSX.read(data, { type: 'array' });
-                    const worksheet = workbook.Sheets[workbook.SheetNames[0]];
-                    const jsonData = XLSX.utils.sheet_to_json(worksheet, { raw: false });
-                    resolve(jsonData);
-                } catch (error) {
-                    reject(`Erro ao processar o arquivo Excel: ${error.message}`);
-                }
-            };
-
-            reader.onerror = (event) => {
-                reject(`Erro ao ler o arquivo: ${event.target.error}`);
-            };
-
-            try {
-                reader.readAsArrayBuffer(file);
-            } catch (error) {
-                reject(`Erro ao iniciar a leitura do arquivo: ${error.message}`);
-            }
-        });
     }
 
     function findDataByDipDib(data, dip, dib) {
@@ -185,21 +156,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const mesAnoRowDib = `${('0' + (dibDate.getMonth() + 1)).slice(-2)}/${dibDate.getFullYear()}`;
             return mesAnoRowDip === mesAnoDip && mesAnoRowDib === mesAnoDib;
         });
-    }
-
-    function findAllDataByDip(data, dip) {
-        const mesAnoDip = `${('0' + (dip.getMonth() + 1)).slice(-2)}/${dip.getFullYear()}`;
-        return data.filter(row => {
-            const dipDate = new Date(row.dip);
-            const mesAnoRowDip = `${('0' + (dipDate.getMonth() + 1)).slice(-2)}/${dipDate.getFullYear()}`;
-            return mesAnoRowDip === mesAnoDip;
-        });
-    }
-
-    function applyPercentual(result, percentual) {
-        result.v_ant *= percentual;
-        result.v_atual *= percentual;
-        result.soma = result.v_ant + result.v_atual;
     }
 
     function formatResult(result, dip, dib, percentual) {
@@ -291,10 +247,14 @@ COMPOSIÇÃO:
         const nomeBeneficio = prompt("Digite o nome do benefício:");
     
         try {
-            const data = await readExcelFile(selectedFile);
-            const result = findDataByDipDib(data, parseDate(dipStr), parseDate(dibStr));
+            const result = findDataByDipDib(selectedBenefitData, parseDate(dipStr), parseDate(dibStr));
     
             if (result) {
+                // Restaura os valores originais antes de aplicar o percentual
+                result.v_ant = result.originalValues.v_ant;
+                result.v_atual = result.originalValues.v_atual;
+                result.soma = result.originalValues.soma;
+
                 applyPercentual(result, percentual); // Aplicar o percentual aos resultados
                 const htmlContent = generateHtmlContent(result, percentual, numeroProcesso, nomeBeneficio, dipStr, dibStr);
                 const blob = new Blob([htmlContent], { type: 'text/html' });
@@ -302,6 +262,7 @@ COMPOSIÇÃO:
                 link.href = URL.createObjectURL(blob);
                 link.download = `${numeroProcesso}.html`;
                 link.click();
+                resultDiv.classList.remove('modified'); // Remove classe modificada
             } else {
                 showMessage("Sem resultados encontrados para a DIP e DIB inseridas.");
             }
@@ -383,15 +344,7 @@ COMPOSIÇÃO:
         localStorage.setItem('dibInput', dibInput.value);
         localStorage.setItem('percentualInput', percentualInput.value);
         localStorage.setItem('copyOption', copyOption.value);
-        if (selectedFile) {
-            const reader = new FileReader();
-            reader.onload = () => {
-                const base64File = reader.result;
-                localStorage.setItem('selectedFile', base64File);
-                localStorage.setItem('fileName', selectedFile.name);
-            };
-            reader.readAsDataURL(selectedFile);
-        }
+        localStorage.setItem('benefitSelect', benefitSelect.value);
     }
 
     function loadStoredData() {
@@ -399,8 +352,7 @@ COMPOSIÇÃO:
         const storedDib = localStorage.getItem('dibInput');
         const storedPercentual = localStorage.getItem('percentualInput');
         const storedCopyOption = localStorage.getItem('copyOption');
-        const storedFile = localStorage.getItem('selectedFile');
-        const storedFileName = localStorage.getItem('fileName');
+        const storedBenefit = localStorage.getItem('benefitSelect');
 
         if (storedDip) {
             dipInput.value = storedDip;
@@ -418,59 +370,11 @@ COMPOSIÇÃO:
             copyOption.value = storedCopyOption;
         }
 
-        if (storedFile && storedFileName) {
-            try {
-                const byteString = atob(storedFile.split(',')[1]);
-                const mimeString = storedFile.split(',')[0].split(':')[1].split(';')[0];
-                const ab = new ArrayBuffer(byteString.length);
-                const ia = new Uint8Array(ab);
-                for (let i = 0; i < byteString.length; i++) {
-                    ia[i] = byteString.charCodeAt(i);
-                }
-                selectedFile = new Blob([ab], { type: mimeString });
-                selectedFile.name = storedFileName;
-                fileNameDisplay.textContent = `Último arquivo selecionado (dados na memória): ${storedFileName}`;
-            } catch (e) {
-                console.error('Erro ao carregar o arquivo do localStorage', e);
-                localStorage.removeItem('selectedFile');
-                localStorage.removeItem('fileName');
-                fileNameDisplay.textContent = 'Nenhum arquivo selecionado (memória vazia)';
-            }
-        } else {
-            fileNameDisplay.textContent = 'Nenhum arquivo selecionado (memória vazia)';
+        if (storedBenefit) {
+            benefitSelect.value = storedBenefit;
+            handleBenefitSelect(); // Carrega os dados do benefício armazenado
         }
 
         updateButtonState();
     }
-
-    // Função para baixar a planilha RURAL
-function downloadSpreadsheetRural() {
-    const url = 'https://storage.cloud.google.com/planilhas_conciliador/RURAL.xlsx';
-    const filename = 'RURAL.xlsx';
-
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = filename;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    showMessage("Download do RURAL iniciado. Por favor, verifique sua pasta de downloads.");
-}
-
-// Função para baixar a planilha BPC-LOAS
-function downloadSpreadsheetBPCLOAS() {
-    const url = 'https://storage.cloud.google.com/planilhas_conciliador/BPC-LOAS.xlsx';
-    const filename = 'BPC-LOAS.xlsx';
-
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = filename;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    showMessage("Download do BPC-LOAS iniciado. Por favor, verifique sua pasta de downloads.");
-}
-
-downloadSpreadsheetButtonRural.addEventListener('click', downloadSpreadsheetRural);
-downloadSpreadsheetButtonBPCLOAS.addEventListener('click', downloadSpreadsheetBPCLOAS);
 });

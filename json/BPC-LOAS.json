@@ -1,0 +1,2383 @@
+{
+    "metadata": {
+        "data_atualizacao": "2024-08-08",
+        "autoria": "Fulano de Tal",
+        "origem": "Intranet",
+        "versao": "1.0",
+        "descricao": "Planilha tal"
+    },
+
+    "dados": [
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "1/1/18",
+            "p_ant": "72",
+            "p_atual": "5",
+            "v_ant": "77479.69",
+            "v_atual": "7240.31",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "2/1/18",
+            "p_ant": "71",
+            "p_atual": "5",
+            "v_ant": "77479.69",
+            "v_atual": "7240.31",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "3/1/18",
+            "p_ant": "70",
+            "p_atual": "5",
+            "v_ant": "77479.69",
+            "v_atual": "7240.31",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "4/1/18",
+            "p_ant": "69",
+            "p_atual": "5",
+            "v_ant": "77479.69",
+            "v_atual": "7240.31",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "5/1/18",
+            "p_ant": "68",
+            "p_atual": "5",
+            "v_ant": "77479.69",
+            "v_atual": "7240.31",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "6/1/18",
+            "p_ant": "67",
+            "p_atual": "5",
+            "v_ant": "77479.69",
+            "v_atual": "7240.31",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "7/1/18",
+            "p_ant": "66",
+            "p_atual": "5",
+            "v_ant": "77479.69",
+            "v_atual": "7240.31",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "8/1/18",
+            "p_ant": "65",
+            "p_atual": "5",
+            "v_ant": "77479.69",
+            "v_atual": "7240.31",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "9/1/18",
+            "p_ant": "64",
+            "p_atual": "5",
+            "v_ant": "77479.69",
+            "v_atual": "7240.31",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "10/1/18",
+            "p_ant": "63",
+            "p_atual": "5",
+            "v_ant": "77479.69",
+            "v_atual": "7240.31",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "11/1/18",
+            "p_ant": "62",
+            "p_atual": "5",
+            "v_ant": "77479.69",
+            "v_atual": "7240.31",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "12/1/18",
+            "p_ant": "61",
+            "p_atual": "5",
+            "v_ant": "77479.69",
+            "v_atual": "7240.31",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "1/1/19",
+            "p_ant": "60",
+            "p_atual": "5",
+            "v_ant": "77479.69",
+            "v_atual": "7240.31",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "2/1/19",
+            "p_ant": "59",
+            "p_atual": "5",
+            "v_ant": "77479.69",
+            "v_atual": "7240.31",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "3/1/19",
+            "p_ant": "58",
+            "p_atual": "5",
+            "v_ant": "77479.69",
+            "v_atual": "7240.31",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "4/1/19",
+            "p_ant": "57",
+            "p_atual": "5",
+            "v_ant": "77479.69",
+            "v_atual": "7240.31",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "5/1/19",
+            "p_ant": "56",
+            "p_atual": "5",
+            "v_ant": "77479.69",
+            "v_atual": "7240.31",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "6/1/19",
+            "p_ant": "55",
+            "p_atual": "5",
+            "v_ant": "77479.69",
+            "v_atual": "7240.31",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "7/1/19",
+            "p_ant": "54",
+            "p_atual": "5",
+            "v_ant": "77479.69",
+            "v_atual": "7240.31",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "8/1/19",
+            "p_ant": "53",
+            "p_atual": "5",
+            "v_ant": "77479.69",
+            "v_atual": "7240.31",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "9/1/19",
+            "p_ant": "52",
+            "p_atual": "5",
+            "v_ant": "76863.75",
+            "v_atual": "7240.31",
+            "soma": "84104.07"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "10/1/19",
+            "p_ant": "51",
+            "p_atual": "5",
+            "v_ant": "75372.48",
+            "v_atual": "7240.31",
+            "soma": "82612.79"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "11/1/19",
+            "p_ant": "50",
+            "p_atual": "5",
+            "v_ant": "73882.55",
+            "v_atual": "7240.31",
+            "soma": "81122.86"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "12/1/19",
+            "p_ant": "49",
+            "p_atual": "5",
+            "v_ant": "72394.32",
+            "v_atual": "7240.31",
+            "soma": "79634.64"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "1/1/20",
+            "p_ant": "48",
+            "p_atual": "5",
+            "v_ant": "70884.64",
+            "v_atual": "7240.31",
+            "soma": "78124.95"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "2/1/20",
+            "p_ant": "47",
+            "p_atual": "5",
+            "v_ant": "69353.46",
+            "v_atual": "7240.31",
+            "soma": "76593.77"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "3/1/20",
+            "p_ant": "46",
+            "p_atual": "5",
+            "v_ant": "67824.96",
+            "v_atual": "7240.31",
+            "soma": "75065.27"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "4/1/20",
+            "p_ant": "45",
+            "p_atual": "5",
+            "v_ant": "66298.30",
+            "v_atual": "7240.31",
+            "soma": "73538.61"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "5/1/20",
+            "p_ant": "44",
+            "p_atual": "5",
+            "v_ant": "64771.71",
+            "v_atual": "7240.31",
+            "soma": "72012.03"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "6/1/20",
+            "p_ant": "43",
+            "p_atual": "5",
+            "v_ant": "63240.52",
+            "v_atual": "7240.31",
+            "soma": "70480.83"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "7/1/20",
+            "p_ant": "42",
+            "p_atual": "5",
+            "v_ant": "61704.95",
+            "v_atual": "7240.31",
+            "soma": "68945.27"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "8/1/20",
+            "p_ant": "41",
+            "p_atual": "5",
+            "v_ant": "60171.83",
+            "v_atual": "7240.31",
+            "soma": "67412.15"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "9/1/20",
+            "p_ant": "40",
+            "p_atual": "5",
+            "v_ant": "58642.77",
+            "v_atual": "7240.31",
+            "soma": "65883.08"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "10/1/20",
+            "p_ant": "39",
+            "p_atual": "5",
+            "v_ant": "57118.88",
+            "v_atual": "7240.31",
+            "soma": "64359.19"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "11/1/20",
+            "p_ant": "38",
+            "p_atual": "5",
+            "v_ant": "55605.49",
+            "v_atual": "7240.31",
+            "soma": "62845.80"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "12/1/20",
+            "p_ant": "37",
+            "p_atual": "5",
+            "v_ant": "54105.23",
+            "v_atual": "7240.31",
+            "soma": "61345.54"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "1/1/21",
+            "p_ant": "36",
+            "p_atual": "5",
+            "v_ant": "52579.95",
+            "v_atual": "7240.31",
+            "soma": "59820.26"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "2/1/21",
+            "p_ant": "35",
+            "p_atual": "5",
+            "v_ant": "51029.62",
+            "v_atual": "7240.31",
+            "soma": "58269.94"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "3/1/21",
+            "p_ant": "34",
+            "p_atual": "5",
+            "v_ant": "49489.01",
+            "v_atual": "7240.31",
+            "soma": "56729.32"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "4/1/21",
+            "p_ant": "33",
+            "p_atual": "5",
+            "v_ant": "47959.16",
+            "v_atual": "7240.31",
+            "soma": "55199.47"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "5/1/21",
+            "p_ant": "32",
+            "p_atual": "5",
+            "v_ant": "46440.93",
+            "v_atual": "7240.31",
+            "soma": "53681.25"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "6/1/21",
+            "p_ant": "31",
+            "p_atual": "5",
+            "v_ant": "44930.57",
+            "v_atual": "7240.31",
+            "soma": "52170.88"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "7/1/21",
+            "p_ant": "30",
+            "p_atual": "5",
+            "v_ant": "43429.71",
+            "v_atual": "7240.31",
+            "soma": "50670.03"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "8/1/21",
+            "p_ant": "29",
+            "p_atual": "5",
+            "v_ant": "41940.41",
+            "v_atual": "7240.31",
+            "soma": "49180.72"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "9/1/21",
+            "p_ant": "28",
+            "p_atual": "5",
+            "v_ant": "40462.99",
+            "v_atual": "7240.31",
+            "soma": "47703.30"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "10/1/21",
+            "p_ant": "27",
+            "p_atual": "5",
+            "v_ant": "39000.41",
+            "v_atual": "7240.31",
+            "soma": "46240.72"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "11/1/21",
+            "p_ant": "26",
+            "p_atual": "5",
+            "v_ant": "37554.74",
+            "v_atual": "7240.31",
+            "soma": "44795.05"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "12/1/21",
+            "p_ant": "25",
+            "p_atual": "5",
+            "v_ant": "36126.00",
+            "v_atual": "7240.31",
+            "soma": "43366.31"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "1/1/22",
+            "p_ant": "24",
+            "p_atual": "5",
+            "v_ant": "34637.92",
+            "v_atual": "7240.31",
+            "soma": "41878.23"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "2/1/22",
+            "p_ant": "23",
+            "p_atual": "5",
+            "v_ant": "33086.62",
+            "v_atual": "7240.31",
+            "soma": "40326.93"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "3/1/22",
+            "p_ant": "22",
+            "p_atual": "5",
+            "v_ant": "31544.35",
+            "v_atual": "7240.31",
+            "soma": "38784.66"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "4/1/22",
+            "p_ant": "21",
+            "p_atual": "5",
+            "v_ant": "30012.32",
+            "v_atual": "7240.31",
+            "soma": "37252.64"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "5/1/22",
+            "p_ant": "20",
+            "p_atual": "5",
+            "v_ant": "28490.96",
+            "v_atual": "7240.31",
+            "soma": "35731.27"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "6/1/22",
+            "p_ant": "19",
+            "p_atual": "5",
+            "v_ant": "26980.87",
+            "v_atual": "7240.31",
+            "soma": "34221.18"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "7/1/22",
+            "p_ant": "18",
+            "p_atual": "5",
+            "v_ant": "25483.20",
+            "v_atual": "7240.31",
+            "soma": "32723.51"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "8/1/22",
+            "p_ant": "17",
+            "p_atual": "5",
+            "v_ant": "23997.95",
+            "v_atual": "7240.31",
+            "soma": "31238.27"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "9/1/22",
+            "p_ant": "16",
+            "p_atual": "5",
+            "v_ant": "22526.04",
+            "v_atual": "7240.31",
+            "soma": "29766.35"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "10/1/22",
+            "p_ant": "15",
+            "p_atual": "5",
+            "v_ant": "21067.70",
+            "v_atual": "7240.31",
+            "soma": "28308.01"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "11/1/22",
+            "p_ant": "14",
+            "p_atual": "5",
+            "v_ant": "19622.03",
+            "v_atual": "7240.31",
+            "soma": "26862.34"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "12/1/22",
+            "p_ant": "13",
+            "p_atual": "5",
+            "v_ant": "18188.72",
+            "v_atual": "7240.31",
+            "soma": "25429.03"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "1/1/23",
+            "p_ant": "12",
+            "p_atual": "5",
+            "v_ant": "16715.89",
+            "v_atual": "7240.31",
+            "soma": "23956.20"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "2/1/23",
+            "p_ant": "11",
+            "p_atual": "5",
+            "v_ant": "15204.66",
+            "v_atual": "7240.31",
+            "soma": "22444.97"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "3/1/23",
+            "p_ant": "10",
+            "p_atual": "5",
+            "v_ant": "13706.71",
+            "v_atual": "7240.31",
+            "soma": "20947.02"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "4/1/23",
+            "p_ant": "9",
+            "p_atual": "5",
+            "v_ant": "12222.36",
+            "v_atual": "7240.31",
+            "soma": "19462.68"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "5/1/23",
+            "p_ant": "8",
+            "p_atual": "5",
+            "v_ant": "10741.50",
+            "v_atual": "7240.31",
+            "soma": "17981.81"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "6/1/23",
+            "p_ant": "7",
+            "p_atual": "5",
+            "v_ant": "9263.89",
+            "v_atual": "7240.31",
+            "soma": "16504.20"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "7/1/23",
+            "p_ant": "6",
+            "p_atual": "5",
+            "v_ant": "7800.74",
+            "v_atual": "7240.31",
+            "soma": "15041.05"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "8/1/23",
+            "p_ant": "5",
+            "p_atual": "5",
+            "v_ant": "6351.71",
+            "v_atual": "7240.31",
+            "soma": "13592.02"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "9/1/23",
+            "p_ant": "4",
+            "p_atual": "5",
+            "v_ant": "4917.26",
+            "v_atual": "7240.31",
+            "soma": "12157.58"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "10/1/23",
+            "p_ant": "3",
+            "p_atual": "5",
+            "v_ant": "3496.75",
+            "v_atual": "7240.31",
+            "soma": "10737.06"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "11/1/23",
+            "p_ant": "2",
+            "p_atual": "5",
+            "v_ant": "2089.23",
+            "v_atual": "7240.31",
+            "soma": "9329.54"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "12/1/23",
+            "p_ant": "1",
+            "p_atual": "5",
+            "v_ant": "694.39",
+            "v_atual": "7240.31",
+            "soma": "7934.70"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "1/1/24",
+            "p_ant": "0",
+            "p_atual": "5",
+            "v_ant": "0.00",
+            "v_atual": "6503.81",
+            "soma": "6503.81"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "2/1/24",
+            "p_ant": "0",
+            "p_atual": "4",
+            "v_ant": "0.00",
+            "v_atual": "5037.66",
+            "soma": "5037.66"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "3/1/24",
+            "p_ant": "0",
+            "p_atual": "3",
+            "v_ant": "0.00",
+            "v_atual": "3584.01",
+            "soma": "3584.01"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "4/1/24",
+            "p_ant": "0",
+            "p_atual": "2",
+            "v_ant": "0.00",
+            "v_atual": "2141.86",
+            "soma": "2141.86"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "5/1/24",
+            "p_ant": "0",
+            "p_atual": "1",
+            "v_ant": "0.00",
+            "v_atual": "711.86",
+            "soma": "711.86"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "6/1/24",
+            "dib": "6/1/24",
+            "p_ant": "0",
+            "p_atual": "0",
+            "v_ant": "0.00",
+            "v_atual": "0.00",
+            "soma": "0.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "1/1/18",
+            "p_ant": "72",
+            "p_atual": "6",
+            "v_ant": "76000.76",
+            "v_atual": "8719.24",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "2/1/18",
+            "p_ant": "71",
+            "p_atual": "6",
+            "v_ant": "76000.76",
+            "v_atual": "8719.24",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "3/1/18",
+            "p_ant": "70",
+            "p_atual": "6",
+            "v_ant": "76000.76",
+            "v_atual": "8719.24",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "4/1/18",
+            "p_ant": "69",
+            "p_atual": "6",
+            "v_ant": "76000.76",
+            "v_atual": "8719.24",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "5/1/18",
+            "p_ant": "68",
+            "p_atual": "6",
+            "v_ant": "76000.76",
+            "v_atual": "8719.24",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "6/1/18",
+            "p_ant": "67",
+            "p_atual": "6",
+            "v_ant": "76000.76",
+            "v_atual": "8719.24",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "7/1/18",
+            "p_ant": "66",
+            "p_atual": "6",
+            "v_ant": "76000.76",
+            "v_atual": "8719.24",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "8/1/18",
+            "p_ant": "65",
+            "p_atual": "6",
+            "v_ant": "76000.76",
+            "v_atual": "8719.24",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "9/1/18",
+            "p_ant": "64",
+            "p_atual": "6",
+            "v_ant": "76000.76",
+            "v_atual": "8719.24",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "10/1/18",
+            "p_ant": "63",
+            "p_atual": "6",
+            "v_ant": "76000.76",
+            "v_atual": "8719.24",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "11/1/18",
+            "p_ant": "62",
+            "p_atual": "6",
+            "v_ant": "76000.76",
+            "v_atual": "8719.24",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "12/1/18",
+            "p_ant": "61",
+            "p_atual": "6",
+            "v_ant": "76000.76",
+            "v_atual": "8719.24",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "1/1/19",
+            "p_ant": "60",
+            "p_atual": "6",
+            "v_ant": "76000.76",
+            "v_atual": "8719.24",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "2/1/19",
+            "p_ant": "59",
+            "p_atual": "6",
+            "v_ant": "76000.76",
+            "v_atual": "8719.24",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "3/1/19",
+            "p_ant": "58",
+            "p_atual": "6",
+            "v_ant": "76000.76",
+            "v_atual": "8719.24",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "4/1/19",
+            "p_ant": "57",
+            "p_atual": "6",
+            "v_ant": "76000.76",
+            "v_atual": "8719.24",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "5/1/19",
+            "p_ant": "56",
+            "p_atual": "6",
+            "v_ant": "76000.76",
+            "v_atual": "8719.24",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "6/1/19",
+            "p_ant": "55",
+            "p_atual": "6",
+            "v_ant": "76000.76",
+            "v_atual": "8719.24",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "7/1/19",
+            "p_ant": "54",
+            "p_atual": "6",
+            "v_ant": "76000.76",
+            "v_atual": "8719.24",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "8/1/19",
+            "p_ant": "53",
+            "p_atual": "6",
+            "v_ant": "76000.76",
+            "v_atual": "8719.24",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "9/1/19",
+            "p_ant": "52",
+            "p_atual": "6",
+            "v_ant": "76000.76",
+            "v_atual": "8719.24",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "10/1/19",
+            "p_ant": "51",
+            "p_atual": "6",
+            "v_ant": "75856.39",
+            "v_atual": "8719.24",
+            "soma": "84575.64"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "11/1/19",
+            "p_ant": "50",
+            "p_atual": "6",
+            "v_ant": "74357.35",
+            "v_atual": "8719.24",
+            "soma": "83076.59"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "12/1/19",
+            "p_ant": "49",
+            "p_atual": "6",
+            "v_ant": "72860.02",
+            "v_atual": "8719.24",
+            "soma": "81579.26"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "1/1/20",
+            "p_ant": "48",
+            "p_atual": "6",
+            "v_ant": "71341.10",
+            "v_atual": "8719.24",
+            "soma": "80060.34"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "2/1/20",
+            "p_ant": "47",
+            "p_atual": "6",
+            "v_ant": "69800.55",
+            "v_atual": "8719.24",
+            "soma": "78519.79"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "3/1/20",
+            "p_ant": "46",
+            "p_atual": "6",
+            "v_ant": "68262.70",
+            "v_atual": "8719.24",
+            "soma": "76981.94"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "4/1/20",
+            "p_ant": "45",
+            "p_atual": "6",
+            "v_ant": "66726.70",
+            "v_atual": "8719.24",
+            "soma": "75445.94"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "5/1/20",
+            "p_ant": "44",
+            "p_atual": "6",
+            "v_ant": "65190.78",
+            "v_atual": "8719.24",
+            "soma": "73910.02"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "6/1/20",
+            "p_ant": "43",
+            "p_atual": "6",
+            "v_ant": "63650.22",
+            "v_atual": "8719.24",
+            "soma": "72369.46"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "7/1/20",
+            "p_ant": "42",
+            "p_atual": "6",
+            "v_ant": "62105.25",
+            "v_atual": "8719.24",
+            "soma": "70824.49"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "8/1/20",
+            "p_ant": "41",
+            "p_atual": "6",
+            "v_ant": "60562.75",
+            "v_atual": "8719.24",
+            "soma": "69281.99"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "9/1/20",
+            "p_ant": "40",
+            "p_atual": "6",
+            "v_ant": "59024.33",
+            "v_atual": "8719.24",
+            "soma": "67743.57"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "10/1/20",
+            "p_ant": "39",
+            "p_atual": "6",
+            "v_ant": "57491.12",
+            "v_atual": "8719.24",
+            "soma": "66210.36"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "11/1/20",
+            "p_ant": "38",
+            "p_atual": "6",
+            "v_ant": "55968.47",
+            "v_atual": "8719.24",
+            "soma": "64687.71"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "12/1/20",
+            "p_ant": "37",
+            "p_atual": "6",
+            "v_ant": "54459.04",
+            "v_atual": "8719.24",
+            "soma": "63178.28"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "1/1/21",
+            "p_ant": "36",
+            "p_atual": "6",
+            "v_ant": "52924.43",
+            "v_atual": "8719.24",
+            "soma": "61643.67"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "2/1/21",
+            "p_ant": "35",
+            "p_atual": "6",
+            "v_ant": "51364.61",
+            "v_atual": "8719.24",
+            "soma": "60083.85"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "3/1/21",
+            "p_ant": "34",
+            "p_atual": "6",
+            "v_ant": "49814.57",
+            "v_atual": "8719.24",
+            "soma": "58533.81"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "4/1/21",
+            "p_ant": "33",
+            "p_atual": "6",
+            "v_ant": "48275.36",
+            "v_atual": "8719.24",
+            "soma": "56994.60"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "5/1/21",
+            "p_ant": "32",
+            "p_atual": "6",
+            "v_ant": "46747.85",
+            "v_atual": "8719.24",
+            "soma": "55467.09"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "6/1/21",
+            "p_ant": "31",
+            "p_atual": "6",
+            "v_ant": "45228.24",
+            "v_atual": "8719.24",
+            "soma": "53947.48"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "7/1/21",
+            "p_ant": "30",
+            "p_atual": "6",
+            "v_ant": "43718.21",
+            "v_atual": "8719.24",
+            "soma": "52437.45"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "8/1/21",
+            "p_ant": "29",
+            "p_atual": "6",
+            "v_ant": "42219.79",
+            "v_atual": "8719.24",
+            "soma": "50939.03"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "9/1/21",
+            "p_ant": "28",
+            "p_atual": "6",
+            "v_ant": "40733.33",
+            "v_atual": "8719.24",
+            "soma": "49452.58"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "10/1/21",
+            "p_ant": "27",
+            "p_atual": "6",
+            "v_ant": "39261.80",
+            "v_atual": "8719.24",
+            "soma": "47981.04"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "11/1/21",
+            "p_ant": "26",
+            "p_atual": "6",
+            "v_ant": "37807.29",
+            "v_atual": "8719.24",
+            "soma": "46526.53"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "12/1/21",
+            "p_ant": "25",
+            "p_atual": "6",
+            "v_ant": "36369.81",
+            "v_atual": "8719.24",
+            "soma": "45089.05"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "1/1/22",
+            "p_ant": "24",
+            "p_atual": "6",
+            "v_ant": "34872.60",
+            "v_atual": "8719.24",
+            "soma": "43591.84"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "2/1/22",
+            "p_ant": "23",
+            "p_atual": "6",
+            "v_ant": "33311.72",
+            "v_atual": "8719.24",
+            "soma": "42030.96"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "3/1/22",
+            "p_ant": "22",
+            "p_atual": "6",
+            "v_ant": "31759.88",
+            "v_atual": "8719.24",
+            "soma": "40479.12"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "4/1/22",
+            "p_ant": "21",
+            "p_atual": "6",
+            "v_ant": "30218.28",
+            "v_atual": "8719.24",
+            "soma": "38937.52"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "5/1/22",
+            "p_ant": "20",
+            "p_atual": "6",
+            "v_ant": "28687.34",
+            "v_atual": "8719.24",
+            "soma": "37406.58"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "6/1/22",
+            "p_ant": "19",
+            "p_atual": "6",
+            "v_ant": "27167.67",
+            "v_atual": "8719.24",
+            "soma": "35886.91"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "7/1/22",
+            "p_ant": "18",
+            "p_atual": "6",
+            "v_ant": "25660.43",
+            "v_atual": "8719.24",
+            "soma": "34379.67"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "8/1/22",
+            "p_ant": "17",
+            "p_atual": "6",
+            "v_ant": "24165.61",
+            "v_atual": "8719.24",
+            "soma": "32884.85"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "9/1/22",
+            "p_ant": "16",
+            "p_atual": "6",
+            "v_ant": "22684.12",
+            "v_atual": "8719.24",
+            "soma": "31403.36"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "10/1/22",
+            "p_ant": "15",
+            "p_atual": "6",
+            "v_ant": "21216.21",
+            "v_atual": "8719.24",
+            "soma": "29935.45"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "11/1/22",
+            "p_ant": "14",
+            "p_atual": "6",
+            "v_ant": "19760.96",
+            "v_atual": "8719.24",
+            "soma": "28480.20"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "12/1/22",
+            "p_ant": "13",
+            "p_atual": "6",
+            "v_ant": "18318.07",
+            "v_atual": "8719.24",
+            "soma": "27037.31"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "1/1/23",
+            "p_ant": "12",
+            "p_atual": "6",
+            "v_ant": "16835.32",
+            "v_atual": "8719.24",
+            "soma": "25554.56"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "2/1/23",
+            "p_ant": "11",
+            "p_atual": "6",
+            "v_ant": "15313.80",
+            "v_atual": "8719.24",
+            "soma": "24033.04"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "3/1/23",
+            "p_ant": "10",
+            "p_atual": "6",
+            "v_ant": "13805.56",
+            "v_atual": "8719.24",
+            "soma": "22524.80"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "4/1/23",
+            "p_ant": "9",
+            "p_atual": "6",
+            "v_ant": "12310.93",
+            "v_atual": "8719.24",
+            "soma": "21030.17"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "5/1/23",
+            "p_ant": "8",
+            "p_atual": "6",
+            "v_ant": "10819.71",
+            "v_atual": "8719.24",
+            "soma": "19538.95"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "6/1/23",
+            "p_ant": "7",
+            "p_atual": "6",
+            "v_ant": "9331.67",
+            "v_atual": "8719.24",
+            "soma": "18050.91"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "7/1/23",
+            "p_ant": "6",
+            "p_atual": "6",
+            "v_ant": "7858.09",
+            "v_atual": "8719.24",
+            "soma": "16577.33"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "8/1/23",
+            "p_ant": "5",
+            "p_atual": "6",
+            "v_ant": "6398.63",
+            "v_atual": "8719.24",
+            "soma": "15117.87"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "9/1/23",
+            "p_ant": "4",
+            "p_atual": "6",
+            "v_ant": "4953.76",
+            "v_atual": "8719.24",
+            "soma": "13673.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "10/1/23",
+            "p_ant": "3",
+            "p_atual": "6",
+            "v_ant": "3522.82",
+            "v_atual": "8719.24",
+            "soma": "12242.06"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "11/1/23",
+            "p_ant": "2",
+            "p_atual": "6",
+            "v_ant": "2104.87",
+            "v_atual": "8719.24",
+            "soma": "10824.11"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "12/1/23",
+            "p_ant": "1",
+            "p_atual": "6",
+            "v_ant": "699.60",
+            "v_atual": "8719.24",
+            "soma": "9418.84"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "1/1/24",
+            "p_ant": "0",
+            "p_atual": "6",
+            "v_ant": "0.00",
+            "v_atual": "7977.16",
+            "soma": "7977.16"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "2/1/24",
+            "p_ant": "0",
+            "p_atual": "5",
+            "v_ant": "0.00",
+            "v_atual": "6499.86",
+            "soma": "6499.86"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "3/1/24",
+            "p_ant": "0",
+            "p_atual": "4",
+            "v_ant": "0.00",
+            "v_atual": "5035.05",
+            "soma": "5035.05"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "4/1/24",
+            "p_ant": "0",
+            "p_atual": "3",
+            "v_ant": "0.00",
+            "v_atual": "3581.75",
+            "soma": "3581.75"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "5/1/24",
+            "p_ant": "0",
+            "p_atual": "2",
+            "v_ant": "0.00",
+            "v_atual": "2140.59",
+            "soma": "2140.59"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "6/1/24",
+            "p_ant": "0",
+            "p_atual": "1",
+            "v_ant": "0.00",
+            "v_atual": "711.58",
+            "soma": "711.58"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "7/1/24",
+            "dib": "7/1/24",
+            "p_ant": "0",
+            "p_atual": "0",
+            "v_ant": "0.00",
+            "v_atual": "0.00",
+            "soma": "0.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "1/1/18",
+            "p_ant": "72",
+            "p_atual": "7",
+            "v_ant": "74498.81",
+            "v_atual": "10221.19",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "2/1/18",
+            "p_ant": "71",
+            "p_atual": "7",
+            "v_ant": "74498.81",
+            "v_atual": "10221.19",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "3/1/18",
+            "p_ant": "70",
+            "p_atual": "7",
+            "v_ant": "74498.81",
+            "v_atual": "10221.19",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "4/1/18",
+            "p_ant": "69",
+            "p_atual": "7",
+            "v_ant": "74498.81",
+            "v_atual": "10221.19",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "5/1/18",
+            "p_ant": "68",
+            "p_atual": "7",
+            "v_ant": "74498.81",
+            "v_atual": "10221.19",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "6/1/18",
+            "p_ant": "67",
+            "p_atual": "7",
+            "v_ant": "74498.81",
+            "v_atual": "10221.19",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "7/1/18",
+            "p_ant": "66",
+            "p_atual": "7",
+            "v_ant": "74498.81",
+            "v_atual": "10221.19",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "8/1/18",
+            "p_ant": "65",
+            "p_atual": "7",
+            "v_ant": "74498.81",
+            "v_atual": "10221.19",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "9/1/18",
+            "p_ant": "64",
+            "p_atual": "7",
+            "v_ant": "74498.81",
+            "v_atual": "10221.19",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "10/1/18",
+            "p_ant": "63",
+            "p_atual": "7",
+            "v_ant": "74498.81",
+            "v_atual": "10221.19",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "11/1/18",
+            "p_ant": "62",
+            "p_atual": "7",
+            "v_ant": "74498.81",
+            "v_atual": "10221.19",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "12/1/18",
+            "p_ant": "61",
+            "p_atual": "7",
+            "v_ant": "74498.81",
+            "v_atual": "10221.19",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "1/1/19",
+            "p_ant": "60",
+            "p_atual": "7",
+            "v_ant": "74498.81",
+            "v_atual": "10221.19",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "2/1/19",
+            "p_ant": "59",
+            "p_atual": "7",
+            "v_ant": "74498.81",
+            "v_atual": "10221.19",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "3/1/19",
+            "p_ant": "58",
+            "p_atual": "7",
+            "v_ant": "74498.81",
+            "v_atual": "10221.19",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "4/1/19",
+            "p_ant": "57",
+            "p_atual": "7",
+            "v_ant": "74498.81",
+            "v_atual": "10221.19",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "5/1/19",
+            "p_ant": "56",
+            "p_atual": "7",
+            "v_ant": "74498.81",
+            "v_atual": "10221.19",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "6/1/19",
+            "p_ant": "55",
+            "p_atual": "7",
+            "v_ant": "74498.81",
+            "v_atual": "10221.19",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "7/1/19",
+            "p_ant": "54",
+            "p_atual": "7",
+            "v_ant": "74498.81",
+            "v_atual": "10221.19",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "8/1/19",
+            "p_ant": "53",
+            "p_atual": "7",
+            "v_ant": "74498.81",
+            "v_atual": "10221.19",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "9/1/19",
+            "p_ant": "52",
+            "p_atual": "7",
+            "v_ant": "74498.81",
+            "v_atual": "10221.19",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "10/1/19",
+            "p_ant": "51",
+            "p_atual": "7",
+            "v_ant": "74498.81",
+            "v_atual": "10221.19",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "11/1/19",
+            "p_ant": "50",
+            "p_atual": "7",
+            "v_ant": "74498.81",
+            "v_atual": "10221.19",
+            "soma": "84720.00"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "12/1/19",
+            "p_ant": "49",
+            "p_atual": "7",
+            "v_ant": "73396.45",
+            "v_atual": "10221.19",
+            "soma": "83617.64"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "1/1/20",
+            "p_ant": "48",
+            "p_atual": "7",
+            "v_ant": "71866.89",
+            "v_atual": "10221.19",
+            "soma": "82088.08"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "2/1/20",
+            "p_ant": "47",
+            "p_atual": "7",
+            "v_ant": "70315.55",
+            "v_atual": "10221.19",
+            "soma": "80536.74"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "3/1/20",
+            "p_ant": "46",
+            "p_atual": "7",
+            "v_ant": "68766.93",
+            "v_atual": "10221.19",
+            "soma": "78988.12"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "4/1/20",
+            "p_ant": "45",
+            "p_atual": "7",
+            "v_ant": "67220.17",
+            "v_atual": "10221.19",
+            "soma": "77441.36"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "5/1/20",
+            "p_ant": "44",
+            "p_atual": "7",
+            "v_ant": "65673.49",
+            "v_atual": "10221.19",
+            "soma": "75894.68"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "6/1/20",
+            "p_ant": "43",
+            "p_atual": "7",
+            "v_ant": "64122.14",
+            "v_atual": "10221.19",
+            "soma": "74343.33"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "7/1/20",
+            "p_ant": "42",
+            "p_atual": "7",
+            "v_ant": "62566.35",
+            "v_atual": "10221.19",
+            "soma": "72787.54"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "8/1/20",
+            "p_ant": "41",
+            "p_atual": "7",
+            "v_ant": "61013.05",
+            "v_atual": "10221.19",
+            "soma": "71234.24"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "9/1/20",
+            "p_ant": "40",
+            "p_atual": "7",
+            "v_ant": "59463.85",
+            "v_atual": "10221.19",
+            "soma": "69685.04"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "10/1/20",
+            "p_ant": "39",
+            "p_atual": "7",
+            "v_ant": "57919.90",
+            "v_atual": "10221.19",
+            "soma": "68141.09"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "11/1/20",
+            "p_ant": "38",
+            "p_atual": "7",
+            "v_ant": "56386.59",
+            "v_atual": "10221.19",
+            "soma": "66607.78"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "12/1/20",
+            "p_ant": "37",
+            "p_atual": "7",
+            "v_ant": "54866.58",
+            "v_atual": "10221.19",
+            "soma": "65087.77"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "1/1/21",
+            "p_ant": "36",
+            "p_atual": "7",
+            "v_ant": "53321.22",
+            "v_atual": "10221.19",
+            "soma": "63542.41"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "2/1/21",
+            "p_ant": "35",
+            "p_atual": "7",
+            "v_ant": "51750.48",
+            "v_atual": "10221.19",
+            "soma": "61971.67"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "3/1/21",
+            "p_ant": "34",
+            "p_atual": "7",
+            "v_ant": "50189.59",
+            "v_atual": "10221.19",
+            "soma": "60410.77"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "4/1/21",
+            "p_ant": "33",
+            "p_atual": "7",
+            "v_ant": "48639.60",
+            "v_atual": "10221.19",
+            "soma": "58860.78"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "5/1/21",
+            "p_ant": "32",
+            "p_atual": "7",
+            "v_ant": "47101.38",
+            "v_atual": "10221.19",
+            "soma": "57322.57"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "6/1/21",
+            "p_ant": "31",
+            "p_atual": "7",
+            "v_ant": "45571.13",
+            "v_atual": "10221.19",
+            "soma": "55792.32"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "7/1/21",
+            "p_ant": "30",
+            "p_atual": "7",
+            "v_ant": "44050.52",
+            "v_atual": "10221.19",
+            "soma": "54271.71"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "8/1/21",
+            "p_ant": "29",
+            "p_atual": "7",
+            "v_ant": "42541.61",
+            "v_atual": "10221.19",
+            "soma": "52762.80"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "9/1/21",
+            "p_ant": "28",
+            "p_atual": "7",
+            "v_ant": "41044.74",
+            "v_atual": "10221.19",
+            "soma": "51265.93"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "10/1/21",
+            "p_ant": "27",
+            "p_atual": "7",
+            "v_ant": "39562.90",
+            "v_atual": "10221.19",
+            "soma": "49784.09"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "11/1/21",
+            "p_ant": "26",
+            "p_atual": "7",
+            "v_ant": "38098.20",
+            "v_atual": "10221.19",
+            "soma": "48319.39"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "12/1/21",
+            "p_ant": "25",
+            "p_atual": "7",
+            "v_ant": "36650.65",
+            "v_atual": "10221.19",
+            "soma": "46871.84"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "1/1/22",
+            "p_ant": "24",
+            "p_atual": "7",
+            "v_ant": "35142.92",
+            "v_atual": "10221.19",
+            "soma": "45364.11"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "2/1/22",
+            "p_ant": "23",
+            "p_atual": "7",
+            "v_ant": "33571.02",
+            "v_atual": "10221.19",
+            "soma": "43792.20"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "3/1/22",
+            "p_ant": "22",
+            "p_atual": "7",
+            "v_ant": "32008.15",
+            "v_atual": "10221.19",
+            "soma": "42229.33"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "4/1/22",
+            "p_ant": "21",
+            "p_atual": "7",
+            "v_ant": "30455.51",
+            "v_atual": "10221.19",
+            "soma": "40676.70"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "5/1/22",
+            "p_ant": "20",
+            "p_atual": "7",
+            "v_ant": "28913.55",
+            "v_atual": "10221.19",
+            "soma": "39134.73"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "6/1/22",
+            "p_ant": "19",
+            "p_atual": "7",
+            "v_ant": "27382.85",
+            "v_atual": "10221.19",
+            "soma": "37604.04"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "7/1/22",
+            "p_ant": "18",
+            "p_atual": "7",
+            "v_ant": "25864.58",
+            "v_atual": "10221.19",
+            "soma": "36085.76"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "8/1/22",
+            "p_ant": "17",
+            "p_atual": "7",
+            "v_ant": "24358.73",
+            "v_atual": "10221.19",
+            "soma": "34579.91"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "9/1/22",
+            "p_ant": "16",
+            "p_atual": "7",
+            "v_ant": "22866.21",
+            "v_atual": "10221.19",
+            "soma": "33087.40"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "10/1/22",
+            "p_ant": "15",
+            "p_atual": "7",
+            "v_ant": "21387.27",
+            "v_atual": "10221.19",
+            "soma": "31608.45"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "11/1/22",
+            "p_ant": "14",
+            "p_atual": "7",
+            "v_ant": "19920.99",
+            "v_atual": "10221.19",
+            "soma": "30142.18"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "12/1/22",
+            "p_ant": "13",
+            "p_atual": "7",
+            "v_ant": "18467.08",
+            "v_atual": "10221.19",
+            "soma": "28688.26"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "1/1/23",
+            "p_ant": "12",
+            "p_atual": "7",
+            "v_ant": "16972.88",
+            "v_atual": "10221.19",
+            "soma": "27194.07"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "2/1/23",
+            "p_ant": "11",
+            "p_atual": "7",
+            "v_ant": "15439.51",
+            "v_atual": "10221.19",
+            "soma": "25660.70"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "3/1/23",
+            "p_ant": "10",
+            "p_atual": "7",
+            "v_ant": "13919.43",
+            "v_atual": "10221.19",
+            "soma": "24140.62"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "4/1/23",
+            "p_ant": "9",
+            "p_atual": "7",
+            "v_ant": "12412.95",
+            "v_atual": "10221.19",
+            "soma": "22634.14"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "5/1/23",
+            "p_ant": "8",
+            "p_atual": "7",
+            "v_ant": "10909.80",
+            "v_atual": "10221.19",
+            "soma": "21130.99"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "6/1/23",
+            "p_ant": "7",
+            "p_atual": "7",
+            "v_ant": "9409.75",
+            "v_atual": "10221.19",
+            "soma": "19630.94"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "7/1/23",
+            "p_ant": "6",
+            "p_atual": "7",
+            "v_ant": "7924.16",
+            "v_atual": "10221.19",
+            "soma": "18145.34"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "8/1/23",
+            "p_ant": "5",
+            "p_atual": "7",
+            "v_ant": "6452.69",
+            "v_atual": "10221.19",
+            "soma": "16673.87"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "9/1/23",
+            "p_ant": "4",
+            "p_atual": "7",
+            "v_ant": "4995.80",
+            "v_atual": "10221.19",
+            "soma": "15216.99"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "10/1/23",
+            "p_ant": "3",
+            "p_atual": "7",
+            "v_ant": "3552.85",
+            "v_atual": "10221.19",
+            "soma": "13774.03"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "11/1/23",
+            "p_ant": "2",
+            "p_atual": "7",
+            "v_ant": "2122.89",
+            "v_atual": "10221.19",
+            "soma": "12344.08"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "12/1/23",
+            "p_ant": "1",
+            "p_atual": "7",
+            "v_ant": "705.61",
+            "v_atual": "10221.19",
+            "soma": "10926.79"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "1/1/24",
+            "p_ant": "0",
+            "p_atual": "7",
+            "v_ant": "0.00",
+            "v_atual": "9472.68",
+            "soma": "9472.68"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "2/1/24",
+            "p_ant": "0",
+            "p_atual": "6",
+            "v_ant": "0.00",
+            "v_atual": "7982.53",
+            "soma": "7982.53"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "3/1/24",
+            "p_ant": "0",
+            "p_atual": "5",
+            "v_ant": "0.00",
+            "v_atual": "6504.87",
+            "soma": "6504.87"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "4/1/24",
+            "p_ant": "0",
+            "p_atual": "4",
+            "v_ant": "0.00",
+            "v_atual": "5038.72",
+            "soma": "5038.72"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "5/1/24",
+            "p_ant": "0",
+            "p_atual": "3",
+            "v_ant": "0.00",
+            "v_atual": "3584.71",
+            "soma": "3584.71"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "6/1/24",
+            "p_ant": "0",
+            "p_atual": "2",
+            "v_ant": "0.00",
+            "v_atual": "2142.85",
+            "soma": "2142.85"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "7/1/24",
+            "p_ant": "0",
+            "p_atual": "1",
+            "v_ant": "0.00",
+            "v_atual": "712.42",
+            "soma": "712.42"
+        },
+        {
+            "rmi": "um salário-mínimo",
+            "dip": "8/1/24",
+            "dib": "8/1/24",
+            "p_ant": "0",
+            "p_atual": "0",
+            "v_ant": "0.00",
+            "v_atual": "0.00",
+            "soma": "0.00"
+        }
+    ]
+
+}

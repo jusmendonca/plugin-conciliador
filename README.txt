@@ -1,40 +1,50 @@
 # Extensão do Chrome - Conciliador Previdenciário
 
-A Extensão do Chrome Conciliador Previdenciário é uma ferramenta projetada para ajudar no cálculo de valores de acordos judiciais e extrajudiciais, a partir de arquivos Excel (formato .xlsx).
+A Extensão do Chrome Conciliador Previdenciário é uma ferramenta projetada para ajudar no cálculo de valores de acordos judiciais e extrajudiciais, a partir de arquivos JSON contendo dados relevantes para a conciliação.
 
 ## Funcionalidades Principais
 
-Carregamento de Arquivo: Permite ao usuário carregar arquivos Excel (.xlsx) contendo dados relevantes para a conciliação.
+- **Escolha de Benefício:** Permite ao usuário selecionar o benefício (atualmente, benefícios rurais no valor do salário-mínimo e ou BPC-LOAS) a partir de uma caixa de seleção. O plugin então carrega os dados do arquivo JSON correspondente.
 
-> Atenção. O plugin não realiza cálculos; apenas busca os valores na planilha selecionada. Por isso, é fundamental que o usuário certifique-se de que está usando a planilha correta.
+- **Escolha de Formato de Saída (Estilo de cópia):** Permite ao usuário escolher o conteúdo a ser copiado para a área de transferência (parâmetros pré-formatados, parâmetros sem formatação ou apenas valor total da proposta).
 
-- Escolha de formato de saída: permite ao usuário escolher o conteúdo a ser copiado para a área de transferência (parâmetros pré-formatados, parâmetros sem formatação ou apenas valor total da proposta).
+- **Entrada de DIP e DIB:** Solicita ao usuário inserir a Data de Início do Pagamento (DIP) e a Data de Início do Benefício (DIB) no formato DD/MM/AAAA para realizar a busca correspondente nos dados carregados.
 
-- Entrada de DIB: Solicita ao usuário inserir a Data de Início do Benefício (DIB) no formato DD/MM/AAAA para realizar a busca correspondente nos dados carregados.
+- **Processamento de Dados:** Após selecionar o benefício e inserir a DIP e a DIB, o sistema busca as informações correspondentes e exibe os resultados na interface.
 
-- Processamento de Dados: Após carregar o arquivo e inserir a DIB, o sistema busca as informações correspondentes e exibe os resultados na interface.
+- **Cópia para Área de Transferência:** O plugin copia as informações correspondentes para a área de transferência, permitindo fácil inserção em documentos externos.
 
-- Cópia para Área de Transferência: O plugin copia as informações correspondentes para a área de transferência, permitindo fácil inserção em documentos externos.
-
-- Armazenamento Local: Utiliza o armazenamento local do navegador para salvar a última DIB inserida e o arquivo selecionado, proporcionando uma experiência contínua mesmo após o fechamento da extensão.
+- **Armazenamento Local:** Utiliza o armazenamento local do navegador para salvar as últimas DIP, DIB, percentual de acordo, e o benefício selecionado, proporcionando uma experiência contínua mesmo após o fechamento da extensão.
 
 ## Instalação
 
+### Pré-requisitos
+
+- Google Chrome
+
+### Passos
+
+1. Acesse o [link da extensão](https://chromewebstore.google.com/detail/conciliador-previdenciari/hajbappncpapkfndnlenmlcfemodffpd?pli=1) na Chrome Web Store
+2. Clique no botão "Usar no Chrome".
+3. Para melhorar a experiência de uso, fixe o plugin na barra de extensões do seu navegador.
+
 ## Uso
 
-- Carregar Arquivo: Selecione um arquivo Excel (.xlsx) que contenha os dados necessários para a conciliação. A planilha teve conter as colunas dip, p_ant, p_atual, dib, v_ant, v_atual, soma (respectivamente, data de início do pagamento, parcelas de exercícios anteriores, parcelas do exercício atual, valor de exercícios anteriores e valor total do acordo). Os valores das colunas p_ant, p_atual, v_ant, v_atual devem estar em formato "número"; os valores das colunas dib e dip devem estar no formato "data".
+1. **Escolher Benefício:** Selecione o benefício (RURAL ou BPC-LOAS) na caixa de seleção. O plugin carregará automaticamente os dados do arquivo JSON correspondente que deve estar na pasta `json`.
 
-- Escolher o conteúdo a ser copiado para a área de transferência (parâmetros pré-formatados, parâmetros sem formatação ou apenas valor total da proposta).
+2. **Inserir DIP e DIB:** Digite a Data de Início do Pagamento (DIP) e a Data de Início do Benefício (DIB) no formato DD/MM/AAAA nas caixas de entrada.
 
-- Inserir DIB: Digite a Data de Início do Benefício (DIB) no formato DD/MM/AAAA na caixa de entrada.
+3. **Escolher Estilo de Cópia:** Selecione o formato de saída desejado na caixa de seleção.
 
-- Processar e Copiar: Clique no botão "CALCULAR E COPIAR" para iniciar o processamento. Os resultados serão exibidos na caixa do plugin de forma resumida e serão copiados para a área de transferência no formato detalhado.
+4. **Calcular e Copiar:** Clique no botão "CALCULAR E COPIAR" para iniciar o processamento. Os resultados serão exibidos na caixa do plugin e copiados para a área de transferência, conforme os parâmetros escolhidos.
 
-- Armazenamento Automático: A última DIB inserida e o arquivo selecionado são armazenados automaticamente para facilitar o uso futuro.
+5. **Gerar Resumo HTML:** Clique no botão "GERAR RESUMO HTML" para criar um arquivo HTML com o resumo dos cálculos. Para usar esta opção, o usuário deverá digitar um número de processo judicial, com 20 dígitos (padrão CNJ) e o nome do benefício a ser incluído no resumo.
+
+6. **Armazenamento Automático:** As últimas DIP, DIB, percentual de acordo, e o benefício selecionado são armazenados automaticamente para facilitar o uso futuro.
 
 ## Contribuições e Problemas
 
-Se encontrar algum problema ou tiver sugestões de melhorias, sinta-se à vontade para abrir uma issue (https://github.com/jusmendonca/plugin-conciliador/issues) no repositório da extensão.
+Se encontrar algum problema ou tiver sugestões de melhorias, mande um e-mail para o desenvolvedor (igormendonca.jus@gmail.com).
 
 Contribuições através de pull requests são bem-vindas. Certifique-se de discutir grandes mudanças antes de iniciar o trabalho.
 
@@ -42,6 +52,11 @@ Contribuições através de pull requests são bem-vindas. Certifique-se de disc
 
 Desenvolvido por Igor Mendonça Cardoso Gomes
 
+## Advertência
+
+O desenvolvedor não se responsabiliza pela exatidão dos cálculos, que devem ser conferidos pelo usuário.
+
 ## Licença
 
-MIT License
+Copyright (todos os direitos reservados)
+

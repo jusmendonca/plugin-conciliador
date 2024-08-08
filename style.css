@@ -2,7 +2,8 @@ body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
   margin: 0;
-  padding: 10px; /* Reduced padding */
+  padding: 10px;
+  min-width: 280px; /* Define uma largura mínima para a janela */
 }
 
 .header {
@@ -10,36 +11,32 @@ body {
   align-items: center;
   justify-content: center;
   background-color: #007bff;
-  padding: 5px; /* Reduced padding */
+  padding: 5px;
   border-radius: 8px;
-  margin-bottom: 10px; /* Reduced margin */
+  margin-bottom: 10px;
 }
 
 .header h1 {
   color: #fff;
   margin-left: 10px;
-  font-size: 1.2em; /* Reduced font size from 1.5em to 1.2em */
+  font-size: 1.2em;
 }
 
 .icon {
-  width: 20px; /* Reduced width */
-  height: 20px; /* Reduced height */
+  width: 20px;
+  height: 20px;
 }
 
 h2 {
   color: #333;
-  margin-bottom: 10px; /* Reduced margin */
-  font-size: 1.0em; /* Reduced font size */
+  margin-bottom: 10px;
+  font-size: 1.0em;
   text-align: center;
 }
 
-input[type="file"] {
-  display: block;
-  margin-bottom: 5px; /* Reduced margin */
-}
-
 #fileName {
-  margin-bottom: 10px; /* Reduced margin */
+  margin-top: 2px; /* Reduz a margem superior */
+  margin-bottom: 5px; /* Aumenta a margem inferior */
   color: #555;
 }
 
@@ -48,30 +45,45 @@ label {
   margin-bottom: 5px;
 }
 
+.form-group {
+  margin-bottom: 5px; /* Reduz o espaço inferior */
+}
+
+.form-group select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
 select {
+  width: 100%;
+  padding: 8px;
   margin-bottom: 10px; 
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
 }
 
 input[type="text"], input[type="number"] {
-  width: calc(100% - 20px); /* Define a largura para se ajustar ao container */
-  padding: 8px; /* Ajusta o padding */
-  margin-bottom: 10px; /* Define o espaçamento inferior */
-  border: 1px solid #ccc; /* Define a borda */
-  border-radius: 4px; /* Adiciona borda arredondada */
-  text-align: center; /* Centraliza o texto */
+  width: calc(100% - 20px);
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
 }
 
-/* Estilo para o container dos botões */
 .button-container {
   display: flex;
-  gap: 10px; /* Espaço entre os botões */
-  margin-top: 10px; /* Espaço acima dos botões */
+  gap: 10px;
+  margin-top: 10px;
   margin-bottom: 10px;
 }
 
-/* Estilo comum para os botões */
 .button-container button {
-  flex: 1; /* Faz com que os botões ocupem o mesmo espaço */
+  flex: 1;
   padding: 10px;
   font-size: 12px;
   border: none;
@@ -80,58 +92,34 @@ input[type="text"], input[type="number"] {
   transition: background-color 0.3s ease;
 }
 
-/* Estilo para o botão "RURAL" */
-#downloadSpreadsheetButtonRural {
-  background-color: #007bff; /* Cor de fundo azul */
-  color: #fff;
-  padding: 5px;
-}
-
-#downloadSpreadsheetButtonRural:hover {
-  background-color: #0056b3; /* Cor de fundo ao passar o mouse */
-}
-
-/* Estilo para o botão "BPC-LOAS" */
-#downloadSpreadsheetButtonBPCLOAS {
-  background-color: #007bff; /* Cor de fundo verde */
-  color: #fff;
-  padding: 5px;
-}
-
-#downloadSpreadsheetButtonBPCLOAS:hover {
-  background-color: #0056b3; /* Cor de fundo ao passar o mouse */
-}
-
-/* Estilo para o botão "CALCULAR E COPIAR" */
 #processButton {
-  background-color: #28a745; /* Cor de fundo verde */
+  background-color: #28a745;
   color: #fff;
   font-size: 12px;
 }
 
 #processButton:hover {
-  background-color: #218838; /* Cor de fundo ao passar o mouse */
+  background-color: #218838;
 }
 
-/* Estilo para o botão "GERAR ARQUIVO HTML" */
 #generateHtmlButton {
-  background-color: #28a745; /* Cor de fundo azul */
+  background-color: #28a745;
   color: #fff;
   font-size: 12px;
 }
 
 #generateHtmlButton:hover {
-  background-color: #218838; /* Cor de fundo ao passar o mouse */
+  background-color: #218838;
 }
 
 #status {
-  margin-top: 10px; /* Reduced margin */
+  margin-top: 10px;
   color: #007bff;
 }
 
 .result-box {
-  margin-top: 10px; /* Reduced margin */
-  padding: 10px; /* Reduced padding */
+  margin-top: 10px;
+  padding: 10px;
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -146,5 +134,10 @@ input[type="text"], input[type="number"] {
 
 .result-box p span {
   flex: 1;
+}
+
+.result-box.modified {
+  background-color: #f8d7da; /* Fundo vermelho claro */
+  border-color: #f5c6cb; /* Borda vermelha clara */
 }
 

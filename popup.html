@@ -2,26 +2,29 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Conciliador POWER</title>
+    <title>Conciliador Previdenciário 2.0</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="header">
         <img src="images/icon32.png" alt="Icon" class="icon">
-        <h1>Conciliador Previdenciário 1.1</h1>
+        <h1>Conciliador Previdenciário 2.0</h1>
     </div>
     <h2>Assistente de cálculo para acordos</h2>
-    <div class="button-container">
-        <button id="downloadSpreadsheetButtonRural">&#11123; RURAL</button>
-        <button id="downloadSpreadsheetButtonBPCLOAS">&#11123; BPC-LOAS</button>
+    <div class="form-group">
+        <label for="benefitSelect">Tipo de benefício:</label>
+        <select id="benefitSelect">
+            <option value="RURAL">Previdenciário RURAL no valor do salário-mínimo</option>
+            <option value="BPC-LOAS">Assistencial (BPC-LOAS)</option>
+        </select>
     </div>
-    <input type="file" id="fileInput" accept=".xlsx">
-    <p id="fileName"></p>
+    <p id="fileName">Dados carregados na memória:</p>
     <label for="copyOption">Estilo de cópia:</label>
     <select id="copyOption">
-        <option value="full">parâmetros pré-formatados</option>
+        <option value="totalValue">valor total da proposta (atrasados)</option>
         <option value="concise">parâmetros sem formatação</option>
-        <option value="totalValue">apenas valor total da proposta (atrasados)</option>
+        <option value="full">parâmetros pré-formatados</option>
+        
     </select>
     <label for="dipInput">DIP (Data de Início do Pagamento):</label>
     <input type="text" id="dipInput">
@@ -32,15 +35,12 @@
   
     <div class="button-container">
         <button id="processButton" disabled>CALCULAR E COPIAR</button>
-        <button id="generateHtmlButton"> GERAR RESUMO HTML </button>
+        <button id="generateHtmlButton">GERAR RESUMO HTML</button>
     </div>
     
     <p id="status"></p>
     <div id="result" class="result-box"></div>
-    <script src="libs/xlsx.full.min.js"></script>
     <script src="popup.js"></script>
 </body>
 </html>
-
-
 
