@@ -9,8 +9,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const statusDiv = document.getElementById('status');
     const resultDiv = document.getElementById('result');
     const copyOption = document.getElementById('copyOption');
+    const openConfigButton = document.getElementById('openConfigButton');
 
     let selectedBenefitData;
+
+    openConfigButton.addEventListener('click', function() {
+        window.open('config.html');
+    });
 
     benefitSelect.addEventListener('change', handleBenefitSelect);
     dipInput.addEventListener('input', handleInputChange);
@@ -30,19 +35,43 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function handleBenefitSelect() {
         const benefit = benefitSelect.value;
-        fetch(`json/${benefit}.json`)
-            .then(response => response.json())
-            .then(data => {
-                selectedBenefitData = data.dados;
-                fileNameDisplay.textContent = `Dados carregados na memória: ${benefit}`;
-                storeData();
+        const dataSource = getDataPath();
+
+        if (dataSource === 'custom') {
+            const storedData = localStorage.getItem(`${benefit}CustomData`);
+            if (storedData) {
+                selectedBenefitData = JSON.parse(storedData).dados;
+                fileNameDisplay.textContent = `Dados carregados de arquivo personalizado para: ${benefit}`;
                 updateButtonState();
-                resultDiv.classList.add('modified'); // Adiciona classe modificada
-            })
-            .catch(error => {
-                console.error('Erro ao carregar o arquivo JSON:', error);
-                fileNameDisplay.textContent = 'Erro ao carregar o arquivo JSON';
-            });
+                resultDiv.classList.add('modified');
+            } else {
+                console.error(`Arquivo personalizado não encontrado para o benefício: ${benefit}`);
+                fileNameDisplay.textContent = `Erro: Arquivo personalizado não encontrado para ${benefit}`;
+            }
+        } else {
+            fetch(`${dataSource}/${benefit}.json`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    selectedBenefitData = data.dados;
+                    fileNameDisplay.textContent = `Dados carregados de: ${dataSource}/${benefit}.json`;
+                    storeData();
+                    updateButtonState();
+                    resultDiv.classList.add('modified');
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar o arquivo JSON:', error);
+                    fileNameDisplay.textContent = 'Erro ao carregar o arquivo JSON';
+                });
+        }
+    }
+
+    function getDataPath() {
+        return localStorage.getItem('dataSourceSelect') || 'json';
     }
 
     function handleInputChange() {
@@ -50,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
         formatDibInput();
         storeData();
         updateButtonState();
-        resultDiv.classList.add('modified'); // Adiciona classe modificada
+        resultDiv.classList.add('modified');
     }
 
     function formatDipInput() {
@@ -93,9 +122,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (result) {
                 if (!result.originalValues) {
-                    result.originalValues = { ...result }; // Armazena os valores originais na primeira vez
+                    result.originalValues = { ...result };
                 }
-                // Restaura os valores originais antes de aplicar o percentual
                 result.v_ant = result.originalValues.v_ant;
                 result.v_atual = result.originalValues.v_atual;
                 result.soma = result.originalValues.soma;
@@ -125,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 copyToClipboard(textToCopy);
                 showMessage("Cálculo feito com sucesso! CONFIRA os parâmetros e use Ctrl+V ou 'colar'.");
                 displayResult(textToDisplay);
-                resultDiv.classList.remove('modified'); // Remove classe modificada
+                resultDiv.classList.remove('modified');
             } else {
                 showMessage("Sem resultados encontrados para a DIP e DIB inseridas.");
                 displayResult("");
@@ -235,34 +263,32 @@ COMPOSIÇÃO:
         const dipStr = dipInput.value;
         const dibStr = dibInput.value;
         const percentual = parseFloat(percentualInput.value) / 100;
-    
+
         const numeroProcessoInput = prompt("Digite o número do processo (com ou sem separadores):");
         if (!numeroProcessoInput || !validateProcessNumber(numeroProcessoInput)) {
             showMessage("Número do processo inválido ou não informado.");
             return;
         }
-    
-        const numeroProcesso = formatProcessNumber(numeroProcessoInput);
 
+        const numeroProcesso = formatProcessNumber(numeroProcessoInput);
         const nomeBeneficio = prompt("Digite o nome do benefício:");
-    
+
         try {
             const result = findDataByDipDib(selectedBenefitData, parseDate(dipStr), parseDate(dibStr));
-    
+
             if (result) {
-                // Restaura os valores originais antes de aplicar o percentual
                 result.v_ant = result.originalValues.v_ant;
                 result.v_atual = result.originalValues.v_atual;
                 result.soma = result.originalValues.soma;
 
-                applyPercentual(result, percentual); // Aplicar o percentual aos resultados
+                applyPercentual(result, percentual);
                 const htmlContent = generateHtmlContent(result, percentual, numeroProcesso, nomeBeneficio, dipStr, dibStr);
                 const blob = new Blob([htmlContent], { type: 'text/html' });
                 const link = document.createElement('a');
                 link.href = URL.createObjectURL(blob);
                 link.download = `${numeroProcesso}.html`;
                 link.click();
-                resultDiv.classList.remove('modified'); // Remove classe modificada
+                resultDiv.classList.remove('modified');
             } else {
                 showMessage("Sem resultados encontrados para a DIP e DIB inseridas.");
             }
@@ -270,7 +296,7 @@ COMPOSIÇÃO:
             showMessage(`Erro ao gerar o arquivo HTML: ${error}`);
         }
     }
-    
+
     function validateProcessNumber(processNumber) {
         const normalizedNumber = processNumber.replace(/\D/g, '');
         return /^\d{20}$/.test(normalizedNumber);
@@ -284,14 +310,14 @@ COMPOSIÇÃO:
         }
 
         return `${normalizedNumber.slice(0, 7)}-${normalizedNumber.slice(7, 9)}.${normalizedNumber.slice(9, 13)}.${normalizedNumber.slice(13, 14)}.${normalizedNumber.slice(14, 16)}.${normalizedNumber.slice(16)}`;
-    }         
+    }
 
     function generateHtmlContent(result, percentual, numeroProcesso, nomeBeneficio, dipStr, dibStr) {
         const formattedProcessNumber = numeroProcesso;
         const todayDate = new Date().toLocaleDateString('pt-BR');
         const { rmi, p_ant, p_atual, v_ant, v_atual, soma} = result;
         const percentualAplicado = (percentual * 100).toFixed(2);
-    
+
         return `
     <!DOCTYPE html>
     <html lang="pt-BR">
@@ -337,7 +363,7 @@ COMPOSIÇÃO:
     </body>
     </html>
         `;
-    }   
+    }
 
     function storeData() {
         localStorage.setItem('dipInput', dipInput.value);

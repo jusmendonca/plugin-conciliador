@@ -4,13 +4,50 @@
     <meta charset="UTF-8">
     <title>Conciliador Previdenciário 2.0</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .header img {
+            margin-right: 10px;
+        }
+
+        .header h1 {
+            font-family: Arial, Helvetica, sans-serif
+            font-size: 16px; /* Tamanho da fonte do título */
+            margin: 0;
+        }
+
+        .config-button {
+            background-color: transparent;
+            border: none;
+            color: #007bff;
+            cursor: pointer;
+            font-size: 1.5em;
+            position: absolute;
+            right: 0; /* Alinha o botão à direita, mantendo os outros elementos centralizados */
+        }
+
+        .config-button:hover {
+            color: #0056b3;
+        }
+    </style>
 </head>
 <body>
     <div class="header">
         <img src="images/icon32.png" alt="Icon" class="icon">
-        <h1>Conciliador Previdenciário 2.0</h1>
+        <h1>Conciliador Previdenciário</h1>
+        <button id="openConfigButton" class="config-button">
+            <i class="fa-solid fa-gear"></i>
+        </button>
     </div>
-    <h2>Assistente de cálculo para acordos</h2>
+
     <div class="form-group">
         <label for="benefitSelect">Tipo de benefício:</label>
         <select id="benefitSelect">
@@ -24,7 +61,6 @@
         <option value="totalValue">valor total da proposta (atrasados)</option>
         <option value="concise">parâmetros sem formatação</option>
         <option value="full">parâmetros pré-formatados</option>
-        
     </select>
     <label for="dipInput">DIP (Data de Início do Pagamento):</label>
     <input type="text" id="dipInput">
@@ -43,4 +79,7 @@
     <script src="popup.js"></script>
 </body>
 </html>
+
+
+
 

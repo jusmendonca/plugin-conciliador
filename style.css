@@ -2,8 +2,8 @@ body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
   margin: 0;
-  padding: 10px;
-  min-width: 280px; /* Define uma largura mínima para a janela */
+  padding: 7px; /* Reduzido de 10px */
+  min-width: 280px;
 }
 
 .header {
@@ -11,15 +11,15 @@ body {
   align-items: center;
   justify-content: center;
   background-color: #007bff;
-  padding: 5px;
-  border-radius: 8px;
-  margin-bottom: 10px;
+  padding: 5px; /* Reduzido de 5px */
+  border-radius: 7px;
+  margin-bottom: 8px; /* Reduzido de 10px */
 }
 
 .header h1 {
   color: #fff;
-  margin-left: 10px;
-  font-size: 1.2em;
+  margin-left: 8px; /* Reduzido de 10px */
+  font-size: 1.1em; /* Reduzido de 1.2em */
 }
 
 .icon {
@@ -27,49 +27,77 @@ body {
   height: 20px;
 }
 
+.config-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px; 
+}
+
+.config-button {
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 13px; 
+  cursor: pointer;
+  margin-right: 8px; 
+}
+
 h2 {
   color: #333;
-  margin-bottom: 10px;
+  margin-bottom: 4px;
   font-size: 1.0em;
-  text-align: center;
+  text-align: left;
 }
 
 #fileName {
-  margin-top: 2px; /* Reduz a margem superior */
-  margin-bottom: 5px; /* Aumenta a margem inferior */
+  margin-top: 1px; /* Reduzido de 2px */
+  margin-bottom: 4px; /* Reduzido de 5px */
   color: #555;
 }
 
 label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 4px; /* Reduzido de 5px */
 }
 
 .form-group {
-  margin-bottom: 5px; /* Reduz o espaço inferior */
+  margin-bottom: 4px; /* Reduzido de 5px */
 }
 
 .form-group select {
   width: 100%;
-  padding: 8px;
+  padding: 6px; /* Reduzido de 8px */
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: #fff;
 }
 
+#customPathGroup {
+  margin-top: 5px;
+}
+
+#customPathInput {
+  width: calc(100% - 20px);
+  padding: 6px;
+  margin-bottom: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+}
+
 select {
   width: 100%;
-  padding: 8px;
-  margin-bottom: 10px; 
+  padding: 6px; /* Reduzido de 8px */
+  margin-bottom: 8px; /* Reduzido de 10px */
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: #fff;
 }
 
 input[type="text"], input[type="number"] {
-  width: calc(100% - 20px);
-  padding: 8px;
-  margin-bottom: 10px;
+  width: calc(100% - 16px); /* Reduzido de 20px */
+  padding: 6px; /* Reduzido de 8px */
+  margin-bottom: 8px; /* Reduzido de 10px */
   border: 1px solid #ccc;
   border-radius: 4px;
   text-align: center;
@@ -77,15 +105,15 @@ input[type="text"], input[type="number"] {
 
 .button-container {
   display: flex;
-  gap: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  gap: 8px; /* Reduzido de 10px */
+  margin-top: 8px; /* Reduzido de 10px */
+  margin-bottom: 8px; /* Reduzido de 10px */
 }
 
 .button-container button {
   flex: 1;
-  padding: 10px;
-  font-size: 12px;
+  padding: 8px; /* Reduzido de 10px */
+  font-size: 10px; /* Reduzido de 12px */
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -95,7 +123,7 @@ input[type="text"], input[type="number"] {
 #processButton {
   background-color: #28a745;
   color: #fff;
-  font-size: 12px;
+  font-size: 12px; /* Reduzido de 12px */
 }
 
 #processButton:hover {
@@ -105,7 +133,7 @@ input[type="text"], input[type="number"] {
 #generateHtmlButton {
   background-color: #28a745;
   color: #fff;
-  font-size: 12px;
+  font-size: 12px; /* Reduzido de 12px */
 }
 
 #generateHtmlButton:hover {
@@ -113,13 +141,13 @@ input[type="text"], input[type="number"] {
 }
 
 #status {
-  margin-top: 10px;
+  margin-top: 8px; /* Reduzido de 10px */
   color: #007bff;
 }
 
 .result-box {
-  margin-top: 10px;
-  padding: 10px;
+  margin-top: 8px; /* Reduzido de 10px */
+  padding: 8px; /* Reduzido de 10px */
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -137,7 +165,6 @@ input[type="text"], input[type="number"] {
 }
 
 .result-box.modified {
-  background-color: #f8d7da; /* Fundo vermelho claro */
-  border-color: #f5c6cb; /* Borda vermelha clara */
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
 }
-
