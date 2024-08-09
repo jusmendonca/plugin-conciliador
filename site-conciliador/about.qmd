@@ -1,0 +1,7 @@
+---
+title: "Sobre a página"
+---
+
+Página informativa sobre o plugin Conciliador Previdenciário.
+
+*Site gerado com [![](quarto.jpg){width="76" height="18"}](https://quarto.org) no [![](RStudio-Logo-Flat.png){width="43"}](https://www.rstudio.com/tags/rstudio-ide/).*

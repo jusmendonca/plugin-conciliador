@@ -1,0 +1,4 @@
+- source: project
+  quarto-pub:
+    - id: ba522055-88a9-4910-b10a-1f26dde290dd
+      url: 'https://igormendonca.quarto.pub/conciliador'

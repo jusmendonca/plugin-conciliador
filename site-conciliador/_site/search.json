@@ -1,0 +1,65 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Sobre a página",
+    "section": "",
+    "text": "Página informativa sobre o plugin Conciliador Previdenciário.\nSite gerado com  no ."
+  },
+  {
+    "objectID": "index.html#funcionalidades-principais",
+    "href": "index.html#funcionalidades-principais",
+    "title": "",
+    "section": "Funcionalidades Principais",
+    "text": "Funcionalidades Principais\n\nEscolha de Benefício: Permite ao usuário selecionar o benefício (atualmente, benefícios no valor do salário-mínimo ou BPC-LOAS) a partir de uma caixa de seleção. O plugin carrega os dados do arquivo JSON correspondente ou de um arquivo personalizado, se assim configurado.\nEscolha de Formato de Saída (Estilo de cópia): Oferece ao usuário a opção de escolher o conteúdo a ser copiado para a área de transferência (parâmetros pré-formatados, parâmetros sem formatação ou apenas o valor total da proposta).\nEntrada de DIP e DIB: Solicita ao usuário inserir a Data de Início do Pagamento (DIP) e a Data de Início do Benefício (DIB) no formato DD/MM/AAAA para realizar a busca correspondente nos dados carregados. No momento, os dados são limitados às seguintes datas: DIB a partir de 01/01/2018 e DIP no primeiro dia do mês atual e dos dois últimos meses.\nPercentual de acordo: Após selecionar o benefício e inserir a DIP e a DIB, escolha o percentual de acordo a ser aplicado.\nProcessamento de Dados: Após selecionar o benefício e inserir a DIP e a DIB e o percentual, o sistema calcula o valor do acordo e exibe os resultados na interface.\nCópia para Área de Transferência: O plugin copia as informações correspondentes para a área de transferência, permitindo fácil inserção em documentos externos.\nGeração de Resumo em HTML: Permite a criação de um arquivo HTML com o resumo dos cálculos, que inclui o número do processo e o nome do benefício. O usuário deve fornecer o número do processo (20 dígitos) e o nome do benefício para gerar o resumo.\nConfigurações Personalizadas: Possibilidade de salvar configurações personalizadas, como a origem dos dados e arquivos JSON específicos para diferentes benefícios, que são carregados automaticamente em usos futuros. Veja abaixo o formato dos arquivos aceitos.\nArmazenamento Local: Utiliza o armazenamento local do navegador para salvar as últimas DIP, DIB, percentual de acordo, benefício selecionado, e estilo de cópia, proporcionando uma experiência contínua mesmo após o fechamento da extensão."
+  },
+  {
+    "objectID": "index.html#instalação",
+    "href": "index.html#instalação",
+    "title": "",
+    "section": "Instalação",
+    "text": "Instalação\n\nPré-requisitos\n\nGoogle Chrome\n\n\n\nPassos\n\nAcesse o link da extensão na Chrome Web Store.\nClique no botão “Usar no Chrome”.\nPara melhorar a experiência de uso, fixe o plugin na barra de extensões do seu navegador."
+  },
+  {
+    "objectID": "index.html#uso",
+    "href": "index.html#uso",
+    "title": "",
+    "section": "Uso",
+    "text": "Uso\n\nEscolher Benefício: Selecione o benefício (RURAL ou BPC-LOAS) na caixa de seleção. O plugin carregará automaticamente os dados do arquivo JSON correspondente ou do arquivo personalizado, se configurado.\nInserir DIP e DIB: Digite a Data de Início do Pagamento (DIP) e a Data de Início do Benefício (DIB) no formato DD/MM/AAAA nas caixas de entrada.\nEscolher Estilo de Cópia: Selecione o formato de saída desejado na caixa de seleção.\nCalcular e Copiar: Clique no botão “CALCULAR E COPIAR” para iniciar o processamento. Os resultados serão exibidos na caixa do plugin e copiados para a área de transferência, conforme os parâmetros escolhidos.\nGerar Resumo HTML: Clique no botão “GERAR RESUMO HTML” para criar um arquivo HTML com o resumo dos cálculos. Para usar esta opção, o usuário deverá digitar um número de processo judicial, com 20 dígitos (padrão CNJ) e o nome do benefício a ser incluído no resumo.\nConfigurar Origem dos Dados: Acesse a página de configurações clicando no ícone de engrenagem na interface principal do plugin para escolher entre usar os dados padrão ou personalizar os arquivos JSON a serem utilizados. Atenção: o ícone da engrenagem está oculto. Passe o mouse ao lado do título para vê-lo.\n\n\nOrigem Padrão: Selecione a opção “Padrão (recomendada)” para usar os arquivos JSON localizados na pasta json do plugin.\nOrigem Personalizada: Selecione a opção “Personalizada” para carregar arquivos JSON de caminhos personalizados. Você pode selecionar os arquivos JSON específicos para os benefícios RURAL e BPC-LOAS. Os arquivos devem seguir a mesma estrutura padrão descrita abaixo.\nArmazenamento Automático: As últimas DIP, DIB, percentual de acordo, benefício selecionado, e estilo de cópia são armazenados automaticamente para facilitar o uso futuro. Dessa maneira, não é necessário escolher todos os parâmetros entre as sessões de uso."
+  },
+  {
+    "objectID": "index.html#estrutura-dos-arquivos-json-aceitos",
+    "href": "index.html#estrutura-dos-arquivos-json-aceitos",
+    "title": "",
+    "section": "Estrutura dos Arquivos JSON Aceitos",
+    "text": "Estrutura dos Arquivos JSON Aceitos\nOs arquivos JSON utilizados pelo plugin devem seguir a estrutura abaixo:\n{   \"metadata\": {\n        \"data_atualizacao\": \"2024-08-08\",\n        \"autoria\": \"Fulano de Tal\",\n        \"origem\": \"Intranet\",\n        \"versao\": \"1.0\",\n        \"descricao\": \"Planilha tal\"\n    },\n \n    \"dados\": [\n        {\n            \"dip\": \"01/01/2020\",\n            \"dib\": \"01/01/2019\",\n            \"rmi\": \"1045.00\",\n            \"p_ant\": \"5\",\n            \"p_atual\": \"12\",\n            \"v_ant\": \"5225.00\",\n            \"v_atual\": \"12540.00\",\n            \"soma\": \"17765.00\"\n        },\n        {\n            \"dip\": \"01/02/2020\",\n            \"dib\": \"01/02/2019\",\n            \"rmi\": \"1100.00\",\n            \"p_ant\": \"4\",\n            \"p_atual\": \"11\",\n            \"v_ant\": \"4400.00\",\n            \"v_atual\": \"12100.00\",\n            \"soma\": \"16500.00\"\n        }\n    ]\n}\nClique aqui para baixar um exemplo de arquivo JSON. Para converter arquivos .xlsx e outros para .json, há diveras opções disponíveis, como por exemplo:\n\nhttps://tableconvert.com/excel-to-json\nhttps://products.aspose.app/cells/conversion/xlsx-to-json\nhttps://products.groupdocs.app/conversion/xlsx-to-json\n\n\nExplicação dos Campos:\n\ndip: Data de Início do Pagamento no formato DD/MM/AAAA.\ndib: Data de Início do Benefício no formato DD/MM/AAAA.\nrmi: Renda Mensal Inicial.\np_ant: Número de parcelas de exercícios anteriores ao ano corrente.\np_atual: Número de parcelas do exercício corrente.\nv_ant: Valor total das parcelas de exercícios anteriores.\nv_atual: Valor total das parcelas do exercício corrente.\nsoma: Valor total do acordo."
+  },
+  {
+    "objectID": "index.html#contribuições-e-problemas",
+    "href": "index.html#contribuições-e-problemas",
+    "title": "",
+    "section": "Contribuições e Problemas",
+    "text": "Contribuições e Problemas\nSe encontrar algum problema ou tiver sugestões de melhorias, mande um e-mail para o desenvolvedor (igormendonca.jus@gmail.com)."
+  },
+  {
+    "objectID": "index.html#autor",
+    "href": "index.html#autor",
+    "title": "",
+    "section": "Autor",
+    "text": "Autor\nDesenvolvido por Igor Mendonça Cardoso Gomes."
+  },
+  {
+    "objectID": "index.html#advertência",
+    "href": "index.html#advertência",
+    "title": "",
+    "section": "Advertência",
+    "text": "Advertência\nO desenvolvedor não se responsabiliza pela exatidão dos cálculos, que devem ser conferidos pelo usuário."
+  },
+  {
+    "objectID": "index.html#licença",
+    "href": "index.html#licença",
+    "title": "",
+    "section": "Licença",
+    "text": "Licença\nCopyright (todos os direitos reservados)."
+  }
+]
