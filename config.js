@@ -8,28 +8,45 @@ document.addEventListener('DOMContentLoaded', function() {
     const saveConfigButton = document.getElementById('saveConfigButton');
     const helpIcon = document.getElementById('helpIcon');
 
-    loadStoredConfig();
+    // Verifique cada elemento individualmente
+    if (!dataSourceSelect) console.error('Elemento dataSourceSelect não foi encontrado.');
+    if (!customPathGroup) console.error('Elemento customPathGroup não foi encontrado.');
+    if (!ruralFileInput) console.error('Elemento ruralFileInput não foi encontrado.');
+    if (!bpcLoasFileInput) console.error('Elemento bpcLoasFileInput não foi encontrado.');
+    if (!ruralFileNameDisplay) console.error('Elemento ruralFileNameDisplay não foi encontrado.');
+    if (!bpcLoasFileNameDisplay) console.error('Elemento bpcLoasFileNameDisplay não foi encontrado.');
+    if (!saveConfigButton) console.error('Elemento saveConfigButton não foi encontrado.');
+    if (!helpIcon) console.error('Elemento helpIcon não foi encontrado.');
 
-    dataSourceSelect.addEventListener('change', function() {
-        const selectedSource = dataSourceSelect.value;
-        customPathGroup.style.display = selectedSource === 'custom' ? 'block' : 'none';
-    });
+    // Se todos os elementos existirem, continue com o código
+    if (dataSourceSelect && customPathGroup && ruralFileInput && bpcLoasFileInput && 
+        ruralFileNameDisplay && bpcLoasFileNameDisplay && saveConfigButton && helpIcon) {
+        
+        loadStoredConfig();
 
-    saveConfigButton.addEventListener('click', function() {
-        saveConfig();
-    });
+        dataSourceSelect.addEventListener('change', function() {
+            const selectedSource = dataSourceSelect.value;
+            customPathGroup.style.display = selectedSource === 'custom' ? 'block' : 'none';
+        });
 
-    helpIcon.addEventListener('click', function() {
-        window.open('help.html'); // Página fictícia por enquanto
-    });
+        saveConfigButton.addEventListener('click', function() {
+            saveConfig();
+        });
 
-    ruralFileInput.addEventListener('change', function() {
-        ruralFileNameDisplay.textContent = ruralFileInput.files[0]?.name || 'Nenhum arquivo escolhido';
-    });
+        helpIcon.addEventListener('click', function() {
+            window.open('help.html');
+        });
 
-    bpcLoasFileInput.addEventListener('change', function() {
-        bpcLoasFileNameDisplay.textContent = bpcLoasFileInput.files[0]?.name || 'Nenhum arquivo escolhido';
-    });
+        ruralFileInput.addEventListener('change', function() {
+            ruralFileNameDisplay.textContent = ruralFileInput.files[0]?.name || 'Nenhum arquivo escolhido';
+        });
+
+        bpcLoasFileInput.addEventListener('change', function() {
+            bpcLoasFileNameDisplay.textContent = bpcLoasFileInput.files[0]?.name || 'Nenhum arquivo escolhido';
+        });
+    } else {
+        console.error('Um ou mais elementos não foram encontrados no DOM.');
+    }
 
     function saveConfig() {
         const selectedSource = dataSourceSelect.value;
