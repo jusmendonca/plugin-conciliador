@@ -259,34 +259,122 @@ COMPOSIÇÃO:
         resultDiv.textContent = text;
     }
 
-    async function generateHtmlFile() {
-        const dipStr = dipInput.value;
-        const dibStr = dibInput.value;
-        const percentual = parseFloat(percentualInput.value) / 100;
+    function promptUserForDetails() {
+        return new Promise((resolve) => {
+            const form = document.createElement('form');
+            form.innerHTML = `
+                <label for="numeroProcesso">Número do Processo:</label>
+                <input type="text" id="numeroProcesso" required><br>
+                <label for="nomeInteressado">Nome do Interessado:</label>
+                <input type="text" id="nomeInteressado" required><br>
+                <label for="nomeBeneficio">Nome do Benefício:</label>
+                <input type="text" id="nomeBeneficio" required><br>
+                <button type="submit">OK</button>
+                <button type="button" id="cancelButton">Cancelar</button>
+            `;
+    
+            const dialog = document.createElement('dialog');
+            dialog.appendChild(form);
+            document.body.appendChild(dialog);
+    
+            const cancelButton = document.getElementById('cancelButton');
+            cancelButton.addEventListener('click', () => {
+                dialog.close();
+                resolve(null);
+            });
+    
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const details = {
+                    numeroProcesso: document.getElementById('numeroProcesso').value,
+                    nomeInteressado: document.getElementById('nomeInteressado').value,
+                    nomeBeneficio: document.getElementById('nomeBeneficio').value,
+                };
+                dialog.close();
+                resolve(details);
+            });
+    
+            dialog.showModal();
+        });
+    }
 
-        const numeroProcessoInput = prompt("Digite o número do processo (com ou sem separadores):");
-        if (!numeroProcessoInput || !validateProcessNumber(numeroProcessoInput)) {
+    function promptUserForDetails() {
+        return new Promise((resolve) => {
+            const form = document.createElement('form');
+            form.innerHTML = `
+                <label for="numeroProcesso">Número do Processo:</label>
+                <input type="text" id="numeroProcesso" required><br>
+                <label for="nomeInteressado">Nome do Interessado:</label>
+                <input type="text" id="nomeInteressado" required><br>
+                <label for="nomeBeneficio">Nome do Benefício:</label>
+                <input type="text" id="nomeBeneficio" required><br>
+                <button type="submit">OK</button>
+                <button type="button" id="cancelButton">Cancelar</button>
+            `;
+    
+            const dialog = document.createElement('dialog');
+            dialog.appendChild(form);
+            document.body.appendChild(dialog);
+    
+            const cancelButton = document.getElementById('cancelButton');
+            cancelButton.addEventListener('click', () => {
+                dialog.close();
+                resolve(null);
+            });
+    
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const details = {
+                    numeroProcesso: document.getElementById('numeroProcesso').value,
+                    nomeInteressado: document.getElementById('nomeInteressado').value,
+                    nomeBeneficio: document.getElementById('nomeBeneficio').value,
+                };
+                dialog.close();
+                resolve(details);
+            });
+    
+            dialog.showModal();
+        });
+    }
+    
+    async function generateHtmlFile() {
+        // Primeiro, executa o cálculo e a cópia
+        await processFile(); 
+    
+        // Solicita as informações do usuário em uma única caixa de diálogo
+        const userDetails = await promptUserForDetails();
+        if (!userDetails) {
+            showMessage("A operação foi cancelada.");
+            return;
+        }
+    
+        const { numeroProcesso, nomeInteressado, nomeBeneficio } = userDetails;
+    
+        if (!validateProcessNumber(numeroProcesso)) {
             showMessage("Número do processo inválido ou não informado.");
             return;
         }
-
-        const numeroProcesso = formatProcessNumber(numeroProcessoInput);
-        const nomeBeneficio = prompt("Digite o nome do benefício:");
-
+    
+        const formattedProcessNumber = formatProcessNumber(numeroProcesso);
+    
+        const dipStr = dipInput.value;
+        const dibStr = dibInput.value;
+        const percentual = parseFloat(percentualInput.value) / 100;
+    
         try {
             const result = findDataByDipDib(selectedBenefitData, parseDate(dipStr), parseDate(dibStr));
-
+    
             if (result) {
                 result.v_ant = result.originalValues.v_ant;
                 result.v_atual = result.originalValues.v_atual;
                 result.soma = result.originalValues.soma;
-
+    
                 applyPercentual(result, percentual);
-                const htmlContent = generateHtmlContent(result, percentual, numeroProcesso, nomeBeneficio, dipStr, dibStr);
+                const htmlContent = generateHtmlContent(result, percentual, formattedProcessNumber, nomeInteressado, nomeBeneficio, dipStr, dibStr);
                 const blob = new Blob([htmlContent], { type: 'text/html' });
                 const link = document.createElement('a');
                 link.href = URL.createObjectURL(blob);
-                link.download = `${numeroProcesso}.html`;
+                link.download = `${formattedProcessNumber}.html`;
                 link.click();
                 resultDiv.classList.remove('modified');
             } else {
@@ -296,7 +384,8 @@ COMPOSIÇÃO:
             showMessage(`Erro ao gerar o arquivo HTML: ${error}`);
         }
     }
-
+    
+    
     function validateProcessNumber(processNumber) {
         const normalizedNumber = processNumber.replace(/\D/g, '');
         return /^\d{20}$/.test(normalizedNumber);
@@ -312,12 +401,12 @@ COMPOSIÇÃO:
         return `${normalizedNumber.slice(0, 7)}-${normalizedNumber.slice(7, 9)}.${normalizedNumber.slice(9, 13)}.${normalizedNumber.slice(13, 14)}.${normalizedNumber.slice(14, 16)}.${normalizedNumber.slice(16)}`;
     }
 
-    function generateHtmlContent(result, percentual, numeroProcesso, nomeBeneficio, dipStr, dibStr) {
+    function generateHtmlContent(result, percentual, numeroProcesso, nomeInteressado, nomeBeneficio, dipStr, dibStr) {
         const formattedProcessNumber = numeroProcesso;
         const todayDate = new Date().toLocaleDateString('pt-BR');
-        const { rmi, p_ant, p_atual, v_ant, v_atual, soma} = result;
+        const { rmi, p_ant, p_atual, v_ant, v_atual, soma } = result;
         const percentualAplicado = (percentual * 100).toFixed(2);
-
+    
         return `
     <!DOCTYPE html>
     <html lang="pt-BR">
@@ -338,15 +427,16 @@ COMPOSIÇÃO:
         <h1>Resumo do cálculo</h1>
     
         <p><strong>Processo:</strong> ${formattedProcessNumber}</p>
+        <p><strong>Interessado:</strong> ${nomeInteressado}</p>
         <p><strong>Nome do Benefício:</strong> ${nomeBeneficio}</p>
         <p><strong>DIB:</strong> ${dibStr}</p>
         <p><strong>DIP:</strong> ${dipStr}</p>
     
         <p><strong>RMI:</strong> ${rmi}</p>
-        <p><strong>VALOR TOTAL DO ACORDO:</strong> <span class="bold"> ${formatCurrency(soma)}</span></p>
+        <p><strong>VALOR TOTAL DEVIDO:</strong> <span class="bold">${formatCurrency(soma)}</span></p>
         <p><strong>Percentual aplicado:</strong> ${percentualAplicado}%</p>
     
-        <p><strong>COMPOSIÇÃO:</strong></p>
+        <p><strong>Composição dos valores para Declaração de Rendimentos Recebidos Acumuladamente:</strong></p>
         <ul>
             <li>Parcelas de exercícios anteriores: ${p_ant}</li>
             <li>Parcelas do exercício atual: ${p_atual}</li>
@@ -363,7 +453,7 @@ COMPOSIÇÃO:
     </body>
     </html>
         `;
-    }
+    }    
 
     function storeData() {
         localStorage.setItem('dipInput', dipInput.value);
