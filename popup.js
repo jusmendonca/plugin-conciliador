@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const resultDiv = document.getElementById('result');
     const copyOption = document.getElementById('copyOption');
     const openConfigButton = document.getElementById('openConfigButton');
+    const honorariosToggle = document.getElementById('honorariosToggle');
+    const honorariosInput = document.getElementById('honorariosInput');
 
     let selectedBenefitData;
 
@@ -29,6 +31,15 @@ document.addEventListener('DOMContentLoaded', function() {
         if (event.key === 'Enter' && !processButton.disabled) {
             processFile();
         }
+    });
+
+    honorariosToggle.addEventListener('change', function() {
+        honorariosInput.disabled = !honorariosToggle.checked;
+        if (!honorariosToggle.checked) {
+            honorariosInput.value = 0;
+        }
+        storeData();
+        updateButtonState();
     });
 
     loadStoredData();
@@ -110,16 +121,62 @@ document.addEventListener('DOMContentLoaded', function() {
         return datePattern.test(dateStr);
     }
 
+
+    function promptUserForDetails() {
+        return new Promise((resolve) => {
+            // Cria o formulário dentro de um diálogo
+            const form = document.createElement('form');
+            form.innerHTML = `
+                <label for="numeroProcesso">Número do Processo:</label>
+                <input type="text" id="numeroProcesso" required><br>
+                <label for="nomeInteressado">Nome do Interessado:</label>
+                <input type="text" id="nomeInteressado" required><br>
+                <label for="nomeBeneficio">Nome do Benefício:</label>
+                <input type="text" id="nomeBeneficio" required><br>
+                <button type="submit">OK</button>
+                <button type="button" id="cancelButton">Cancelar</button>
+            `;
+    
+            // Cria o diálogo
+            const dialog = document.createElement('dialog');
+            dialog.appendChild(form);
+            document.body.appendChild(dialog);
+    
+            // Manipulador de cancelamento
+            const cancelButton = document.getElementById('cancelButton');
+            cancelButton.addEventListener('click', () => {
+                dialog.close();
+                resolve(null); // Resolve com null se o usuário cancelar
+            });
+    
+            // Manipulador de submissão
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const details = {
+                    numeroProcesso: document.getElementById('numeroProcesso').value,
+                    nomeInteressado: document.getElementById('nomeInteressado').value,
+                    nomeBeneficio: document.getElementById('nomeBeneficio').value,
+                };
+                dialog.close();
+                resolve(details); // Resolve com os detalhes fornecidos pelo usuário
+            });
+    
+            // Exibe o diálogo
+            dialog.showModal();
+        });
+    }
+    
     async function processFile() {
         const dipStr = dipInput.value;
         const dibStr = dibInput.value;
         const dip = parseDate(dipStr);
         const dib = parseDate(dibStr);
         const percentual = parseFloat(percentualInput.value) / 100;
-
+        const honorariosPercentual = honorariosToggle.checked ? parseFloat(honorariosInput.value) / 100 : 0;
+    
         try {
             const result = findDataByDipDib(selectedBenefitData, dip, dib);
-
+    
             if (result) {
                 if (!result.originalValues) {
                     result.originalValues = { ...result };
@@ -127,9 +184,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 result.v_ant = result.originalValues.v_ant;
                 result.v_atual = result.originalValues.v_atual;
                 result.soma = result.originalValues.soma;
-
+    
                 applyPercentual(result, percentual);
-
+    
+                const honorarios = result.soma * honorariosPercentual;
+    
                 const selectedOption = copyOption.value;
                 let textToCopy = '';
                 let textToDisplay = '';
@@ -139,15 +198,15 @@ document.addEventListener('DOMContentLoaded', function() {
                         textToDisplay = `${formatCurrency(result.soma)}`;
                         break;
                     case 'concise':
-                        textToCopy = formatConciseResult(result, dip, dib, percentual);
+                        textToCopy = formatConciseResult(result, dip, dib, percentual, honorariosPercentual, honorarios);
                         textToDisplay = textToCopy;
                         break;
                     case 'full':
-                        textToCopy = formatResult(result, dip, dib, percentual);
+                        textToCopy = formatResult(result, dip, dib, percentual, honorariosPercentual, honorarios);
                         textToDisplay = textToCopy;
                         break;
                     default:
-                        textToCopy = formatResult(result, dip, dib, percentual);
+                        textToCopy = formatResult(result, dip, dib, percentual, honorariosPercentual, honorarios);
                         textToDisplay = textToCopy;
                 }
                 copyToClipboard(textToCopy);
@@ -162,18 +221,18 @@ document.addEventListener('DOMContentLoaded', function() {
             showMessage(`Erro ao processar os dados: ${error}`);
         }
     }
-
+    
     function applyPercentual(result, percentual) {
         result.v_ant *= percentual;
         result.v_atual *= percentual;
         result.soma = result.v_ant + result.v_atual;
     }
-
+    
     function parseDate(dateStr) {
         const [day, month, year] = dateStr.split('/');
         return new Date(year, month - 1, day);
     }
-
+    
     function findDataByDipDib(data, dip, dib) {
         const mesAnoDip = `${('0' + (dip.getMonth() + 1)).slice(-2)}/${dip.getFullYear()}`;
         const mesAnoDib = `${('0' + (dib.getMonth() + 1)).slice(-2)}/${dib.getFullYear()}`;
@@ -185,41 +244,45 @@ document.addEventListener('DOMContentLoaded', function() {
             return mesAnoRowDip === mesAnoDip && mesAnoRowDib === mesAnoDib;
         });
     }
-
-    function formatResult(result, dip, dib, percentual) {
+    
+    function formatResult(result, dip, dib, percentual, honorariosPercentual, honorarios) {
         const { rmi, p_ant, p_atual, v_ant, v_atual, soma } = result;
         return `
 DIB (=DER): ${formatDate(dib)}
-
+    
 -----------------------------------------------------------------------------------------------------------------------------------------------
-
+    
 DIP: ${formatDate(dip)}
-
+    
 -----------------------------------------------------------------------------------------------------------------------------------------------
-
+    
 RMI: ${rmi}
-
+    
 -----------------------------------------------------------------------------------------------------------------------------------------------
-
+    
 VALOR TOTAL DO ACORDO: ${formatCurrency(soma)} (percentual aplicado: ${percentual * 100}%)
-
+    
 -----------------------------------------------------------------------------------------------------------------------------------------------
-
+    
 COMPOSIÇÃO:
-
+    
 - Parcelas de exercícios anteriores: ${p_ant}
-
+    
 - Parcelas do exercício atual: ${p_atual}
-
+    
 - Valor de exercícios anteriores: ${formatCurrency(v_ant)}
-
+    
 - Valor do exercício atual: ${formatCurrency(v_atual)}
+
+Honorários Advocatícios: ${formatCurrency(honorarios)} (percentual aplicado: ${honorariosPercentual * 100}%)
+
         `.trim();
     }
-
-    function formatConciseResult(result, dip, dib, percentual) {
+    
+    function formatConciseResult(result, dip, dib, percentual, honorariosPercentual, honorarios) {
         const { rmi, p_ant, p_atual, v_ant, v_atual, soma } = result;
         return `
+    
 DIB: ${formatDate(dib)}
 DIP: ${formatDate(dip)}
 RMI: ${rmi}
@@ -229,20 +292,21 @@ COMPOSIÇÃO:
 - Parcelas do exercício atual: ${p_atual}
 - Valor de exercícios anteriores: ${formatCurrency(v_ant)}
 - Valor do exercício atual: ${formatCurrency(v_atual)}
+Honorários Advocatícios: ${formatCurrency(honorarios)} (percentual aplicado: ${honorariosPercentual * 100}%)
         `.trim();
     }
-
+    
     function formatCurrency(value) {
         return parseFloat(value).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     }
-
+    
     function formatDate(date) {
         const day = ('0' + date.getDate()).slice(-2);
         const month = ('0' + (date.getMonth() + 1)).slice(-2);
         const year = date.getFullYear();
         return `${day}/${month}/${year}`;
     }
-
+    
     function copyToClipboard(text) {
         navigator.clipboard.writeText(text).then(() => {
             console.log('Texto copiado para a área de transferência.');
@@ -250,92 +314,14 @@ COMPOSIÇÃO:
             console.error('Erro ao copiar texto: ', err);
         });
     }
-
+    
     function showMessage(message) {
         statusDiv.textContent = message;
     }
-
+    
     function displayResult(text) {
         resultDiv.textContent = text;
-    }
-
-    function promptUserForDetails() {
-        return new Promise((resolve) => {
-            const form = document.createElement('form');
-            form.innerHTML = `
-                <label for="numeroProcesso">Número do Processo:</label>
-                <input type="text" id="numeroProcesso" required><br>
-                <label for="nomeInteressado">Nome do Interessado:</label>
-                <input type="text" id="nomeInteressado" required><br>
-                <label for="nomeBeneficio">Nome do Benefício:</label>
-                <input type="text" id="nomeBeneficio" required><br>
-                <button type="submit">OK</button>
-                <button type="button" id="cancelButton">Cancelar</button>
-            `;
-    
-            const dialog = document.createElement('dialog');
-            dialog.appendChild(form);
-            document.body.appendChild(dialog);
-    
-            const cancelButton = document.getElementById('cancelButton');
-            cancelButton.addEventListener('click', () => {
-                dialog.close();
-                resolve(null);
-            });
-    
-            form.addEventListener('submit', (event) => {
-                event.preventDefault();
-                const details = {
-                    numeroProcesso: document.getElementById('numeroProcesso').value,
-                    nomeInteressado: document.getElementById('nomeInteressado').value,
-                    nomeBeneficio: document.getElementById('nomeBeneficio').value,
-                };
-                dialog.close();
-                resolve(details);
-            });
-    
-            dialog.showModal();
-        });
-    }
-
-    function promptUserForDetails() {
-        return new Promise((resolve) => {
-            const form = document.createElement('form');
-            form.innerHTML = `
-                <label for="numeroProcesso">Número do Processo:</label>
-                <input type="text" id="numeroProcesso" required><br>
-                <label for="nomeInteressado">Nome do Interessado:</label>
-                <input type="text" id="nomeInteressado" required><br>
-                <label for="nomeBeneficio">Nome do Benefício:</label>
-                <input type="text" id="nomeBeneficio" required><br>
-                <button type="submit">OK</button>
-                <button type="button" id="cancelButton">Cancelar</button>
-            `;
-    
-            const dialog = document.createElement('dialog');
-            dialog.appendChild(form);
-            document.body.appendChild(dialog);
-    
-            const cancelButton = document.getElementById('cancelButton');
-            cancelButton.addEventListener('click', () => {
-                dialog.close();
-                resolve(null);
-            });
-    
-            form.addEventListener('submit', (event) => {
-                event.preventDefault();
-                const details = {
-                    numeroProcesso: document.getElementById('numeroProcesso').value,
-                    nomeInteressado: document.getElementById('nomeInteressado').value,
-                    nomeBeneficio: document.getElementById('nomeBeneficio').value,
-                };
-                dialog.close();
-                resolve(details);
-            });
-    
-            dialog.showModal();
-        });
-    }
+    }  
     
     async function generateHtmlFile() {
         // Primeiro, executa o cálculo e a cópia
@@ -360,17 +346,27 @@ COMPOSIÇÃO:
         const dipStr = dipInput.value;
         const dibStr = dibInput.value;
         const percentual = parseFloat(percentualInput.value) / 100;
+        const honorariosPercentual = honorariosToggle.checked ? parseFloat(honorariosInput.value) / 100 : 0;
     
         try {
             const result = findDataByDipDib(selectedBenefitData, parseDate(dipStr), parseDate(dibStr));
     
             if (result) {
+                if (!result.originalValues) {
+                    result.originalValues = { ...result };
+                }
                 result.v_ant = result.originalValues.v_ant;
                 result.v_atual = result.originalValues.v_atual;
                 result.soma = result.originalValues.soma;
     
+                // Aplica o percentual de acordo
                 applyPercentual(result, percentual);
-                const htmlContent = generateHtmlContent(result, percentual, formattedProcessNumber, nomeInteressado, nomeBeneficio, dipStr, dibStr);
+    
+                // Calcula os honorários advocatícios, se aplicável
+                const honorarios = result.soma * honorariosPercentual;
+    
+                // Gera o conteúdo HTML
+                const htmlContent = generateHtmlContent(result, percentual, formattedProcessNumber, nomeInteressado, nomeBeneficio, dipStr, dibStr, honorarios, honorariosPercentual);
                 const blob = new Blob([htmlContent], { type: 'text/html' });
                 const link = document.createElement('a');
                 link.href = URL.createObjectURL(blob);
@@ -385,7 +381,7 @@ COMPOSIÇÃO:
         }
     }
     
-    
+       
     function validateProcessNumber(processNumber) {
         const normalizedNumber = processNumber.replace(/\D/g, '');
         return /^\d{20}$/.test(normalizedNumber);
@@ -401,11 +397,12 @@ COMPOSIÇÃO:
         return `${normalizedNumber.slice(0, 7)}-${normalizedNumber.slice(7, 9)}.${normalizedNumber.slice(9, 13)}.${normalizedNumber.slice(13, 14)}.${normalizedNumber.slice(14, 16)}.${normalizedNumber.slice(16)}`;
     }
 
-    function generateHtmlContent(result, percentual, numeroProcesso, nomeInteressado, nomeBeneficio, dipStr, dibStr) {
+    function generateHtmlContent(result, percentual, numeroProcesso, nomeInteressado, nomeBeneficio, dipStr, dibStr, honorarios, honorariosPercentual) {
         const formattedProcessNumber = numeroProcesso;
         const todayDate = new Date().toLocaleDateString('pt-BR');
         const { rmi, p_ant, p_atual, v_ant, v_atual, soma } = result;
         const percentualAplicado = (percentual * 100).toFixed(2);
+        const honorariosAplicado = (honorariosPercentual * 100).toFixed(2);
     
         return `
     <!DOCTYPE html>
@@ -414,7 +411,7 @@ COMPOSIÇÃO:
         <meta charset="UTF-8">
         <title>Processo: ${formattedProcessNumber}</title>
         <style>
-            body { font-family: Arial, font-size: 12px, sans-serif; margin: 20px; }
+            body { font-family: Arial, sans-serif; font-size: 12px; margin: 20px; }
             h1 { color: #333; }
             .info { margin-bottom: 20px; }
             table { width: 100%; border-collapse: collapse; }
@@ -433,7 +430,7 @@ COMPOSIÇÃO:
         <p><strong>DIP:</strong> ${dipStr}</p>
     
         <p><strong>RMI:</strong> ${rmi}</p>
-        <p><strong>VALOR TOTAL DEVIDO:</strong> <span class="bold">${formatCurrency(soma)}</span></p>
+        <p><strong>VALOR DEVIDO:</strong> <span class="bold">${formatCurrency(soma)}</span></p>
         <p><strong>Percentual aplicado:</strong> ${percentualAplicado}%</p>
     
         <p><strong>Composição dos valores para Declaração de Rendimentos Recebidos Acumuladamente:</strong></p>
@@ -444,6 +441,11 @@ COMPOSIÇÃO:
             <li>Valor do exercício atual: ${formatCurrency(v_atual)}</li>
         </ul>
     
+        <!-- Se os honorários foram aplicados, exibe-os -->
+        ${honorarios > 0 ? `
+        <p><strong>Valor dos Honorários Advocatícios:</strong> <span class="bold">${formatCurrency(honorarios)}</span> (percentual aplicado: ${honorariosAplicado}%)</p>
+        ` : ''}
+
         <p><strong>Observações:</strong></p>
         <ol>
             <li>Índices aplicados: ORTN/OTN/BTN até 02/91 + INPC até 12/92 + IRSM até 02/94 + URV até 06/94 + IPCR até 06/95 + INPC até 04/96 + IGPDI até 09/2006 + IPCA-E + Selic após 12/021.</li>
@@ -453,8 +455,8 @@ COMPOSIÇÃO:
     </body>
     </html>
         `;
-    }    
-
+    }
+    
     function storeData() {
         localStorage.setItem('dipInput', dipInput.value);
         localStorage.setItem('dibInput', dibInput.value);
