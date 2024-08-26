@@ -1,0 +1,65 @@
+**Software License Agreement**
+
+This Software License Agreement ("Agreement") is entered into as of the date of download or installation ("Effective Date") by and between the licensor ("Licensor") and the licensee ("Licensee"). By downloading, installing, or using the software ("Software"), the Licensee agrees to be bound by the terms of this Agreement.
+
+**1. Grant of License**
+The Licensor grants the Licensee a non-exclusive, non-transferable, and revocable license to use the Software solely for personal or internal business purposes, and only for the duration that the plugin is available. This license does not permit the Licensee to use the Software for any other purpose, including commercial exploitation.
+
+**2. Restrictions**
+Licensee shall not:
+(a) Modify, adapt, translate, reverse engineer, decompile, disassemble, or create derivative works based on the Software.
+(b) Rent, lease, lend, sell, sublicense, assign, distribute, publish, or transfer any rights in the Software.
+(c) Use the Software for any unlawful purpose or in any manner that could harm or adversely affect the Licensor or the Software.
+
+**3. Termination**
+This license will automatically terminate when the plugin is no longer available. The Licensor may terminate this Agreement at any time if the Licensee breaches any term of this Agreement. Upon termination, the Licensee must cease all use of the Software and destroy all copies of the Software in their possession or control.
+
+**4. Ownership**
+The Software is licensed, not sold. The Licensor retains all rights, title, and interest in and to the Software, including all intellectual property rights therein.
+
+**5. No Warranty**
+The Software is provided "as is" without warranty of any kind, either express or implied, including, but not limited to, the implied warranties of merchantability, fitness for a particular purpose, and non-infringement. The Licensor does not warrant that the Software will meet the Licensee's requirements or that the operation of the Software will be uninterrupted or error-free.
+
+**6. Limitation of Liability**
+In no event shall the Licensor be liable for any special, incidental, indirect, or consequential damages whatsoever (including, without limitation, damages for loss of business profits, business interruption, loss of business information, or any other pecuniary loss) arising out of the use of or inability to use the Software, even if the Licensor has been advised of the possibility of such damages.
+
+**7. Governing Law**
+This Agreement shall be governed by and construed in accordance with the laws of the jurisdiction in which the Licensor is located, without regard to its conflict of law principles.
+
+**8. Entire Agreement**
+This Agreement constitutes the entire agreement between the parties with respect to the Software and supersedes all prior or contemporaneous understandings regarding such subject matter. No amendment to or modification of this Agreement will be binding unless in writing and signed by the Licensor.
+
+By downloading, installing, or using the Software, the Licensee acknowledges that they have read this Agreement, understand it, and agree to be bound by its terms.
+
+**Contrato de Licença de Software**
+
+Este Contrato de Licença de Software ("Contrato") é celebrado na data de download ou instalação ("Data de Vigência") entre o licenciante ("Licenciante") e o licenciado ("Licenciado"). Ao baixar, instalar ou usar o software ("Software"), o Licenciado concorda em cumprir os termos deste Contrato.
+
+**1. Concessão de Licença**
+O Licenciante concede ao Licenciado uma licença não exclusiva, intransferível e revogável para usar o Software exclusivamente para fins pessoais ou internos de negócios, e apenas pelo tempo em que o plugin estiver disponível. Esta licença não permite que o Licenciado use o Software para qualquer outro propósito, incluindo exploração comercial.
+
+**2. Restrições**
+O Licenciado não deve:
+(a) Modificar, adaptar, traduzir, realizar engenharia reversa, descompilar, desmontar ou criar trabalhos derivados baseados no Software.
+(b) Alugar, arrendar, emprestar, vender, sublicenciar, ceder, distribuir, publicar ou transferir quaisquer direitos sobre o Software.
+(c) Usar o Software para qualquer propósito ilegal ou de qualquer maneira que possa prejudicar ou afetar negativamente o Licenciante ou o Software.
+
+**3. Rescisão**
+Esta licença será automaticamente rescindida quando o plugin não estiver mais disponível. O Licenciante pode rescindir este Contrato a qualquer momento se o Licenciado violar qualquer termo deste Contrato. Após a rescisão, o Licenciado deve cessar todo o uso do Software e destruir todas as cópias do Software em sua posse ou controle.
+
+**4. Propriedade**
+O Software é licenciado, não vendido. O Licenciante retém todos os direitos, títulos e interesses sobre o Software, incluindo todos os direitos de propriedade intelectual nele contidos.
+
+**5. Sem Garantia**
+O Software é fornecido "como está" sem garantia de qualquer tipo, expressa ou implícita, incluindo, mas não se limitando a, garantias implícitas de comercialização, adequação a um propósito específico e não violação. O Licenciante não garante que o Software atenderá aos requisitos do Licenciado ou que a operação do Software será ininterrupta ou isenta de erros.
+
+**6. Limitação de Responsabilidade**
+Em nenhuma hipótese o Licenciante será responsável por quaisquer danos especiais, incidentais, indiretos ou consequenciais de qualquer tipo (incluindo, sem limitação, danos por perda de lucros comerciais, interrupção de negócios, perda de informações comerciais ou qualquer outra perda pecuniária) decorrentes do uso ou incapacidade de uso do Software, mesmo que o Licenciante tenha sido avisado da possibilidade de tais danos.
+
+**7. Lei Aplicável**
+Este Contrato será regido e interpretado de acordo com as leis da jurisdição onde o Licenciante está localizado, sem considerar seus princípios de conflito de leis.
+
+**8. Acordo Integral**
+Este Contrato constitui o acordo integral entre as partes com relação ao Software e substitui todas as compreensões anteriores ou contemporâneas sobre tal matéria. Nenhuma emenda ou modificação deste Contrato será vinculativa, a menos que por escrito e assinada pelo Licenciante.
+
+Ao baixar, instalar ou usar o Software, o Licenciado reconhece que leu este Contrato, compreende-o e concorda em cumprir seus termos.

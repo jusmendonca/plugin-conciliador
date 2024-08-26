@@ -1,0 +1,286 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 7px; /* Reduzido de 10px */
+  min-width: 280px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #007bff;
+  padding: 5px; /* Reduzido de 5px */
+  border-radius: 7px;
+  margin-bottom: 8px; /* Reduzido de 10px */
+}
+
+.header h1 {
+  color: #fff;
+  margin-left: 8px; /* Reduzido de 10px */
+  font-size: 1.1em; /* Reduzido de 1.2em */
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+.config-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px; 
+}
+
+.config-button {
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 13px; 
+  cursor: pointer;
+  margin-right: 8px; 
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 4px;
+  font-size: 1.0em;
+  text-align: left;
+}
+
+#fileName {
+  margin-top: 1px; /* Reduzido de 2px */
+  margin-bottom: 4px; /* Reduzido de 5px */
+  color: #555;
+}
+
+label {
+  display: block;
+  margin-bottom: 4px; /* Reduzido de 5px */
+}
+
+.form-group {
+  margin-bottom: 4px; /* Reduzido de 5px */
+}
+
+.form-group select {
+  width: 100%;
+  padding: 6px; /* Reduzido de 8px */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+#customPathGroup {
+  margin-top: 5px;
+}
+
+#customPathInput {
+  width: calc(100% - 20px);
+  padding: 6px;
+  margin-bottom: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+}
+
+select {
+  width: 100%;
+  padding: 6px; /* Reduzido de 8px */
+  margin-bottom: 8px; /* Reduzido de 10px */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+input[type="text"], input[type="number"] {
+  width: calc(100% - 16px); /* Reduzido de 20px */
+  padding: 6px; /* Reduzido de 8px */
+  margin-bottom: 8px; /* Reduzido de 10px */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.button-container {
+  display: flex;
+  gap: 8px; /* Reduzido de 10px */
+  margin-top: 8px; /* Reduzido de 10px */
+  margin-bottom: 8px; /* Reduzido de 10px */
+}
+
+.button-container button {
+  flex: 1;
+  padding: 8px; /* Reduzido de 10px */
+  font-size: 10px; /* Reduzido de 12px */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#processButton {
+  background-color: #28a745;
+  color: #fff;
+  font-size: 12px; /* Reduzido de 12px */
+}
+
+#processButton:hover {
+  background-color: #218838;
+}
+
+#generateHtmlButton {
+  background-color: #28a745;
+  color: #fff;
+  font-size: 12px; /* Reduzido de 12px */
+}
+
+#generateHtmlButton:hover {
+  background-color: #218838;
+}
+
+#status {
+  margin-top: 8px; /* Reduzido de 10px */
+  color: #007bff;
+}
+
+.result-box {
+  margin-top: 8px; /* Reduzido de 10px */
+  padding: 8px; /* Reduzido de 10px */
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  white-space: pre-wrap;
+}
+
+.result-box p {
+  display: flex;
+  justify-content: space-between;
+}
+
+.result-box p span {
+  flex: 1;
+}
+
+.result-box.modified {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+dialog {
+  font-family: Arial, sans-serif;
+  border: none;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 350px;
+  max-width: 90%;
+  background-color: #f9f9f9;
+}
+
+/* Estilo do título do diálogo */
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Estilo do formulário dentro do diálogo */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #333;
+}
+
+form input[type="text"] {
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+form button {
+  padding: 8px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+form button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+}
+
+form button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+form button[type="button"] {
+  background-color: #ccc;
+  color: #333;
+}
+
+form button[type="button"]:hover {
+  background-color: #999;
+}
+
+/* Estilo da chave on-off compacta */
+.switch-small {
+  position: relative;
+  display: inline-block;
+  width: 28px;
+  height: 16px;
+}
+
+.switch-small input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider-small {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 16px;
+}
+
+.slider-small:before {
+  position: absolute;
+  content: "";
+  height: 10px;
+  width: 10px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider-small {
+  background-color: #007bff;
+}
+
+input:checked + .slider-small:before {
+  transform: translateX(12px);
+}
+
+/* Estilo adicional para garantir que o layout fique correto */
+label[for="honorariosInput"] {
+  margin-left: 10px;
+}
+

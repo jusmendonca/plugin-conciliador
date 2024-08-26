@@ -1,60 +1,98 @@
 # [![icon](/icon128.png)](https://chromewebstore.google.com/detail/conciliador-previdenciari/hajbappncpapkfndnlenmlcfemodffpd?pli=1)
 
-# Extensão do Chrome - Conciliador Previdenciário
+# Conciliador Previdenciário
 
-A Extensão do Chrome Conciliador Previdenciário é uma ferramenta projetada para auxiliar no cálculo de valores de acordos judiciais e extrajudiciais, a partir de arquivos JSON contendo dados relevantes para a conciliação.
+A Extensão do Chrome Conciliador Previdenciário auxilia nos cálculos de valores atrasados de benefícios previdenciários e assistenciais no valor de um salário-mínimo mensal.
 
-## Funcionalidades Principais
+::: {.callout-important appearance="minimal"}
+Novidades da versão 2.1 (disponível em 25/08/2024)
 
--   **Escolha de Benefício:** Permite ao usuário selecionar o benefício (atualmente, benefícios no valor do salário-mínimo ou BPC-LOAS) a partir de uma caixa de seleção. O plugin carrega os dados do arquivo JSON correspondente ou de um arquivo personalizado, se assim configurado.
+-   Correção do bug do primeiro carregamento;
 
--   **Escolha de Formato de Saída (Estilo de cópia):** Oferece ao usuário a opção de escolher o conteúdo a ser copiado para a área de transferência (parâmetros pré-formatados, parâmetros sem formatação ou apenas o valor total da proposta).
+-   Desnecessidade de clicar em "CALCULAR E COPIAR" antes de gerar o resumo HTML;
 
--   **Entrada de DIP e DIB:** Solicita ao usuário inserir a Data de Início do Pagamento (DIP) e a Data de Início do Benefício (DIB) no formato DD/MM/AAAA para realizar a busca correspondente nos dados carregados. No momento, os dados são limitados às seguintes datas: DIB a partir de 01/01/2018 e DIP no primeiro dia do mês atual e dos dois últimos meses.
+-   Inserção de opção para incluir honorários advocatícios;
 
--   **Percentual de acordo:** Após selecionar o benefício e inserir a DIP e a DIB, escolha o percentual de acordo a ser aplicado.
+-   Mudança na redação dos resultados, para adequar-se, também, ao uso em execução invertida ("valor total do acordo" por "valor devido");
 
--   **Processamento de Dados:** Após selecionar o benefício e inserir a DIP e a DIB e o percentual, o sistema calcula o valor do acordo e exibe os resultados na interface.
+-   Formatação automática do número do processo (padrão CNJ) no formulário ativado pelo botão GERAR RESUMO HTML;
 
--   **Cópia para Área de Transferência:** O plugin copia as informações correspondentes para a área de transferência, permitindo fácil inserção em documentos externos.
+-   Inclusão do nome da parte como um campo obrigatório para geração do resumo HTML.
+:::
 
--   **Geração de Resumo em HTML:** Permite a criação de um arquivo HTML com o resumo dos cálculos, que inclui o número do processo e o nome do benefício. O usuário deve fornecer o número do processo (20 dígitos) e o nome do benefício para gerar o resumo.
+## Pré-requisitos
 
--   **Configurações Personalizadas:** Possibilidade de salvar configurações personalizadas, como a origem dos dados e arquivos JSON específicos para diferentes benefícios, que são carregados automaticamente em usos futuros. Veja abaixo o formato dos arquivos aceitos.
+-   **Google Chrome**
 
--   **Armazenamento Local:** Utiliza o armazenamento local do navegador para salvar as últimas DIP, DIB, percentual de acordo, benefício selecionado, e estilo de cópia, proporcionando uma experiência contínua mesmo após o fechamento da extensão.
+## Passos para Instalação
 
-## Instalação
+1.  **Acesse a Chrome Web Store**: Visite o [link da extensão](https://chrome.google.com/webstore) na Chrome Web Store.
+2.  **Instale a Extensão**: Clique no botão "Usar no Chrome" e siga as instruções para adicionar a extensão ao seu navegador.
+3.  **Fixar na Barra de Extensões**: Para facilitar o acesso, fixe o plugin na barra de extensões do Chrome.
 
-### Pré-requisitos
+## Uso do Plugin
 
--   Google Chrome
+### 1. Escolher Benefício
 
-### Passos
+Selecione o benefício desejado na caixa de seleção. As opções são:
 
-1.  Acesse o [link da extensão](https://chromewebstore.google.com/detail/conciliador-previdenciari/hajbappncpapkfndnlenmlcfemodffpd?pli=1) na Chrome Web Store.
-2.  Clique no botão "Usar no Chrome".
-3.  Para melhorar a experiência de uso, fixe o plugin na barra de extensões do seu navegador.
+-   **RURAL**: Benefício previdenciário no valor do salário-mínimo.
+-   **BPC-LOAS**: Benefício de Prestação Continuada (Assistencial).
 
-## Uso
+> **Nota**: O plugin carregará automaticamente os dados do arquivo JSON correspondente, que deve estar na pasta `json`.
 
-1.  **Escolher Benefício:** Selecione o benefício (RURAL ou BPC-LOAS) na caixa de seleção. O plugin carregará automaticamente os dados do arquivo JSON correspondente ou do arquivo personalizado, se configurado.
+### 2. Inserir DIP e DIB
 
-2.  **Inserir DIP e DIB:** Digite a Data de Início do Pagamento (DIP) e a Data de Início do Benefício (DIB) no formato DD/MM/AAAA nas caixas de entrada.
+DIP (Data de Início do Pagamento) e DIB (Data de Início do Benefício) devem ser inseridos no formato `DD/MM/AAAA` nas caixas de entrada fornecidas.
 
-3.  **Escolher Estilo de Cópia:** Selecione o formato de saída desejado na caixa de seleção.
+### 3. Escolher Estilo de Cópia
 
-4.  **Calcular e Copiar:** Clique no botão "CALCULAR E COPIAR" para iniciar o processamento. Os resultados serão exibidos na caixa do plugin e copiados para a área de transferência, conforme os parâmetros escolhidos.
+Na caixa de seleção, escolha o formato de saída desejado para o cálculo:
 
-5.  **Gerar Resumo HTML:** Clique no botão "GERAR RESUMO HTML" para criar um arquivo HTML com o resumo dos cálculos. Para usar esta opção, o usuário deverá digitar um número de processo judicial, com 20 dígitos (padrão CNJ) e o nome do benefício a ser incluído no resumo.
+-   **Valor total da proposta (atrasados)**
+-   **Parâmetros sem formação**
+-   **Parâmetros pré-formatados**
 
-6.  **Configurar Origem dos Dados:** Acesse a página de configurações clicando no ícone de engrenagem na interface principal do plugin para escolher entre usar os dados padrão ou personalizar os arquivos JSON a serem utilizados. Atenção: o ícone da engrenagem está oculto. Passe o mouse ao lado do título para vê-lo.
+### 4. Escolher o percentual de acordo
 
-    ![config](image.png)
+Trata-se do percentual a ser aplicado sobre o valor do cálculo. Por exemplo, se escolhido 90%, será descontado o percentual de 10% do valor devido. Útil para propostas de acordo.
 
-    -   **Origem Padrão:** Selecione a opção "Padrão (recomendada)" para usar os arquivos JSON localizados na pasta `json` do plugin.
-    -   **Origem Personalizada:** Selecione a opção "Personalizada" para carregar arquivos JSON de caminhos personalizados. Você pode selecionar os arquivos JSON específicos para os benefícios RURAL e BPC-LOAS. Os arquivos devem seguir a mesma estrutura padrão descrita abaixo.
-    -   **Armazenamento Automático:** As últimas DIP, DIB, percentual de acordo, benefício selecionado, e estilo de cópia são armazenados automaticamente para facilitar o uso futuro. Dessa maneira, não é necessário escolher todos os parâmetros entre as sessões de uso.
+### 5. Habilitar cálculo de honorários advocatícios.
+
+Se for escolhida a opção, digitar o percentual de honorários a ser aplicado sobre a proposta.
+
+### 6. Calcular e Copiar
+
+Clique no Botão **"CALCULAR E COPIAR"**:
+
+-   O plugin processará as informações inseridas (DIP, DIB, Benefício selecionado) e aplicará o percentual de acordo.
+-   O resultado será exibido na interface do plugin e automaticamente copiado para a área de transferência, bastando ao usuário colar o texto no documento de interesse.
+
+### 7. Gerar Resumo HTML
+
+Clique no Botão **"GERAR RESUMO HTML"**:
+
+-   Esta função permite criar um arquivo HTML com o resumo dos cálculos, muito útil para anexar a petições.
+
+#### Inserir Informações Adicionais:
+
+-   **Número do Processo**: Será solicitado que você insira o número do processo judicial (20 dígitos, padrão CNJ).
+-   **Nome do Interessado**: Digite o nome do interessado.
+-   **Nome do Benefício**: Digite o nome do benefício.
+
+#### Geração do Arquivo HTML:
+
+-   Após inserir todas as informações, clique em **"OK"**.
+-   O plugin gerará o arquivo HTML com todos os detalhes inseridos e realizará o download automaticamente.
+-   O arquivo HTML incluirá informações como DIP, DIB, RMI, o valor devido, composição dos valores, e, se aplicável, o cálculo dos honorários advocatícios.
+
+## **Configurações adicionais**
+
+Acesse a página de configurações clicando no ícone de engrenagem na interface principal do plugin para escolher entre usar os dados padrão ou personalizar os arquivos JSON a serem utilizados.
+
+::: {.callout-tip appearance="minimal"}
+O ícone da engrenagem está oculto. Passe o mouse ao lado do título "Conciliador Previdenciário" para vê-lo.
+:::
 
 ## Estrutura dos Arquivos JSON Aceitos
 

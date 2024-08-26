@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Conciliador Previdenciário 2.0</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .header img {
+            margin-right: 10px;
+        }
+
+        .header h1 {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .info-button {
+            background-color: transparent;
+            border: none;
+            color: #007bff;
+            cursor: pointer;
+            font-size: 1.5em;
+            position: absolute;
+            left: 0;
+        }
+
+        .info-button:hover {
+            color: #0056b3;
+        }
+
+        .config-button {
+            background-color: transparent;
+            border: none;
+            color: #007bff;
+            cursor: pointer;
+            font-size: 1.5em;
+            position: absolute;
+            right: 0;
+        }
+
+        .config-button:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="images/icon48.png" alt="Icon" class="icon">
+        <h1>Conciliador Previdenciário</h1>
+        <button id="openConfigButton" class="config-button">
+            <i class="fa-solid fa-gear"></i>
+        </button>
+    </div>
+
+    <div class="form-group">
+        <label for="benefitSelect">Tipo de benefício:</label>
+        <select id="benefitSelect">
+            <option value="" selected disabled>Selecione um benefício</option>
+            <option value="RURAL">Previdenciário no valor do salário-mínimo</option>
+            <option value="BPC-LOAS">Assistencial (BPC-LOAS)</option>
+        </select>        
+    </div>
+    <p id="fileName">Dados carregados na memória:</p>
+    
+    <label for="copyOption">Estilo de cópia:</label>
+    <select id="copyOption">
+        <option value="totalValue">valor total da proposta (atrasados)</option>
+        <option value="concise">parâmetros sem formatação</option>
+        <option value="full">parâmetros pré-formatados</option>
+    </select>
+    <label for="dipInput">DIP (Data de Início do Pagamento):</label>
+    <input type="text" id="dipInput">
+    
+    <label for="dibInput">DIB (Data de Início do Benefício):</label>
+    <input type="text" id="dibInput">
+    
+    <div style="display: flex; justify-content: space-between;">
+        <div style="flex: 1; margin-right: 10px;">
+            <label for="percentualInput">Percentual de acordo (%):</label>
+            <input type="number" id="percentualInput" min="0" max="100" step="0.01" value="0">
+        </div>
+        <div style="flex: 1; display: flex; flex-direction: column;">
+            <div style="display: flex; align-items: center;">
+                <label class="switch-small">
+                    <input type="checkbox" id="honorariosToggle">
+                    <span class="slider-small round"></span>
+                </label>
+                <label for="honorariosInput" style="margin-left: 10px;">Honorários (%):</label>
+            </div>
+            <input type="number" id="honorariosInput" min="0" max="100" step="0.01" value="0" disabled style="margin-top: 10px; flex: 1;">
+        </div>        
+    </div>       
+
+    <div class="button-container">
+        <button id="processButton" disabled>CALCULAR E COPIAR</button>
+        <button id="generateHtmlButton">GERAR RESUMO HTML</button>
+    </div>
+    
+    <p id="status"></p>
+    <div id="result" class="result-box"></div> 
+
+    <script src="popup.js"></script>
+</body>
+</html>
+
+
+
+
+

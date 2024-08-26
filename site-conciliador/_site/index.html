@@ -156,56 +156,120 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="icon" class="level1">
 <h1><a href="https://chromewebstore.google.com/detail/conciliador-previdenciari/hajbappncpapkfndnlenmlcfemodffpd?pli=1"><img src=".\icon128.png" class="img-fluid" alt="icon"></a></h1>
 </section>
-<section id="extensão-do-chrome---conciliador-previdenciário" class="level1">
-<h1>Extensão do Chrome - Conciliador Previdenciário</h1>
-<p>A Extensão do Chrome Conciliador Previdenciário é uma ferramenta projetada para auxiliar no cálculo de valores de acordos judiciais e extrajudiciais, a partir de arquivos JSON contendo dados relevantes para a conciliação.</p>
-<section id="funcionalidades-principais" class="level2">
-<h2 class="anchored" data-anchor-id="funcionalidades-principais">Funcionalidades Principais</h2>
+<section id="conciliador-previdenciário" class="level1">
+<h1>Conciliador Previdenciário</h1>
+<p>A Extensão do Chrome Conciliador Previdenciário auxilia nos cálculos de valores atrasados de benefícios previdenciários e assistenciais no valor de um salário-mínimo mensal.</p>
+<div class="callout callout-style-simple callout-important no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Novidades da versão 2.1 (disponível em 25/08/2024)</p>
 <ul>
-<li><p><strong>Escolha de Benefício:</strong> Permite ao usuário selecionar o benefício (atualmente, benefícios no valor do salário-mínimo ou BPC-LOAS) a partir de uma caixa de seleção. O plugin carrega os dados do arquivo JSON correspondente ou de um arquivo personalizado, se assim configurado.</p></li>
-<li><p><strong>Escolha de Formato de Saída (Estilo de cópia):</strong> Oferece ao usuário a opção de escolher o conteúdo a ser copiado para a área de transferência (parâmetros pré-formatados, parâmetros sem formatação ou apenas o valor total da proposta).</p></li>
-<li><p><strong>Entrada de DIP e DIB:</strong> Solicita ao usuário inserir a Data de Início do Pagamento (DIP) e a Data de Início do Benefício (DIB) no formato DD/MM/AAAA para realizar a busca correspondente nos dados carregados. No momento, os dados são limitados às seguintes datas: DIB a partir de 01/01/2018 e DIP no primeiro dia do mês atual e dos dois últimos meses.</p></li>
-<li><p><strong>Percentual de acordo:</strong> Após selecionar o benefício e inserir a DIP e a DIB, escolha o percentual de acordo a ser aplicado.</p></li>
-<li><p><strong>Processamento de Dados:</strong> Após selecionar o benefício e inserir a DIP e a DIB e o percentual, o sistema calcula o valor do acordo e exibe os resultados na interface.</p></li>
-<li><p><strong>Cópia para Área de Transferência:</strong> O plugin copia as informações correspondentes para a área de transferência, permitindo fácil inserção em documentos externos.</p></li>
-<li><p><strong>Geração de Resumo em HTML:</strong> Permite a criação de um arquivo HTML com o resumo dos cálculos, que inclui o número do processo e o nome do benefício. O usuário deve fornecer o número do processo (20 dígitos) e o nome do benefício para gerar o resumo.</p></li>
-<li><p><strong>Configurações Personalizadas:</strong> Possibilidade de salvar configurações personalizadas, como a origem dos dados e arquivos JSON específicos para diferentes benefícios, que são carregados automaticamente em usos futuros. Veja abaixo o formato dos arquivos aceitos.</p></li>
-<li><p><strong>Armazenamento Local:</strong> Utiliza o armazenamento local do navegador para salvar as últimas DIP, DIB, percentual de acordo, benefício selecionado, e estilo de cópia, proporcionando uma experiência contínua mesmo após o fechamento da extensão.</p></li>
+<li><p>Correção do bug do primeiro carregamento;</p></li>
+<li><p>Desnecessidade de clicar em “CALCULAR E COPIAR” antes de gerar o resumo HTML;</p></li>
+<li><p>Inserção de opção para incluir honorários advocatícios;</p></li>
+<li><p>Mudança na redação dos resultados, para adequar-se, também, ao uso em execução invertida (“valor total do acordo” por “valor devido”);</p></li>
+<li><p>Formatação automática do número do processo (padrão CNJ) no formulário ativado pelo botão GERAR RESUMO HTML;</p></li>
+<li><p>Inclusão do nome da parte como um campo obrigatório para geração do resumo HTML.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<section id="pré-requisitos" class="level2">
+<h2 class="anchored" data-anchor-id="pré-requisitos">Pré-requisitos</h2>
+<ul>
+<li><strong>Google Chrome</strong></li>
 </ul>
 </section>
-<section id="instalação" class="level2">
-<h2 class="anchored" data-anchor-id="instalação">Instalação</h2>
-<section id="pré-requisitos" class="level3">
-<h3 class="anchored" data-anchor-id="pré-requisitos">Pré-requisitos</h3>
+<section id="passos-para-instalação" class="level2">
+<h2 class="anchored" data-anchor-id="passos-para-instalação">Passos para Instalação</h2>
+<ol type="1">
+<li><strong>Acesse a Chrome Web Store</strong>: Visite o <a href="https://chrome.google.com/webstore">link da extensão</a> na Chrome Web Store.</li>
+<li><strong>Instale a Extensão</strong>: Clique no botão “Usar no Chrome” e siga as instruções para adicionar a extensão ao seu navegador.</li>
+<li><strong>Fixar na Barra de Extensões</strong>: Para facilitar o acesso, fixe o plugin na barra de extensões do Chrome.</li>
+</ol>
+</section>
+<section id="uso-do-plugin" class="level2">
+<h2 class="anchored" data-anchor-id="uso-do-plugin">Uso do Plugin</h2>
+<section id="escolher-benefício" class="level3">
+<h3 class="anchored" data-anchor-id="escolher-benefício">1. Escolher Benefício</h3>
+<p>Selecione o benefício desejado na caixa de seleção. As opções são:</p>
 <ul>
-<li>Google Chrome</li>
+<li><strong>RURAL</strong>: Benefício previdenciário no valor do salário-mínimo.</li>
+<li><strong>BPC-LOAS</strong>: Benefício de Prestação Continuada (Assistencial).</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>Nota</strong>: O plugin carregará automaticamente os dados do arquivo JSON correspondente, que deve estar na pasta <code>json</code>.</p>
+</blockquote>
+</section>
+<section id="inserir-dip-e-dib" class="level3">
+<h3 class="anchored" data-anchor-id="inserir-dip-e-dib">2. Inserir DIP e DIB</h3>
+<p>DIP (Data de Início do Pagamento) e DIB (Data de Início do Benefício) devem ser inseridos no formato <code>DD/MM/AAAA</code> nas caixas de entrada fornecidas.</p>
+</section>
+<section id="escolher-estilo-de-cópia" class="level3">
+<h3 class="anchored" data-anchor-id="escolher-estilo-de-cópia">3. Escolher Estilo de Cópia</h3>
+<p>Na caixa de seleção, escolha o formato de saída desejado para o cálculo:</p>
+<ul>
+<li><strong>Valor total da proposta (atrasados)</strong></li>
+<li><strong>Parâmetros sem formação</strong></li>
+<li><strong>Parâmetros pré-formatados</strong></li>
 </ul>
 </section>
-<section id="passos" class="level3">
-<h3 class="anchored" data-anchor-id="passos">Passos</h3>
-<ol type="1">
-<li>Acesse o <a href="https://chromewebstore.google.com/detail/conciliador-previdenciari/hajbappncpapkfndnlenmlcfemodffpd?pli=1">link da extensão</a> na Chrome Web Store.</li>
-<li>Clique no botão “Usar no Chrome”.</li>
-<li>Para melhorar a experiência de uso, fixe o plugin na barra de extensões do seu navegador.</li>
-</ol>
+<section id="escolher-o-percentual-de-acordo" class="level3">
+<h3 class="anchored" data-anchor-id="escolher-o-percentual-de-acordo">4. Escolher o percentual de acordo</h3>
+<p>Trata-se do percentual a ser aplicado sobre o valor do cálculo. Por exemplo, se escolhido 90%, será descontado o percentual de 10% do valor devido. Útil para propostas de acordo.</p>
 </section>
+<section id="habilitar-cálculo-de-honorários-advocatícios." class="level3">
+<h3 class="anchored" data-anchor-id="habilitar-cálculo-de-honorários-advocatícios.">5. Habilitar cálculo de honorários advocatícios.</h3>
+<p>Se for escolhida a opção, digitar o percentual de honorários a ser aplicado sobre a proposta.</p>
 </section>
-<section id="uso" class="level2">
-<h2 class="anchored" data-anchor-id="uso">Uso</h2>
-<ol type="1">
-<li><p><strong>Escolher Benefício:</strong> Selecione o benefício (RURAL ou BPC-LOAS) na caixa de seleção. O plugin carregará automaticamente os dados do arquivo JSON correspondente ou do arquivo personalizado, se configurado.</p></li>
-<li><p><strong>Inserir DIP e DIB:</strong> Digite a Data de Início do Pagamento (DIP) e a Data de Início do Benefício (DIB) no formato DD/MM/AAAA nas caixas de entrada.</p></li>
-<li><p><strong>Escolher Estilo de Cópia:</strong> Selecione o formato de saída desejado na caixa de seleção.</p></li>
-<li><p><strong>Calcular e Copiar:</strong> Clique no botão “CALCULAR E COPIAR” para iniciar o processamento. Os resultados serão exibidos na caixa do plugin e copiados para a área de transferência, conforme os parâmetros escolhidos.</p></li>
-<li><p><strong>Gerar Resumo HTML:</strong> Clique no botão “GERAR RESUMO HTML” para criar um arquivo HTML com o resumo dos cálculos. Para usar esta opção, o usuário deverá digitar um número de processo judicial, com 20 dígitos (padrão CNJ) e o nome do benefício a ser incluído no resumo.</p></li>
-<li><p><strong>Configurar Origem dos Dados:</strong> Acesse a página de configurações clicando no ícone de engrenagem na interface principal do plugin para escolher entre usar os dados padrão ou personalizar os arquivos JSON a serem utilizados. Atenção: o ícone da engrenagem está oculto. Passe o mouse ao lado do título para vê-lo.</p>
-<img src="image.png" class="img-fluid" alt="config">
+<section id="calcular-e-copiar" class="level3">
+<h3 class="anchored" data-anchor-id="calcular-e-copiar">6. Calcular e Copiar</h3>
+<p>Clique no Botão <strong>“CALCULAR E COPIAR”</strong>:</p>
 <ul>
-<li><strong>Origem Padrão:</strong> Selecione a opção “Padrão (recomendada)” para usar os arquivos JSON localizados na pasta <code>json</code> do plugin.</li>
-<li><strong>Origem Personalizada:</strong> Selecione a opção “Personalizada” para carregar arquivos JSON de caminhos personalizados. Você pode selecionar os arquivos JSON específicos para os benefícios RURAL e BPC-LOAS. Os arquivos devem seguir a mesma estrutura padrão descrita abaixo.</li>
-<li><strong>Armazenamento Automático:</strong> As últimas DIP, DIB, percentual de acordo, benefício selecionado, e estilo de cópia são armazenados automaticamente para facilitar o uso futuro. Dessa maneira, não é necessário escolher todos os parâmetros entre as sessões de uso.</li>
-</ul></li>
-</ol>
+<li>O plugin processará as informações inseridas (DIP, DIB, Benefício selecionado) e aplicará o percentual de acordo.</li>
+<li>O resultado será exibido na interface do plugin e automaticamente copiado para a área de transferência, bastando ao usuário colar o texto no documento de interesse.</li>
+</ul>
+</section>
+<section id="gerar-resumo-html" class="level3">
+<h3 class="anchored" data-anchor-id="gerar-resumo-html">7. Gerar Resumo HTML</h3>
+<p>Clique no Botão <strong>“GERAR RESUMO HTML”</strong>:</p>
+<ul>
+<li>Esta função permite criar um arquivo HTML com o resumo dos cálculos, muito útil para anexar a petições.</li>
+</ul>
+<section id="inserir-informações-adicionais" class="level4">
+<h4 class="anchored" data-anchor-id="inserir-informações-adicionais">Inserir Informações Adicionais:</h4>
+<ul>
+<li><strong>Número do Processo</strong>: Será solicitado que você insira o número do processo judicial (20 dígitos, padrão CNJ).</li>
+<li><strong>Nome do Interessado</strong>: Digite o nome do interessado.</li>
+<li><strong>Nome do Benefício</strong>: Digite o nome do benefício.</li>
+</ul>
+</section>
+<section id="geração-do-arquivo-html" class="level4">
+<h4 class="anchored" data-anchor-id="geração-do-arquivo-html">Geração do Arquivo HTML:</h4>
+<ul>
+<li>Após inserir todas as informações, clique em <strong>“OK”</strong>.</li>
+<li>O plugin gerará o arquivo HTML com todos os detalhes inseridos e realizará o download automaticamente.</li>
+<li>O arquivo HTML incluirá informações como DIP, DIB, RMI, o valor devido, composição dos valores, e, se aplicável, o cálculo dos honorários advocatícios.</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="configurações-adicionais" class="level2">
+<h2 class="anchored" data-anchor-id="configurações-adicionais"><strong>Configurações adicionais</strong></h2>
+<p>Acesse a página de configurações clicando no ícone de engrenagem na interface principal do plugin para escolher entre usar os dados padrão ou personalizar os arquivos JSON a serem utilizados.</p>
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>O ícone da engrenagem está oculto. Passe o mouse ao lado do título “Conciliador Previdenciário” para vê-lo.</p>
+</div>
+</div>
+</div>
 </section>
 <section id="estrutura-dos-arquivos-json-aceitos" class="level2">
 <h2 class="anchored" data-anchor-id="estrutura-dos-arquivos-json-aceitos">Estrutura dos Arquivos JSON Aceitos</h2>
