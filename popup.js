@@ -67,7 +67,6 @@ document.addEventListener('DOMContentLoaded', function() {
         event.target.value = input;
     }
     
-    
     function handleBenefitSelect() {
         const benefit = benefitSelect.value;
         const dataSource = getDataPath();
@@ -84,29 +83,52 @@ document.addEventListener('DOMContentLoaded', function() {
                 fileNameDisplay.textContent = `Erro: Arquivo personalizado não encontrado para ${benefit}`;
             }
         } else {
-            fetch(`${dataSource}/${benefit}.json`)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    return response.json();
-                })
+            // Atualização para carregar CSV em vez de JSON
+            loadCsvData(`${dataSource}/${benefit}.csv`)
                 .then(data => {
-                    selectedBenefitData = data.dados;
-                    fileNameDisplay.textContent = `Dados carregados de: ${dataSource}/${benefit}.json`;
-                    storeData();
-                    updateButtonState();
-                    resultDiv.classList.add('modified');
-                })
-                .catch(error => {
-                    console.error('Erro ao carregar o arquivo JSON:', error);
-                    fileNameDisplay.textContent = 'Erro ao carregar o arquivo JSON';
+                    if (data) {
+                        selectedBenefitData = data;
+                        fileNameDisplay.textContent = `Dados carregados de: ${dataSource}/${benefit}.csv`;
+                        storeData();
+                        updateButtonState();
+                        resultDiv.classList.add('modified');
+                    }
                 });
         }
     }
 
+    function loadCsvData(url) {
+        return fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(csvText => parseCsv(csvText)) // Chama a função parseCsv atualizada
+            .catch(error => {
+                console.error('Erro ao carregar o arquivo CSV:', error);
+                fileNameDisplay.textContent = 'Erro ao carregar o arquivo CSV';
+                return null;
+            });
+    }    
+
+    function parseCsv(csvText) {
+        const lines = csvText.trim().split('\n');
+        const headers = lines[0].split(','); // Usando vírgula como delimitador
+        const data = lines.slice(1).map(line => {
+            const values = line.split(',');
+            const row = {};
+            headers.forEach((header, index) => {
+                row[header.trim().toLowerCase()] = values[index]?.trim(); // Normaliza para minúsculas e remove espaços
+            });
+            return row;
+        });
+        return data;
+    }    
+
     function getDataPath() {
-        return localStorage.getItem('dataSourceSelect') || 'json';
+        return localStorage.getItem('dataSourceSelect') || 'csv';
     }
 
     function handleInputChange() {
@@ -204,10 +226,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const dib = parseDate(dibStr);
         const percentual = parseFloat(percentualInput.value) / 100;
         const honorariosPercentual = honorariosToggle.checked ? parseFloat(honorariosInput.value) / 100 : 0;
-
+    
         try {
             const result = findDataByDipDib(selectedBenefitData, dip, dib);
-
+    
             if (result) {
                 if (!result.originalValues) {
                     result.originalValues = { ...result };
@@ -215,11 +237,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 result.v_ant = result.originalValues.v_ant;
                 result.v_atual = result.originalValues.v_atual;
                 result.soma = result.originalValues.soma;
-
+    
+                // Atualização para definir o RMI como a RM correspondente à DIB
+                result.rmi = result['rm']; // Use o campo correto para atribuir o valor de RM
+    
                 applyPercentual(result, percentual);
-
+    
                 const honorarios = result.soma * honorariosPercentual;
-
+    
                 const selectedOption = copyOption.value;
                 let textToCopy = '';
                 let textToDisplay = '';
@@ -252,28 +277,27 @@ document.addEventListener('DOMContentLoaded', function() {
             showMessage(`Erro ao processar os dados: ${error}`);
         }
     }
-
+    
     async function generateHtmlFile() {
-        // Solicita as informações do usuário em uma única caixa de diálogo
         const userDetails = await promptUserForDetails();
         if (!userDetails) {
             showMessage("A operação foi cancelada.");
             return;
         }
-
+    
         const { numeroProcesso, nomeInteressado, nomeBeneficio } = userDetails;
-
+    
         if (!validateProcessNumber(numeroProcesso)) {
             showMessage("Número do processo inválido ou não informado.");
             return;
         }
-
+    
         const formattedProcessNumber = formatProcessNumber(numeroProcesso);
-
+    
         try {
             // Carrega os dados necessários para gerar o HTML
             const { dipStr, dibStr, result, percentual, honorariosPercentual, honorarios } = await loadDataForHtmlGeneration();
-
+    
             // Gera o conteúdo HTML
             const htmlContent = generateHtmlContent(result, percentual, formattedProcessNumber, nomeInteressado, nomeBeneficio, dipStr, dibStr, honorarios, honorariosPercentual);
             const blob = new Blob([htmlContent], { type: 'text/html' });
@@ -285,7 +309,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } catch (error) {
             showMessage(`Erro ao gerar o arquivo HTML: ${error.message}`);
         }
-    }
+    }    
 
     async function loadDataForHtmlGeneration() {
         const dipStr = dipInput.value;
@@ -294,10 +318,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const dib = parseDate(dibStr);
         const percentual = parseFloat(percentualInput.value) / 100;
         const honorariosPercentual = honorariosToggle.checked ? parseFloat(honorariosInput.value) / 100 : 0;
-
+    
         try {
             const result = findDataByDipDib(selectedBenefitData, dip, dib);
-
+    
             if (result) {
                 if (!result.originalValues) {
                     result.originalValues = { ...result };
@@ -305,13 +329,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 result.v_ant = result.originalValues.v_ant;
                 result.v_atual = result.originalValues.v_atual;
                 result.soma = result.originalValues.soma;
-
+    
+                // Certifique-se de definir a RMI corretamente a partir do resultado correspondente
+                result.rmi = result['rm'] ? parseFloat(result['rm'].replace(',', '.')) : 0;  // Atribui RMI e converte para número
+    
                 // Aplica o percentual ao valor
                 applyPercentual(result, percentual);
-
+    
                 // Calcula os honorários, se aplicável
                 const honorarios = result.soma * honorariosPercentual;
-
+    
                 // Retorna todos os dados necessários para a geração do HTML
                 return {
                     dipStr,
@@ -327,46 +354,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } catch (error) {
             throw new Error(`Erro ao processar os dados: ${error.message}`);
         }
-    }
-
-    function storeData() {
-        localStorage.setItem('dipInput', dipInput.value);
-        localStorage.setItem('dibInput', dibInput.value);
-        localStorage.setItem('percentualInput', percentualInput.value);
-        localStorage.setItem('copyOption', copyOption.value);
-        localStorage.setItem('benefitSelect', benefitSelect.value);
-    }
-
-    function loadStoredData() {
-        const storedDip = localStorage.getItem('dipInput');
-        const storedDib = localStorage.getItem('dibInput');
-        const storedPercentual = localStorage.getItem('percentualInput');
-        const storedCopyOption = localStorage.getItem('copyOption');
-        const storedBenefit = localStorage.getItem('benefitSelect');
-
-        if (storedDip) {
-            dipInput.value = storedDip;
-        }
-
-        if (storedDib) {
-            dibInput.value = storedDib;
-        }
-
-        if (storedPercentual) {
-            percentualInput.value = storedPercentual;
-        }
-
-        if (storedCopyOption) {
-            copyOption.value = storedCopyOption;
-        }
-
-        if (storedBenefit) {
-            benefitSelect.value = storedBenefit;
-            handleBenefitSelect(); // Carrega os dados do benefício armazenado
-        }
-
-        updateButtonState();
-    }
+    }    
 
     function applyPercentual(result, percentual) {
         result.v_ant *= percentual;
@@ -380,16 +368,34 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function findDataByDipDib(data, dip, dib) {
-        const mesAnoDip = `${('0' + (dip.getMonth() + 1)).slice(-2)}/${dip.getFullYear()}`;
-        const mesAnoDib = `${('0' + (dib.getMonth() + 1)).slice(-2)}/${dib.getFullYear()}`;
+        const dipStr = formatMonthYearForComparison(dip);
+        const dibStr = formatMonthYearForComparison(dib);
+    
         return data.find(row => {
-            const dipDate = new Date(row.dip);
-            const dibDate = new Date(row.dib);
-            const mesAnoRowDip = `${('0' + (dipDate.getMonth() + 1)).slice(-2)}/${dipDate.getFullYear()}`;
-            const mesAnoRowDib = `${('0' + (dibDate.getMonth() + 1)).slice(-2)}/${dibDate.getFullYear()}`;
-            return mesAnoRowDip === mesAnoDip && mesAnoRowDib === mesAnoDib;
+            const dipDateStr = row['dip'] ? formatMonthYear(row['dip']) : '';  // Obtém o mês/ano de 'dip'
+            const dibDateStr = row['dib'] ? formatMonthYear(row['dib']) : '';  // Obtém o mês/ano de 'dib'
+    
+            return dipDateStr === dipStr && dibDateStr === dibStr;
         });
     }
+
+    function formatMonthYear(date) {
+        const [day, month, year] = date.split('/'); // Divide a string da data no formato dd/mm/aaaa
+        return `${month}/${year}`; // Retorna apenas o mês e o ano
+    }
+    
+    function formatMonthYearForComparison(date) {
+        const month = ('0' + (date.getMonth() + 1)).slice(-2);
+        const year = date.getFullYear();
+        return `${month}/${year}`;
+    }
+    
+    function formatDateForComparison(date) {
+        const day = ('0' + date.getDate()).slice(-2);
+        const month = ('0' + (date.getMonth() + 1)).slice(-2);
+        const year = date.getFullYear();
+        return `${day}/${month}/${year}`;
+    }      
 
     function formatResult(result, dip, dib, percentual, honorariosPercentual, honorarios) {
         const { rmi, p_ant, p_atual, v_ant, v_atual, soma } = result;
@@ -402,7 +408,7 @@ DIP: ${formatDate(dip)}
 
 -----------------------------------------------------------------------------------------------------------------------------------------------
 
-RMI: ${rmi}
+RMI: ${formatCurrency(rmi)}
 
 -----------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -421,7 +427,6 @@ COMPOSIÇÃO:
 - Valor do exercício atual: ${formatCurrency(v_atual)}
 
 Honorários Advocatícios: ${formatCurrency(honorarios)} (percentual aplicado: ${honorariosPercentual * 100}%)
-
         `.trim();
     }
 
@@ -430,7 +435,7 @@ Honorários Advocatícios: ${formatCurrency(honorarios)} (percentual aplicado: $
         return `
 DIB: ${formatDate(dib)}
 DIP: ${formatDate(dip)}
-RMI: ${rmi}
+RMI: ${formatCurrency(rmi)}
 VALOR DEVIDO: ${formatCurrency(soma)} (percentual aplicado: ${percentual * 100}%)
 COMPOSIÇÃO:
 - Parcelas de exercícios anteriores: ${p_ant}
@@ -474,111 +479,112 @@ Honorários Advocatícios: ${formatCurrency(honorarios)} (percentual aplicado: $
     }
 
     function formatProcessNumber(processNumber) {
-        const normalizedNumber = processNumber.replace(/\D/g, '');
-
+        const normalizedNumber = processNumber.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
+    
         if (!validateProcessNumber(normalizedNumber)) {
             throw new Error('Número de processo inválido. Deve conter exatamente 20 dígitos.');
         }
-
+    
+        // Formata o número no padrão CNJ: NNNNNNN-DD.AAAA.J.TR.OOOO
         return `${normalizedNumber.slice(0, 7)}-${normalizedNumber.slice(7, 9)}.${normalizedNumber.slice(9, 13)}.${normalizedNumber.slice(13, 14)}.${normalizedNumber.slice(14, 16)}.${normalizedNumber.slice(16)}`;
-    }
-
+    }    
+    
+    
     function generateHtmlContent(result, percentual, numeroProcesso, nomeInteressado, nomeBeneficio, dipStr, dibStr, honorarios, honorariosPercentual) {
         const formattedProcessNumber = numeroProcesso;
         const todayDate = new Date().toLocaleDateString('pt-BR');
-        const { rmi, p_ant, p_atual, v_ant, v_atual, soma } = result;
+        const { rmi, p_ant, p_atual, v_ant, v_atual, soma } = result; // Certifique-se de que 'rmi' é obtido corretamente
         const percentualAplicado = (percentual * 100).toFixed(2);
         const honorariosAplicado = (honorariosPercentual * 100).toFixed(2);
-
+    
         return `
-    <!DOCTYPE html>
-    <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8">
-        <title>Processo: ${formattedProcessNumber}</title>
-        <style>
-            body { font-family: Arial, sans-serif; font-size: 12px; margin: 20px; }
-            h1 { color: #333; }
-            .info { margin-bottom: 20px; }
-            table { width: 100%; border-collapse: collapse; }
-            th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-            th { background-color: #f2f2f2; }
-            .bold { font-weight: bold; }
-        </style>
-    </head>
-    <body>
-        <h1>Resumo do cálculo</h1>
-
-        <p><strong>Processo:</strong> ${formattedProcessNumber}</p>
-        <p><strong>Interessado:</strong> ${nomeInteressado}</p>
-        <p><strong>Nome do Benefício:</strong> ${nomeBeneficio}</p>
-        <p><strong>DIB:</strong> ${dibStr}</p>
-        <p><strong>DIP:</strong> ${dipStr}</p>
-
-        <p><strong>RMI:</strong> ${rmi}</p>
-        <p><strong>VALOR DEVIDO:</strong> <span class="bold">${formatCurrency(soma)}</span></p>
-        <p><strong>Percentual aplicado:</strong> ${percentualAplicado}%</p>
-
-        <p><strong>Composição dos valores para Declaração de Rendimentos Recebidos Acumuladamente:</strong></p>
-        <ul>
-            <li>Parcelas de exercícios anteriores: ${p_ant}</li>
-            <li>Parcelas do exercício atual: ${p_atual}</li>
-            <li>Valor de exercícios anteriores: ${formatCurrency(v_ant)}</li>
-            <li>Valor do exercício atual: ${formatCurrency(v_atual)}</li>
-        </ul>
-
-        <!-- Se os honorários foram aplicados, exibe-os -->
-        ${honorarios > 0 ? `
-        <p><strong>Valor dos Honorários Advocatícios:</strong> <span class="bold">${formatCurrency(honorarios)}</span> (percentual aplicado: ${honorariosAplicado}%)</p>
-        ` : ''}
-
-        <p><strong>Observações:</strong></p>
-        <ol>
-            <li>Índices aplicados: ORTN/OTN/BTN até 02/91 + INPC até 12/92 + IRSM até 02/94 + URV até 06/94 + IPCR até 06/95 + INPC até 04/96 + IGPDI até 09/2006 + IPCA-E + Selic após 12/021.</li>
-            <li>Cálculo limitado ao teto de alçada dos Juizados Especiais Federais.</li>
-            <li>Cálculos atualizados até ${todayDate}.</li>
-        </ol>
-    </body>
-    </html>
+        <!DOCTYPE html>
+        <html lang="pt-BR">
+        <head>
+            <meta charset="UTF-8">
+            <title>Processo: ${formattedProcessNumber}</title>
+            <style>
+                body { font-family: Arial, sans-serif; font-size: 12px; margin: 20px; }
+                h1 { color: #333; }
+                .info { margin-bottom: 20px; }
+                table { width: 100%; border-collapse: collapse; }
+                th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+                th { background-color: #f2f2f2; }
+                .bold { font-weight: bold; }
+            </style>
+        </head>
+        <body>
+            <h1>Resumo do cálculo</h1>
+    
+            <p><strong>Processo:</strong> ${formattedProcessNumber}</p>
+            <p><strong>Interessado:</strong> ${nomeInteressado}</p>
+            <p><strong>Nome do Benefício:</strong> ${nomeBeneficio}</p>
+            <p><strong>DIB:</strong> ${dibStr}</p>
+            <p><strong>DIP:</strong> ${dipStr}</p>
+    
+            <p><strong>RMI:</strong> ${formatCurrency(rmi)}</p> <!-- Usa a função formatCurrency para formatar RMI -->
+            <p><strong>VALOR DEVIDO:</strong> <span class="bold">${formatCurrency(soma)}</span></p>
+            <p><strong>Percentual aplicado:</strong> ${percentualAplicado}%</p>
+    
+            <p><strong>Composição dos valores para Declaração de Rendimentos Recebidos Acumuladamente:</strong></p>
+            <ul>
+                <li>Parcelas de exercícios anteriores: ${p_ant}</li>
+                <li>Parcelas do exercício atual: ${p_atual}</li>
+                <li>Valor de exercícios anteriores: ${formatCurrency(v_ant)}</li>
+                <li>Valor do exercício atual: ${formatCurrency(v_atual)}</li>
+            </ul>
+    
+            ${honorarios > 0 ? `
+            <p><strong>Valor dos Honorários Advocatícios:</strong> <span class="bold">${formatCurrency(honorarios)}</span> (percentual aplicado: ${honorariosAplicado}%)</p>
+            ` : ''}
+    
+            <p><strong>Observações:</strong></p>
+            <ol>
+                <li>Índices aplicados: ORTN/OTN/BTN até 02/91 + INPC até 12/92 + IRSM até 02/94 + URV até 06/94 + IPCR até 06/95 + INPC até 04/96 + IGPDI até 09/2006 + IPCA-E + Selic após 12/021.</li>
+                <li>Cálculo limitado ao teto de alçada dos Juizados Especiais Federais.</li>
+                <li>Cálculos atualizados até ${todayDate}.</li>
+            </ol>
+        </body>
+        </html>
         `;
-    }   
-
-    function storeData() {
-        localStorage.setItem('dipInput', dipInput.value);
-        localStorage.setItem('dibInput', dibInput.value);
-        localStorage.setItem('percentualInput', percentualInput.value);
-        localStorage.setItem('copyOption', copyOption.value);
-        localStorage.setItem('benefitSelect', benefitSelect.value);
-    }
-
-    function loadStoredData() {
-        const storedDip = localStorage.getItem('dipInput');
-        const storedDib = localStorage.getItem('dibInput');
-        const storedPercentual = localStorage.getItem('percentualInput');
-        const storedCopyOption = localStorage.getItem('copyOption');
-        const storedBenefit = localStorage.getItem('benefitSelect');
-
-        if (storedDip) {
-            dipInput.value = storedDip;
+    }     
+    
+        function storeData() {
+            localStorage.setItem('dipInput', dipInput.value);
+            localStorage.setItem('dibInput', dibInput.value);
+            localStorage.setItem('percentualInput', percentualInput.value);
+            localStorage.setItem('copyOption', copyOption.value);
+            localStorage.setItem('benefitSelect', benefitSelect.value);
         }
-
-        if (storedDib) {
-            dibInput.value = storedDib;
+    
+        function loadStoredData() {
+            const storedDip = localStorage.getItem('dipInput');
+            const storedDib = localStorage.getItem('dibInput');
+            const storedPercentual = localStorage.getItem('percentualInput');
+            const storedCopyOption = localStorage.getItem('copyOption');
+            const storedBenefit = localStorage.getItem('benefitSelect');
+    
+            if (storedDip) {
+                dipInput.value = storedDip;
+            }
+    
+            if (storedDib) {
+                dibInput.value = storedDib;
+            }
+    
+            if (storedPercentual) {
+                percentualInput.value = storedPercentual;
+            }
+    
+            if (storedCopyOption) {
+                copyOption.value = storedCopyOption;
+            }
+    
+            if (storedBenefit) {
+                benefitSelect.value = storedBenefit;
+                handleBenefitSelect(); // Carrega os dados do benefício armazenado
+            }
+    
+            updateButtonState();
         }
-
-        if (storedPercentual) {
-            percentualInput.value = storedPercentual;
-        }
-
-        if (storedCopyOption) {
-            copyOption.value = storedCopyOption;
-        }
-
-        if (storedBenefit) {
-            benefitSelect.value = storedBenefit;
-            handleBenefitSelect(); // Carrega os dados do benefício armazenado
-        }
-
-        updateButtonState();
-    }
-});
+    }); 

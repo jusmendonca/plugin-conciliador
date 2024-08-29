@@ -1,10 +1,10 @@
 # Extensão do Chrome - Conciliador Previdenciário
 
-A Extensão do Chrome Conciliador Previdenciário é uma ferramenta projetada para ajudar no cálculo de valores de acordos judiciais e extrajudiciais, a partir de arquivos JSON contendo dados relevantes para a conciliação.
+A Extensão do Chrome Conciliador Previdenciário é uma ferramenta projetada para ajudar no cálculo de valores de acordos judiciais e extrajudiciais, a partir de arquivos CSV contendo dados relevantes para a conciliação.
 
 ## Funcionalidades Principais
 
-- **Escolha de Benefício:** Permite ao usuário selecionar o benefício (atualmente, benefícios rurais no valor do salário-mínimo e ou BPC-LOAS) a partir de uma caixa de seleção. O plugin então carrega os dados do arquivo JSON correspondente.
+- **Escolha de Benefício:** Permite ao usuário selecionar o benefício (atualmente, benefícios rurais no valor do salário-mínimo ou BPC-LOAS) a partir de uma caixa de seleção. O plugin então carrega os dados do arquivo CSV correspondente.
 
 - **Escolha de Formato de Saída (Estilo de cópia):** Permite ao usuário escolher o conteúdo a ser copiado para a área de transferência (parâmetros pré-formatados, parâmetros sem formatação ou apenas valor total da proposta).
 
@@ -30,7 +30,7 @@ A Extensão do Chrome Conciliador Previdenciário é uma ferramenta projetada pa
 
 ## Uso
 
-1. **Escolher Benefício:** Selecione o benefício (RURAL ou BPC-LOAS) na caixa de seleção. O plugin carregará automaticamente os dados do arquivo JSON correspondente que deve estar na pasta `json`.
+1. **Escolher Benefício:** Selecione o benefício (RURAL ou BPC-LOAS) na caixa de seleção. O plugin carregará automaticamente os dados do arquivo CSV correspondente que deve estar na pasta especificada ou no armazenamento local.
 
 2. **Inserir DIP e DIB:** Digite a Data de Início do Pagamento (DIP) e a Data de Início do Benefício (DIB) no formato DD/MM/AAAA nas caixas de entrada.
 
@@ -59,4 +59,3 @@ O desenvolvedor não se responsabiliza pela exatidão dos cálculos, que devem s
 ## Licença
 
 Copyright (todos os direitos reservados)
-

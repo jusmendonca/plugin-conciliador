@@ -65,12 +65,28 @@ document.addEventListener('DOMContentLoaded', function() {
         if (file) {
             const reader = new FileReader();
             reader.onload = function(event) {
-                localStorage.setItem(`${benefitType}CustomData`, event.target.result);
+                const csvContent = event.target.result;
+                const csvData = parseCsv(csvContent);  // Converte o CSV para um array de objetos
+                localStorage.setItem(`${benefitType}CustomData`, JSON.stringify(csvData));  // Armazena o CSV como JSON no localStorage
                 localStorage.setItem(`${benefitType}FileName`, file.name);
                 fileNameDisplay.textContent = file.name;
             };
             reader.readAsText(file);
         }
+    }
+
+    function parseCsv(csvText) {
+        const lines = csvText.trim().split('\n');
+        const headers = lines[0].split(',');  // Assume que o delimitador é uma vírgula
+        const data = lines.slice(1).map(line => {
+            const values = line.split(',');
+            const row = {};
+            headers.forEach((header, index) => {
+                row[header.trim().toLowerCase()] = values[index]?.trim();  // Normaliza os cabeçalhos e os valores
+            });
+            return row;
+        });
+        return data;
     }
 
     function loadStoredConfig() {

@@ -1,0 +1,331 @@
+
+    <html>
+        <head>
+            <meta charset="utf-8">
+            <title>Resumo do Cálculo</title>
+            <style>
+                body { font-family: Arial, sans-serif; margin: 40px; }
+                .resumo { margin-bottom: 20px; }
+                .table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+                .table th, .table td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+                .table th { background-color: #f2f2f2; }
+            </style>
+        </head>
+        <body>
+            <div class="resumo">
+                <pre>
+    Resumo do Cálculo:
+    ---------------------------
+    Data Inicial das Parcelas: 02/09/2021
+    Data Final das Parcelas: 07/03/2024
+    
+    Dias Restantes no Mês Inicial [09/2021]: 29 dias
+    Valor Proporcional da RM no Mês Inicial (atualizada): R$ 1.440,56
+    
+    Valor Integral das RM nos Meses Completos [10/2021 a 02/2024] (atualizada): R$ 43.279,93
+    
+    Dias do Mês Final das Parcelas [03/2024]: 7 dias
+    Valor Proporcional da RM no Mês Final (atualizado): R$ 332,39
+    
+    Cálculo da Gratificação Natalina:    
+    Gratificação Natalina Proporcional para o Ano Inicial [2021]: R$ 479,71
+    Gratificação Natalina Integral para Anos Intermediários [2022, 2023]: R$ 2.858,95
+    Gratificação Natalina Proporcional para o Ano Final [2024]: R$ 368,00
+    
+    Valor Total Devido: R$ 48.759,54
+    ---------------------------
+    </pre>
+            </div>
+            <div class="memoria-calculos">
+                <table class="dataframe table table-striped">
+  <thead>
+    <tr style="text-align: center;">
+      <th>Data</th>
+      <th>Renda Mensal (RM)</th>
+      <th>Índice de Correção Monetária (ind_corr)</th>
+      <th>Renda Mensal Corrigida (v_corr)</th>
+      <th>Percentual de Juros (perc_juros)</th>
+      <th>Valor dos Juros (v_juros)</th>
+      <th>Renda Mensal Atualizada (rm_atual)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>10/2021</td>
+      <td>1.100,00</td>
+      <td>1,02384038</td>
+      <td>1.126,22</td>
+      <td>30,8300%</td>
+      <td>347,21</td>
+      <td>1.473,44</td>
+    </tr>
+    <tr>
+      <td>11/2021</td>
+      <td>1.100,00</td>
+      <td>1,01169998</td>
+      <td>1.112,87</td>
+      <td>30,8300%</td>
+      <td>343,10</td>
+      <td>1.455,97</td>
+    </tr>
+    <tr>
+      <td>12/2021</td>
+      <td>1.100,00</td>
+      <td>0,99999998</td>
+      <td>1.100,00</td>
+      <td>30,8300%</td>
+      <td>678,26</td>
+      <td>1.439,13</td>
+    </tr>
+    <tr>
+      <td>01/2022</td>
+      <td>1.212,00</td>
+      <td>0,99999998</td>
+      <td>1.212,00</td>
+      <td>30,0600%</td>
+      <td>364,33</td>
+      <td>1.576,33</td>
+    </tr>
+    <tr>
+      <td>02/2022</td>
+      <td>1.212,00</td>
+      <td>0,99999998</td>
+      <td>1.212,00</td>
+      <td>29,3300%</td>
+      <td>355,48</td>
+      <td>1.567,48</td>
+    </tr>
+    <tr>
+      <td>03/2022</td>
+      <td>1.212,00</td>
+      <td>0,99999998</td>
+      <td>1.212,00</td>
+      <td>28,5700%</td>
+      <td>346,27</td>
+      <td>1.558,27</td>
+    </tr>
+    <tr>
+      <td>04/2022</td>
+      <td>1.212,00</td>
+      <td>0,99999998</td>
+      <td>1.212,00</td>
+      <td>27,6400%</td>
+      <td>335,00</td>
+      <td>1.547,00</td>
+    </tr>
+    <tr>
+      <td>05/2022</td>
+      <td>1.212,00</td>
+      <td>0,99999998</td>
+      <td>1.212,00</td>
+      <td>26,8100%</td>
+      <td>324,94</td>
+      <td>1.536,94</td>
+    </tr>
+    <tr>
+      <td>06/2022</td>
+      <td>1.212,00</td>
+      <td>0,99999998</td>
+      <td>1.212,00</td>
+      <td>25,7800%</td>
+      <td>312,45</td>
+      <td>1.524,45</td>
+    </tr>
+    <tr>
+      <td>07/2022</td>
+      <td>1.212,00</td>
+      <td>0,99999998</td>
+      <td>1.212,00</td>
+      <td>24,7600%</td>
+      <td>300,09</td>
+      <td>1.512,09</td>
+    </tr>
+    <tr>
+      <td>08/2022</td>
+      <td>1.212,00</td>
+      <td>0,99999998</td>
+      <td>1.212,00</td>
+      <td>23,7300%</td>
+      <td>287,61</td>
+      <td>1.499,61</td>
+    </tr>
+    <tr>
+      <td>09/2022</td>
+      <td>1.212,00</td>
+      <td>0,99999998</td>
+      <td>1.212,00</td>
+      <td>22,5600%</td>
+      <td>273,43</td>
+      <td>1.485,43</td>
+    </tr>
+    <tr>
+      <td>10/2022</td>
+      <td>1.212,00</td>
+      <td>0,99999998</td>
+      <td>1.212,00</td>
+      <td>21,4900%</td>
+      <td>260,46</td>
+      <td>1.472,46</td>
+    </tr>
+    <tr>
+      <td>11/2022</td>
+      <td>1.212,00</td>
+      <td>0,99999998</td>
+      <td>1.212,00</td>
+      <td>20,4700%</td>
+      <td>248,10</td>
+      <td>1.460,10</td>
+    </tr>
+    <tr>
+      <td>12/2022</td>
+      <td>1.212,00</td>
+      <td>0,99999998</td>
+      <td>1.212,00</td>
+      <td>19,4500%</td>
+      <td>471,47</td>
+      <td>1.447,73</td>
+    </tr>
+    <tr>
+      <td>01/2023</td>
+      <td>1.302,00</td>
+      <td>0,99999998</td>
+      <td>1.302,00</td>
+      <td>18,3300%</td>
+      <td>238,66</td>
+      <td>1.540,66</td>
+    </tr>
+    <tr>
+      <td>02/2023</td>
+      <td>1.302,00</td>
+      <td>0,99999998</td>
+      <td>1.302,00</td>
+      <td>17,2100%</td>
+      <td>224,07</td>
+      <td>1.526,07</td>
+    </tr>
+    <tr>
+      <td>03/2023</td>
+      <td>1.302,00</td>
+      <td>0,99999998</td>
+      <td>1.302,00</td>
+      <td>16,2900%</td>
+      <td>212,10</td>
+      <td>1.514,10</td>
+    </tr>
+    <tr>
+      <td>04/2023</td>
+      <td>1.302,00</td>
+      <td>0,99999998</td>
+      <td>1.302,00</td>
+      <td>15,1200%</td>
+      <td>196,86</td>
+      <td>1.498,86</td>
+    </tr>
+    <tr>
+      <td>05/2023</td>
+      <td>1.320,00</td>
+      <td>0,99999998</td>
+      <td>1.320,00</td>
+      <td>14,2000%</td>
+      <td>187,44</td>
+      <td>1.507,44</td>
+    </tr>
+    <tr>
+      <td>06/2023</td>
+      <td>1.320,00</td>
+      <td>0,99999998</td>
+      <td>1.320,00</td>
+      <td>13,0800%</td>
+      <td>172,66</td>
+      <td>1.492,66</td>
+    </tr>
+    <tr>
+      <td>07/2023</td>
+      <td>1.320,00</td>
+      <td>0,99999998</td>
+      <td>1.320,00</td>
+      <td>12,0100%</td>
+      <td>158,53</td>
+      <td>1.478,53</td>
+    </tr>
+    <tr>
+      <td>08/2023</td>
+      <td>1.320,00</td>
+      <td>0,99999998</td>
+      <td>1.320,00</td>
+      <td>10,9400%</td>
+      <td>144,41</td>
+      <td>1.464,41</td>
+    </tr>
+    <tr>
+      <td>09/2023</td>
+      <td>1.320,00</td>
+      <td>0,99999998</td>
+      <td>1.320,00</td>
+      <td>9,8000%</td>
+      <td>129,36</td>
+      <td>1.449,36</td>
+    </tr>
+    <tr>
+      <td>10/2023</td>
+      <td>1.320,00</td>
+      <td>0,99999998</td>
+      <td>1.320,00</td>
+      <td>8,8300%</td>
+      <td>116,56</td>
+      <td>1.436,56</td>
+    </tr>
+    <tr>
+      <td>11/2023</td>
+      <td>1.320,00</td>
+      <td>0,99999998</td>
+      <td>1.320,00</td>
+      <td>7,8300%</td>
+      <td>103,36</td>
+      <td>1.423,36</td>
+    </tr>
+    <tr>
+      <td>12/2023</td>
+      <td>1.320,00</td>
+      <td>0,99999998</td>
+      <td>1.320,00</td>
+      <td>6,9100%</td>
+      <td>182,42</td>
+      <td>1.411,21</td>
+    </tr>
+    <tr>
+      <td>01/2024</td>
+      <td>1.412,00</td>
+      <td>0,99999998</td>
+      <td>1.412,00</td>
+      <td>6,0200%</td>
+      <td>85,00</td>
+      <td>1.497,00</td>
+    </tr>
+    <tr>
+      <td>02/2024</td>
+      <td>1.412,00</td>
+      <td>0,99999998</td>
+      <td>1.412,00</td>
+      <td>5,0500%</td>
+      <td>71,31</td>
+      <td>1.483,31</td>
+    </tr>
+    <tr>
+      <td>03/2024</td>
+      <td>1.412,00</td>
+      <td>0,99999998</td>
+      <td>1.412,00</td>
+      <td>4,2500%</td>
+      <td>60,01</td>
+      <td>1.472,01</td>
+    </tr>
+  </tbody>
+</table>
+            </div>
+        <p>
+        Ìndices aplicados: ORTN/OTN/BTN até 02/91 + INPC até 12/92 + IRSM até 02/94 + URV até 06/94 + IPCR até 06/95 + INPC até 04/96 + IGPDI até 09/2006 + IPCA-E + Selic após 12/021.
+        </p>
+        </body>
+    </html>
+    
