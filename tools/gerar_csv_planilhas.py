@@ -4,7 +4,7 @@ from datetime import datetime
 from openpyxl import load_workbook
 import os
 
-caminho_arquivo_excel = 'C:/Users/igor.gomes/Documents/GitHub/automacao/plugin-conciliador/tools/planilha_testes_agosto.xlsx'
+caminho_arquivo_excel = 'C:/Users/igor.gomes/Documents/GitHub/automacao/plugin-conciliador/tools/planilha_teste2.xlsx'
 caminho_pasta_saida ='C:/Users/igor.gomes/Documents/GitHub/automacao/plugin-conciliador/tools'
 
 def gerar_csvs_planilhas(caminho_arquivo_excel, caminho_pasta_saida):

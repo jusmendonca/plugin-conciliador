@@ -30,25 +30,6 @@ def calcular_valor_devido_com_13(csv_path, data_inicial_parcelas, data_final_par
     # Inicializar uma lista para armazenar as linhas da memória de cálculo
     calculo_rows = []
 
-    # Preencher a memória de cálculo com dados para cada mês no intervalo
-    for date in date_range:
-        mes = date.month
-        ano = date.year
-        df_mes = df[(df['dib'].dt.month == mes) & (df['dib'].dt.year == ano)]
-        if not df_mes.empty:
-            calculo_rows.append({
-                'Data': date.strftime('%m/%Y'),
-                'Renda Mensal (RM)': f"{df_mes['rm'].iloc[0]:,.2f}".replace(',', 'temp').replace('.', ',').replace('temp', '.'),
-                'Índice de Correção Monetária (ind_corr)': f"{df_mes['ind_corr'].iloc[0]}".replace('.', ','),
-                'Renda Mensal Corrigida (v_corr)': f"{df_mes['v_corr'].iloc[0]:,.2f}".replace(',', 'temp').replace('.', ',').replace('temp', '.'),
-                'Percentual de Juros (perc_juros)': f"{df_mes['perc_juros'].iloc[0] * 100:.4f}%".replace(',', 'temp').replace('.', ',').replace('temp', '.'),
-                'Valor dos Juros (v_juros)': f"{df_mes['v_juros'].iloc[0]:,.2f}".replace(',', 'temp').replace('.', ',').replace('temp', '.'),
-                'Renda Mensal Atualizada (rm_atual)': f"{df_mes['rm_atual'].iloc[0]:,.2f}".replace(',', 'temp').replace('.', ',').replace('temp', '.')
-            })
-
-    # Converter a lista de dicionários em um DataFrame
-    df_calculo = pd.DataFrame(calculo_rows)
-
     # Identificar o mês e ano das datas iniciais e finais
     mes_inicial = data_inicial_parcelas.month
     ano_inicial = data_inicial_parcelas.year
@@ -66,7 +47,21 @@ def calcular_valor_devido_com_13(csv_path, data_inicial_parcelas, data_final_par
     # Valor proporcional de rm_atual para os dias restantes do mês inicial
     rm_atual_proporcional_inicial = (df_inicial['rm_atual'] / df_inicial['dib'].dt.days_in_month) * dias_no_mes_inicial
 
-    # Calcular a soma dos valores de rm_atual até o mês anterior ao correspondente à coluna dib da data final das parcelas
+    # Adicionar o mês inicial à tabela
+    if not df_inicial.empty:
+        valor_efetivo_mes = rm_atual_proporcional_inicial.sum()
+        calculo_rows.append({
+            'Data': data_inicial_parcelas.strftime('%m/%Y'),
+            'Renda Mensal (RM)': f"{df_inicial['rm'].iloc[0]:,.2f}".replace(',', 'temp').replace('.', ',').replace('temp', '.'),
+            'Índice de Correção Monetária (ind_corr)': f"{df_inicial['ind_corr'].iloc[0]}".replace('.', ','),
+            'Renda Mensal Corrigida (v_corr)': f"{df_inicial['v_corr'].iloc[0]:,.2f}".replace(',', 'temp').replace('.', ',').replace('temp', '.'),
+            'Percentual de Juros (perc_juros)': f"{df_inicial['perc_juros'].iloc[0] * 100:.4f}%".replace(',', 'temp').replace('.', ',').replace('temp', '.'),
+            'Valor dos Juros (v_juros)': f"{df_inicial['v_juros'].iloc[0]:,.2f}".replace(',', 'temp').replace('.', ',').replace('temp', '.'),
+            'Renda Mensal Atualizada (rm_atual)': f"{df_inicial['rm_atual'].iloc[0]:,.2f}".replace(',', 'temp').replace('.', ',').replace('temp', '.'),
+            'Valor Efetivamente Considerado': f"{valor_efetivo_mes:,.2f}".replace(',', 'temp').replace('.', ',').replace('temp', '.')
+        })
+
+    # Calcular a soma dos valores de rm_atual para os meses completos entre o inicial e o final
     df_meio = df[(df['dib'] > df_inicial['dib'].values[0]) & (df['dib'] < df_final['dib'].values[0])]
     soma_rm_atual_intermediario = df_meio['rm_atual'].sum()
 
@@ -106,6 +101,34 @@ def calcular_valor_devido_com_13(csv_path, data_inicial_parcelas, data_final_par
         gratificacao_natalina_integral +
         gratificacao_natalina_proporcional_final
     )
+
+    # Preencher a memória de cálculo com dados para cada mês no intervalo, excluindo o mês inicial que já foi adicionado
+    for date in date_range[1:]:
+        mes = date.month
+        ano = date.year
+        df_mes = df[(df['dib'].dt.month == mes) & (df['dib'].dt.year == ano)]
+        
+        if not df_mes.empty:
+            if mes == mes_final and ano == ano_final:
+                valor_efetivo_mes = rm_atual_proporcional_final.sum()
+            elif (mes > mes_inicial or ano > ano_inicial) and (mes < mes_final or ano < ano_final):
+                valor_efetivo_mes = df_mes['rm_atual'].sum()
+            else:
+                valor_efetivo_mes = 0  # Caso o mês não esteja dentro do intervalo, o valor é 0.
+
+            calculo_rows.append({
+                'Data': date.strftime('%m/%Y'),
+                'Renda Mensal (RM)': f"{df_mes['rm'].iloc[0]:,.2f}".replace(',', 'temp').replace('.', ',').replace('temp', '.'),
+                'Índice de Correção Monetária (ind_corr)': f"{df_mes['ind_corr'].iloc[0]}".replace('.', ','),
+                'Renda Mensal Corrigida (v_corr)': f"{df_mes['v_corr'].iloc[0]:,.2f}".replace(',', 'temp').replace('.', ',').replace('temp', '.'),
+                'Percentual de Juros (perc_juros)': f"{df_mes['perc_juros'].iloc[0] * 100:.4f}%".replace(',', 'temp').replace('.', ',').replace('temp', '.'),
+                'Valor dos Juros (v_juros)': f"{df_mes['v_juros'].iloc[0]:,.2f}".replace(',', 'temp').replace('.', ',').replace('temp', '.'),
+                'Renda Mensal Atualizada (rm_atual)': f"{df_mes['rm_atual'].iloc[0]:,.2f}".replace(',', 'temp').replace('.', ',').replace('temp', '.'),
+                'Valor Efetivamente Considerado': f"{valor_efetivo_mes:,.2f}".replace(',', 'temp').replace('.', ',').replace('temp', '.')
+            })
+
+    # Converter a lista de dicionários em um DataFrame
+    df_calculo = pd.DataFrame(calculo_rows)
 
     # Formatação dos valores no padrão XX.XXX,XX
     valor_proporcional_rm_inicial_formatado = f"{rm_atual_proporcional_inicial.sum():,.2f}".replace(',', 'temp').replace('.', ',').replace('temp', '.')
@@ -201,7 +224,7 @@ def exportar_para_html(resumo_calculo, df_calculo, caminho_arquivo_html):
 
 # Exemplo de uso da função
 csv_path = 'C:/Users/igor.gomes/Documents/GitHub/automacao/plugin-conciliador/tools/RURAL.csv'
-data_inicial_parcelas = '16/09/2021'
+data_inicial_parcelas = '15/09/2021'
 data_final_parcelas = '07/03/2024'
 caminho_arquivo_html = 'C:/Users/igor.gomes/Documents/GitHub/automacao/plugin-conciliador/tools/RURAL.html'
 resumo_calculo, df_calculo = calcular_valor_devido_com_13(csv_path, data_inicial_parcelas, data_final_parcelas)

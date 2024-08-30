@@ -30,25 +30,6 @@ def calcular_valor_devido_com_13(csv_path, data_inicial_parcelas, data_final_par
     # Inicializar uma lista para armazenar as linhas da memória de cálculo
     calculo_rows = []
 
-    # Preencher a memória de cálculo com dados para cada mês no intervalo
-    for date in date_range:
-        mes = date.month
-        ano = date.year
-        df_mes = df[(df['dib'].dt.month == mes) & (df['dib'].dt.year == ano)]
-        if not df_mes.empty:
-            calculo_rows.append({
-                'Data': date.strftime('%m/%Y'),
-                'Renda Mensal (RM)': f"{df_mes['rm'].iloc[0]:,.2f}".replace(',', 'temp').replace('.', ',').replace('temp', '.'),
-                'Índice de Correção Monetária (ind_corr)': f"{df_mes['ind_corr'].iloc[0]}".replace('.', ','),
-                'Renda Mensal Corrigida (v_corr)': f"{df_mes['v_corr'].iloc[0]:,.2f}".replace(',', 'temp').replace('.', ',').replace('temp', '.'),
-                'Percentual de Juros (perc_juros)': f"{df_mes['perc_juros'].iloc[0] * 100:.4f}%".replace(',', 'temp').replace('.', ',').replace('temp', '.'),
-                'Valor dos Juros (v_juros)': f"{df_mes['v_juros'].iloc[0]:,.2f}".replace(',', 'temp').replace('.', ',').replace('temp', '.'),
-                'Renda Mensal Atualizada (rm_atual)': f"{df_mes['rm_atual'].iloc[0]:,.2f}".replace(',', 'temp').replace('.', ',').replace('temp', '.')
-            })
-
-    # Converter a lista de dicionários em um DataFrame
-    df_calculo = pd.DataFrame(calculo_rows)
-
     # Identificar o mês e ano das datas iniciais e finais
     mes_inicial = data_inicial_parcelas.month
     ano_inicial = data_inicial_parcelas.year
@@ -66,7 +47,21 @@ def calcular_valor_devido_com_13(csv_path, data_inicial_parcelas, data_final_par
     # Valor proporcional de rm_atual para os dias restantes do mês inicial
     rm_atual_proporcional_inicial = (df_inicial['rm_atual'] / df_inicial['dib'].dt.days_in_month) * dias_no_mes_inicial
 
-    # Calcular a soma dos valores de rm_atual até o mês anterior ao correspondente à coluna dib da data final das parcelas
+    # Adicionar o mês inicial à tabela
+    if not df_inicial.empty:
+        valor_efetivo_mes = rm_atual_proporcional_inicial.sum()
+        calculo_rows.append({
+            'Data': data_inicial_parcelas.strftime('%m/%Y'),
+            'Valor': f"{df_inicial['rm'].iloc[0]:,.2f}".replace(',', 'temp').replace('.', ',').replace('temp', '.'),
+            'Índice de Correção Monetária': f"{df_inicial['ind_corr'].iloc[0]}".replace('.', ','),
+            'Valor Corrigido': f"{df_inicial['v_corr'].iloc[0]:,.2f}".replace(',', 'temp').replace('.', ',').replace('temp', '.'),
+            'Juros (%)': f"{df_inicial['perc_juros'].iloc[0] * 100:.4f}%".replace(',', 'temp').replace('.', ',').replace('temp', '.'),
+            'Valor dos Juros': f"{df_inicial['v_juros'].iloc[0]:,.2f}".replace(',', 'temp').replace('.', ',').replace('temp', '.'),
+            'Soma': f"{df_inicial['rm_atual'].iloc[0]:,.2f}".replace(',', 'temp').replace('.', ',').replace('temp', '.'),
+            'Total (proporcional no 1º e no último mês)': f"{valor_efetivo_mes:,.2f}".replace(',', 'temp').replace('.', ',').replace('temp', '.')
+        })
+
+    # Calcular a soma dos valores de rm_atual para os meses completos entre o inicial e o final
     df_meio = df[(df['dib'] > df_inicial['dib'].values[0]) & (df['dib'] < df_final['dib'].values[0])]
     soma_rm_atual_intermediario = df_meio['rm_atual'].sum()
 
@@ -107,6 +102,34 @@ def calcular_valor_devido_com_13(csv_path, data_inicial_parcelas, data_final_par
         gratificacao_natalina_proporcional_final
     )
 
+    # Preencher a memória de cálculo com dados para cada mês no intervalo, excluindo o mês inicial que já foi adicionado
+    for date in date_range[1:]:
+        mes = date.month
+        ano = date.year
+        df_mes = df[(df['dib'].dt.month == mes) & (df['dib'].dt.year == ano)]
+        
+        if not df_mes.empty:
+            if mes == mes_final and ano == ano_final:
+                valor_efetivo_mes = rm_atual_proporcional_final.sum()
+            elif (mes > mes_inicial or ano > ano_inicial) and (mes < mes_final or ano < ano_final):
+                valor_efetivo_mes = df_mes['rm_atual'].sum()
+            else:
+                valor_efetivo_mes = 0  # Caso o mês não esteja dentro do intervalo, o valor é 0.
+
+            calculo_rows.append({
+                'Data': date.strftime('%m/%Y'),
+                'Valor': f"{df_mes['rm'].iloc[0]:,.2f}".replace(',', 'temp').replace('.', ',').replace('temp', '.'),
+                'Índice de Correção Monetária': f"{df_mes['ind_corr'].iloc[0]}".replace('.', ','),
+                'Valor Corrigido': f"{df_mes['v_corr'].iloc[0]:,.2f}".replace(',', 'temp').replace('.', ',').replace('temp', '.'),
+                'Juros (%)': f"{df_mes['perc_juros'].iloc[0] * 100:.4f}%".replace(',', 'temp').replace('.', ',').replace('temp', '.'),
+                'Valor dos Juros': f"{df_mes['v_juros'].iloc[0]:,.2f}".replace(',', 'temp').replace('.', ',').replace('temp', '.'),
+                'Soma': f"{df_mes['rm_atual'].iloc[0]:,.2f}".replace(',', 'temp').replace('.', ',').replace('temp', '.'),
+                'Total (proporcional no 1º e no último mês)': f"{valor_efetivo_mes:,.2f}".replace(',', 'temp').replace('.', ',').replace('temp', '.')
+            })
+
+    # Converter a lista de dicionários em um DataFrame
+    df_calculo = pd.DataFrame(calculo_rows)
+
     # Formatação dos valores no padrão XX.XXX,XX
     valor_proporcional_rm_inicial_formatado = f"{rm_atual_proporcional_inicial.sum():,.2f}".replace(',', 'temp').replace('.', ',').replace('temp', '.')
     valor_integral_rm_completos_formatado = f"{soma_rm_atual_intermediario:,.2f}".replace(',', 'temp').replace('.', ',').replace('temp', '.')
@@ -116,41 +139,50 @@ def calcular_valor_devido_com_13(csv_path, data_inicial_parcelas, data_final_par
     gratificacao_natalina_proporcional_final_formatado = f"{gratificacao_natalina_proporcional_final:,.2f}".replace(',', 'temp').replace('.', ',').replace('temp', '.')
     valor_total_devido_formatado = f"{valor_total_devido:,.2f}".replace(',', 'temp').replace('.', ',').replace('temp', '.')
 
-    # Formatar o resumo para leitura
-    resumo = f"""
-    ---------------------------------------------------------------------------------------------------------
-    
-    RESUMO DO CÁLCULO
-    
-    ---------------------------------------------------------------------------------------------------------
-    Data inicial: {data_inicial_parcelas.strftime('%d/%m/%Y')}
-    Data final: {data_final_parcelas.strftime('%d/%m/%Y')}    
-    ---------------------------------------------------------------------------------------------------------
-
-    Parcelas ordinárias:
-    
-    Mês inicial ({mes_inicial:02}/{ano_inicial}): {dias_no_mes_inicial} dias
-    Valor (proporcional): R$ {valor_proporcional_rm_inicial_formatado}
-    
-    Meses intermediários ({df_meio['dib'].min().strftime('%m/%Y') if not df_meio.empty else "N/A"} a {df_meio['dib'].max().strftime('%m/%Y') if not df_meio.empty else "N/A"})
-    Valor (integral): R$ {valor_integral_rm_completos_formatado}
-    
-    Mês final ({mes_final:02}/{ano_final}): {dias_no_mes_final} dias
-    Valor (proporcional): R$ {valor_proporcional_rm_final_formatado}
-    
-    Gratificação natalina (13º salário):    
-    {ano_inicial} (proporcional): R$ {gratificacao_natalina_proporcional_inicial_formatado}
-    {', '.join(map(str, anos_completos)) if anos_completos else 'N/A'}: R$ {gratificacao_natalina_integral_formatado} (integral)
-    {ano_final}: R$ {gratificacao_natalina_proporcional_final_formatado} (proporcional)
-
-    
-    VALOR DEVIDO: R$ {valor_total_devido_formatado}
-    
-    ---------------------------------------------------------------------------------------------------------
-
+    # Criar o resumo como uma tabela HTML
+    resumo_tabela_html = f"""
+    <table class="resumo-table">
+        <thead>
+            <tr>
+                <th colspan="2">Resumo do Cálculo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Data inicial:</td>
+                <td>{data_inicial_parcelas.strftime('%d/%m/%Y')}</td>
+            </tr>
+            <tr>
+                <td>Data final:</td>
+                <td>{data_final_parcelas.strftime('%d/%m/%Y')}</td>
+            </tr>
+            <tr>
+                <td>Mês inicial ({mes_inicial:02}/{ano_inicial} - {dias_no_mes_inicial} dias) </td>
+                <td>R$ {valor_proporcional_rm_inicial_formatado}</td>
+            </tr>
+            <tr>
+                <td>Meses intermediários ({df_meio['dib'].min().strftime('%m/%Y') if not df_meio.empty else "N/A"} a {df_meio['dib'].max().strftime('%m/%Y') if not df_meio.empty else "N/A"}):</td>
+                <td>R$ {valor_integral_rm_completos_formatado}</td>
+            </tr>
+            <tr>
+                <td>Mês final ({mes_final:02}/{ano_final} - {dias_no_mes_final} dias):</td>
+                <td>R$ {valor_proporcional_rm_final_formatado}</td>
+            </tr>
+            <tr>
+                <td>Gratificação natalina (13º salário):</td>
+                <td>{ano_inicial} (proporcional): R$ {gratificacao_natalina_proporcional_inicial_formatado}<br>
+                    {', '.join(map(str, anos_completos)) if anos_completos else 'N/A'}: R$ {gratificacao_natalina_integral_formatado} (integral)<br>
+                    {ano_final}: R$ {gratificacao_natalina_proporcional_final_formatado} (proporcional)</td>
+            </tr>
+            <tr>
+                <td>VALOR DEVIDO:</td>
+                <td>R$ {valor_total_devido_formatado}</td>
+            </tr>
+        </tbody>
+    </table>
     """
-    
-    return resumo, df_calculo
+
+    return resumo_tabela_html, df_calculo
 
 
 def exportar_para_html(resumo_calculo, df_calculo, caminho_arquivo_html):
@@ -165,7 +197,7 @@ def exportar_para_html(resumo_calculo, df_calculo, caminho_arquivo_html):
     # Converter o DataFrame para HTML
     tabela_html = df_calculo.to_html(index=False, justify='center', border=0, classes='table table-striped')
 
-    # Criar o conteúdo do HTML
+    # Criar o conteúdo do HTML com o resumo formatado como tabela
     conteudo_html = f"""
     <html>
         <head>
@@ -173,7 +205,9 @@ def exportar_para_html(resumo_calculo, df_calculo, caminho_arquivo_html):
             <title>Resumo do Cálculo</title>
             <style>
                 body {{ font-family: Arial, sans-serif; margin: 40px; }}
-                .resumo {{ margin-bottom: 20px; }}
+                .resumo-table {{ width: 50%; margin-bottom: 20px; border-collapse: collapse; }}
+                .resumo-table th, .resumo-table td {{ border: 1px solid #ddd; padding: 8px; text-align: left; }}
+                .resumo-table th {{ background-color: #f2f2f2; }}
                 .table {{ border-collapse: collapse; width: 100%; margin-top: 20px; }}
                 .table th, .table td {{ border: 1px solid #ddd; padding: 8px; text-align: center; }}
                 .table th {{ background-color: #f2f2f2; }}
@@ -181,13 +215,13 @@ def exportar_para_html(resumo_calculo, df_calculo, caminho_arquivo_html):
         </head>
         <body>
             <div class="resumo">
-                <pre>{resumo_calculo}</pre>
+                {resumo_calculo}
             </div>
             <div class="memoria-calculos">
                 {tabela_html}
             </div>
         <p>
-        Ìndices aplicados: ORTN/OTN/BTN até 02/91 + INPC até 12/92 + IRSM até 02/94 + URV até 06/94 + IPCR até 06/95 + INPC até 04/96 + IGPDI até 09/2006 + IPCA-E + Selic após 12/021.
+        Índices aplicados: ORTN/OTN/BTN até 02/91 + INPC até 12/92 + IRSM até 02/94 + URV até 06/94 + IPCR até 06/95 + INPC até 04/96 + IGPDI até 09/2006 + IPCA-E + Selic após 12/021.
         </p>
         </body>
     </html>
@@ -201,7 +235,7 @@ def exportar_para_html(resumo_calculo, df_calculo, caminho_arquivo_html):
 
 # Exemplo de uso da função
 csv_path = 'C:/Users/igor.gomes/Documents/GitHub/automacao/plugin-conciliador/tools/RURAL.csv'
-data_inicial_parcelas = '16/09/2021'
+data_inicial_parcelas = '09/03/2021'
 data_final_parcelas = '07/03/2024'
 caminho_arquivo_html = 'C:/Users/igor.gomes/Documents/GitHub/automacao/plugin-conciliador/tools/RURAL.html'
 resumo_calculo, df_calculo = calcular_valor_devido_com_13(csv_path, data_inicial_parcelas, data_final_parcelas)
