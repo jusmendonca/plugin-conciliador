@@ -402,7 +402,11 @@ DIP: ${formatDate(dip)}
 
 -----------------------------------------------------------------------------------------------------------------------------------------------
 
+<<<<<<< Updated upstream
 RMI: ${rmi}
+=======
+RMI: um salário-mínimo
+>>>>>>> Stashed changes
 
 -----------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -430,7 +434,11 @@ Honorários Advocatícios: ${formatCurrency(honorarios)} (percentual aplicado: $
         return `
 DIB: ${formatDate(dib)}
 DIP: ${formatDate(dip)}
+<<<<<<< Updated upstream
 RMI: ${rmi}
+=======
+RMI: um salário-mínimo
+>>>>>>> Stashed changes
 VALOR DEVIDO: ${formatCurrency(soma)} (percentual aplicado: ${percentual * 100}%)
 COMPOSIÇÃO:
 - Parcelas de exercícios anteriores: ${p_ant}
@@ -491,6 +499,7 @@ Honorários Advocatícios: ${formatCurrency(honorarios)} (percentual aplicado: $
         const honorariosAplicado = (honorariosPercentual * 100).toFixed(2);
 
         return `
+<<<<<<< Updated upstream
     <!DOCTYPE html>
     <html lang="pt-BR">
     <head>
@@ -540,6 +549,56 @@ Honorários Advocatícios: ${formatCurrency(honorarios)} (percentual aplicado: $
         </ol>
     </body>
     </html>
+=======
+        <!DOCTYPE html>
+        <html lang="pt-BR">
+        <head>
+            <meta charset="UTF-8">
+            <title>Processo: ${formattedProcessNumber}</title>
+            <style>
+                body { font-family: Arial, sans-serif; font-size: 12px; margin: 20px; }
+                h1 { color: #333; }
+                .info { margin-bottom: 20px; }
+                table { width: 100%; border-collapse: collapse; }
+                th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+                th { background-color: #f2f2f2; }
+                .bold { font-weight: bold; }
+            </style>
+        </head>
+        <body>
+            <h1>Resumo do cálculo</h1>
+    
+            <p><strong>Processo:</strong> ${formattedProcessNumber}</p>
+            <p><strong>Interessado:</strong> ${nomeInteressado}</p>
+            <p><strong>Nome do Benefício:</strong> ${nomeBeneficio}</p>
+            <p><strong>DIB:</strong> ${dibStr}</p>
+            <p><strong>DIP:</strong> ${dipStr}</p>
+    
+            <p><strong>RMI:</strong> um salário-mínimo</p> <!-- Usa a função formatCurrency para formatar RMI -->
+            <p><strong>VALOR DEVIDO:</strong> <span class="bold">${formatCurrency(soma)}</span></p>
+            <p><strong>Percentual aplicado:</strong> ${percentualAplicado}%</p>
+    
+            <p><strong>Composição dos valores para Declaração de Rendimentos Recebidos Acumuladamente:</strong></p>
+            <ul>
+                <li>Parcelas de exercícios anteriores: ${p_ant}</li>
+                <li>Parcelas do exercício atual: ${p_atual}</li>
+                <li>Valor de exercícios anteriores: ${formatCurrency(v_ant)}</li>
+                <li>Valor do exercício atual: ${formatCurrency(v_atual)}</li>
+            </ul>
+    
+            ${honorarios > 0 ? `
+            <p><strong>Valor dos Honorários Advocatícios:</strong> <span class="bold">${formatCurrency(honorarios)}</span> (percentual aplicado: ${honorariosAplicado}%)</p>
+            ` : ''}
+    
+            <p><strong>Observações:</strong></p>
+            <ol>
+                <li>Índices aplicados: ORTN/OTN/BTN até 02/91 + INPC até 12/92 + IRSM até 02/94 + URV até 06/94 + IPCR até 06/95 + INPC até 04/96 + IGPDI até 09/2006 + IPCA-E + Selic após 12/021.</li>
+                <li>Cálculo limitado ao teto de alçada dos Juizados Especiais Federais.</li>
+                <li>Cálculos atualizados até ${todayDate}.</li>
+            </ol>
+        </body>
+        </html>
+>>>>>>> Stashed changes
         `;
     }   
 

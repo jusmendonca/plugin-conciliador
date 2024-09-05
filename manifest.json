@@ -1,7 +1,11 @@
 {
   "manifest_version": 3,
   "name": "Conciliador Previdenciario",
+<<<<<<< Updated upstream
   "version": "2.1",
+=======
+  "version": "2.2.1",
+>>>>>>> Stashed changes
   "permissions": [
     "clipboardWrite"
   ],

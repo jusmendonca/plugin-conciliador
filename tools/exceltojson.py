@@ -10,7 +10,7 @@ metadata = {
     "descricao": "Planilha RURAL"
 }
 # Caminho para o arquivo Excel e planilhas relevantes
-excel_file = 'C:/Users/igor.gomes/Downloads/Planilha Acordo PGF_08 2024_IPCA-e_Acordos_Selic_NOVA_mod.xltx'
+excel_file = 'C:/Users/igor.gomes/Downloads/planilha_acordo_setembro.xlsx'
 planilhas = ['Benef com 13º']
 # Função para calcular o número de meses entre duas datas, não incluindo o mês final
 def calcular_meses_exclusivo(data_inicial, data_final):
@@ -57,7 +57,7 @@ for planilha in planilhas:
     df = carregar_planilha(planilha)
     json_data["dados"].extend(df.to_dict(orient='records'))
 # Salvar os dados processados em um arquivo JSON
-output_json_file = 'C:/Users/igor.gomes/Downloads/RURAL.json'
+output_json_file = 'C:/Users/igor.gomes/Downloads/RURAL2.json'
 with open(output_json_file, 'w', encoding='utf-8') as f:
     json.dump(json_data, f, ensure_ascii=False, indent=4)
 print(f"JSON gerado e salvo em: {output_json_file}")

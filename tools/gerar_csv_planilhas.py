@@ -4,8 +4,13 @@ from datetime import datetime
 from openpyxl import load_workbook
 import os
 
+<<<<<<< Updated upstream
 caminho_arquivo_excel = 'C:/Users/igor.gomes/Documents/GitHub/automacao/plugin-conciliador/tools/planilha_testes_agosto.xlsx'
 caminho_pasta_saida ='C:/Users/igor.gomes/Documents/GitHub/automacao/plugin-conciliador/tools'
+=======
+caminho_arquivo_excel = 'C:/Users/igor.gomes/Documents/GitHub/automacao/plugin-conciliador/planilhas/planilha_acordo_julho.xltx'
+caminho_pasta_saida ='C:/Users/igor.gomes/Documents/GitHub/automacao/plugin-conciliador/csv/temp'
+>>>>>>> Stashed changes
 
 def gerar_csvs_planilhas(caminho_arquivo_excel, caminho_pasta_saida):
     """
@@ -85,9 +90,9 @@ def gerar_csvs_planilhas(caminho_arquivo_excel, caminho_pasta_saida):
 
     # Lista de índices das planilhas e seus respectivos arquivos CSV de saída
     planilhas_csv_map = {
-        0: 'RURAL.csv',  # Índice 0 corresponde à primeira planilha
-        1: 'RURAL+25.csv',
-        2: 'BPC-LOAS.csv'  # Índice 2 corresponde à terceira planilha
+        0: 'RURAL_julho.csv',  # Índice 0 corresponde à primeira planilha
+        1: 'RURAL+25_julho.csv',
+        2: 'BPC-LOAS_julho.csv'  # Índice 2 corresponde à terceira planilha
     }
 
     # Iterar sobre cada planilha e gerar o CSV correspondente
